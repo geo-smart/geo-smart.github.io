@@ -1,1 +1,1 @@
-Sitemap: https://geo-smart.github.io/site/sitemap.xml
+Sitemap: https://geo-smart.github.io/geosmartsite/sitemap.xml
