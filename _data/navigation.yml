@@ -1,0 +1,14 @@
+main:
+  - title: "Projects"
+    url: /projects/
+    sublinks:
+    - title: Materials for Learning
+      url: /mfl/
+    - title: Classroom materials
+      url: /cm/
+  - title: "Motivation"
+    url: /motivation/
+  - title: "Team"
+    url: /team/
+  - title: "News"
+    url: /news/
