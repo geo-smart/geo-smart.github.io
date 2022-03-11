@@ -1,6 +1,15 @@
 # GeoSmart Site
 
 
+## Installation of Ruby & Jekyll (on Windows)
+
+Go to https://rubyinstaller.org/downloads/ and install ruby + devkit. Run it and follow the default installation options, making sure to run the `ridk install` step on the last stage of the wizard.
+
+Now from the command prompt run
+```
+gem install jekyll bundler
+```
+
 ## Installation of Jekyll (on Mac)
 
 ```ruby
@@ -70,3 +79,7 @@ _config.yaml has the configuration for our site.
 ```bash
  bundle exec jekyll build
  ```
+
+ ## Miscelaneuos tips
+ ### Custom CSS styling
+ Do not edit `_site/assets/css/main.css`, it will not do anything. Go to `assets/css/main.scss` do create custom styles. If you need to change default jekyll css, you will have to override it.

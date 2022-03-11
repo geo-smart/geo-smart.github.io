@@ -17,21 +17,21 @@ feature_row:
     title: "Materials for Learning"
     excerpt: "We  actively develop and maintain our online platforms for the duration of the project to support collaboration, learning and ML CI adoption activities. These online resources will be designed to host: 1) pre-developed learning modules on data science and ML basics 2) hackweek training tutorials and video recordings, and 3) scientific use case example computational workflows."
     url: "/docs/configuration/"
-    btn_class: "btn--primary"
+    btn_class: "modernButton"
     btn_label: "Learn more"
   - image_path: /assets/images/bcte.png
     alt: "fully responsive"
     title: "Building Communities and Training Events"
     excerpt: "With our materials and training events in ML tools and fundamentals of ML theory we aim to build a community interested in our offerings. In addition to our online materials, we plan to host GeoSMART hackweek events."
     url: "/docs/layouts/"
-    btn_class: "btn--primary"
+    btn_class: "modernButton"
     btn_label: "Learn more"
   - image_path: /assets/images/cm.png
     alt: "Classroom Materials"
     title: "Classroom Materials"
     excerpt: "We create  education materials to address the needs of educators and their student communities. From training on the latest technology to new pedagogical methods, we help teachers make their classrooms engaging and successful."
     url: "/docs/license/"
-    btn_class: "btn--primary"
+    btn_class: "modernButton"
     btn_label: "Learn more"      
 ---
 

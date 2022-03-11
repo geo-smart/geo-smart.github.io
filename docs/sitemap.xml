@@ -1,25 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
-<loc>http://localhost:4000/geosmartsite/jekyll/update/2022/01/09/welcome-to-GeoSmart.html</loc>
+<loc>https://geo-smart.github.io/geosmartsite/jekyll/update/2022/01/09/welcome-to-GeoSmart.html</loc>
 <lastmod>2022-01-09T17:42:32-08:00</lastmod>
 </url>
 <url>
-<loc>http://localhost:4000/geosmartsite/about/</loc>
+<loc>https://geo-smart.github.io/geosmartsite/about/</loc>
 </url>
 <url>
-<loc>http://localhost:4000/geosmartsite/</loc>
+<loc>https://geo-smart.github.io/geosmartsite/</loc>
 </url>
 <url>
-<loc>http://localhost:4000/geosmartsite/motivation/</loc>
+<loc>https://geo-smart.github.io/geosmartsite/motivation/</loc>
 </url>
 <url>
-<loc>http://localhost:4000/geosmartsite/news/</loc>
+<loc>https://geo-smart.github.io/geosmartsite/news/</loc>
 </url>
 <url>
-<loc>http://localhost:4000/geosmartsite/projects/</loc>
+<loc>https://geo-smart.github.io/geosmartsite/projects/</loc>
 </url>
 <url>
-<loc>http://localhost:4000/geosmartsite/team/</loc>
+<loc>https://geo-smart.github.io/geosmartsite/team/</loc>
 </url>
 </urlset>
