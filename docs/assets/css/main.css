@@ -1694,4 +1694,7 @@ img { border-radius: 8px; border-width: 1px; border-style: solid; border-color: 
 
 .greedy-nav .visible-links a:before { background-color: #00000000; }
 
+/* ===== */
+.site-title { content: ""; }
+
 /*# sourceMappingURL=main.css.map */
