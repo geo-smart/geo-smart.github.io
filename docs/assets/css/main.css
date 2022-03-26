@@ -1697,4 +1697,6 @@ img { border-radius: 8px; border-width: 1px; border-style: solid; border-color: 
 /* ===== */
 .site-title { content: url("../GeoSMART_logo.svg"); }
 
+@media (min-width: 80em) { .page { width: calc(100% - 200px); padding-right: 200px; } }
+
 /*# sourceMappingURL=main.css.map */
