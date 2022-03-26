@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "welcome to GeoSmart"
+title:  "Welcome to GeoSmart"
 date:   2022-01-09 17:42:32 -0800
 categories: jekyll update
 ---

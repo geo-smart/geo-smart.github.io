@@ -1,11 +1,13 @@
 main:
   - title: "Projects"
     url: /projects/
-    sublinks:
-    - title: Materials for Learning
-      url: /mfl/
-    - title: Classroom materials
-      url: /cm/
+#    sublinks:
+#    - title: Materials for Learning
+#      url: /mfl/
+#    - title: Classroom Materials
+#      url: /cm/
+#    - title: Support for Communities
+#      url: /sfc/
   - title: "Motivation"
     url: /motivation/
   - title: "Team"

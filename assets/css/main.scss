@@ -12,6 +12,15 @@ body {
   --main-color: #557A42;
 }
 
+/* style for all images */
+img {
+  border-radius: 8px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: var(--main-color);
+  box-shadow: 1px 1px 8px rgb(241, 241, 241), -1px -1px 8px rgb(241, 241, 241);
+}
+
 /* modernButton styles */
 .modernButton {
   border-width: 1px; 
@@ -27,7 +36,8 @@ body {
 .modernButton:hover {
   color: var(--main-color);
 
-  box-shadow: 5px 5px 10px lightgray, -2px -2px 10px lightgray;
+  //box-shadow: 5px 5px 10px lightgray, -2px -2px 10px lightgray;
+  box-shadow: inset 4px 4px 8px rgb(241, 241, 241), inset -2px -2px 8px rgb(241, 241, 241);
 }
 /* ===== */
 
@@ -37,7 +47,7 @@ body {
   padding: 0 0.25rem;
   margin: 0.25rem 0.75rem;
 
-  border-width: 1px; 
+  border-width: 0 0 1px 0;
   border-radius: 4px; // same as default jekyll btn border radius
   border-style: solid;
   border-color: #00000000;
@@ -45,8 +55,8 @@ body {
 }
 
 .greedy-nav .visible-links a:hover {
-  border-color: var(--main-color);
-  box-shadow: 4px 4px 8px rgb(241, 241, 241), -2px -2px 8px rgb(241, 241, 241);
+  //border-color: var(--main-color);
+  box-shadow: inset 4px 4px 8px rgb(241, 241, 241), inset -2px -2px 8px rgb(241, 241, 241);
 }
 
 .greedy-nav .visible-links a:before {
