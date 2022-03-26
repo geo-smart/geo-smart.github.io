@@ -9,7 +9,10 @@ header:
 #    - label: "<i class='fas fa-download'></i> Install now"
 #      url: "/docs/quick-start-guide/"
 excerpt: >
-  GeoScience MAchine Learning Resources and Training.<br />
+  <font size="+8"><b>GeoSMART</b></font>
+  <br/>
+  GeoScience MAchine Learning Resources and Training.
+  <br/>
   <small></small>
 feature_row:
   - image_path: /assets/images/mfl.png
