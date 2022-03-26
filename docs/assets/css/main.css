@@ -1678,9 +1678,14 @@ body { display: -webkit-box; display: -ms-flexbox; display: flex; min-height: 10
 
 body { --main-color: #557A42; }
 
-/* style for all images */
-img { border-radius: 8px; border-width: 1px; border-style: solid; border-color: var(--main-color); box-shadow: 1px 1px 8px #f1f1f1, -1px -1px 8px #f1f1f1; }
+.site-title { content: url("../GeoSMART_logo.svg"); }
 
+@media (min-width: 80em) { .page { width: calc(100% - 200px); padding-right: 200px; } }
+
+/* style for all images */
+img, .home img { border-radius: 8px; border-width: 1px; border-style: solid; border-color: var(--main-color); box-shadow: 1px 1px 8px #f1f1f1, -1px -1px 8px #f1f1f1; }
+
+/* ===== */
 /* modernButton styles */
 .modernButton { color: var(--main-color); font-weight: bold; border-radius: 8px; }
 
@@ -1695,8 +1700,9 @@ img { border-radius: 8px; border-width: 1px; border-style: solid; border-color: 
 .greedy-nav .visible-links a:before { background-color: #00000000; }
 
 /* ===== */
-.site-title { content: url("../GeoSMART_logo.svg"); }
+/* styles used in home.md, should be self-explanatory */
+.home { padding: 3rem; }
 
-@media (min-width: 80em) { .page { width: calc(100% - 200px); padding-right: 200px; } }
+/* ===== */
 
 /*# sourceMappingURL=main.css.map */

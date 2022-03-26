@@ -22,7 +22,6 @@ As geoscience has entered an era in which both in-situ and remote sensing observ
 
 <p align="justify">
 ML and Cloud Computing Many of the remote sensing data, model outputs, time series of observations and other types of spatiotemporal datasets suitable for ML applications in geoscience are already stored on the cloud. The largest seismic and geodetic archives currently hosted by the Incorporated Research Institutions for Seismology (IRIS) and the UNAVCO are merging data centers and preparing their merge and migration to cloud storage in order to promote a data-close-to-compute platform. NASA EOSDIS (Earth Observing System Data and Information System) predicts that its data archive (37.2 Petabytes in 2020) will reach 247 Petabytes in 2025, and adopted a strategic vision to operate multiple components in a commercial cloud (Zurbuchen et. al. 2019).
-With recent computational hardware innovations such as graphics processing units (GPUs), as well as innovations in ML methods themselves, ML is positioned to assist geoscientists by exploiting untapped environmental observations and enhancing Earth system modeling in timely and cost-effective ways. However, reproducible ML workflows require sophisticated coupling of advanced software, data processing pipelines, visualization tools, and rapidly evolving Cloud-based CI. We believe that adopting ML curriculum in classrooms has great potential for advancing ML-based discovery in the geosciences through hands-on teaching and project work.
 </p>
 </div>
 

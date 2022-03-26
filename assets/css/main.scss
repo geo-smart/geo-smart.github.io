@@ -12,27 +12,44 @@ body {
   --main-color: #557A42;
 }
 
+
+// In _config.yml, we set the site title to be blank, so that we can replace
+// it with this SVG below. There are some unintended consequences of this, like the
+// copyright statement in the footer being blank. However there doesn't seem to be another way.
+.site-title {
+  content: url('../GeoSMART_logo.svg');
+}
+
+
+// This is here to fix the ugly width jekyll has by default. If you find the proper
+// way to change it, remove this! Basically on small screen widths of min-width: 64em,
+// jekyll sets the width and padding you see below. For widths above 80em, jekyll does 300px
+// padding, which is super thinner, so here we just override that so all screen sizes above 64em
+// are the same.
+@media (min-width: 80em) {
+  .page {
+    width: calc(100% - 200px);
+    padding-right: 200px;
+  }
+}
+
+
 /* style for all images */
-img {
+// this adds the subtle shadow, border radius and outline
+img, .home img {
   border-radius: 8px;
   border-width: 1px;
   border-style: solid;
   border-color: var(--main-color);
   box-shadow: 1px 1px 8px rgb(241, 241, 241), -1px -1px 8px rgb(241, 241, 241);
 }
+/* ===== */
 
 /* modernButton styles */
 .modernButton {
-  //border-width: 1px;
-  //border-style: solid;
-  //border-color: var(--main-color);
-
   color: var(--main-color);
   font-weight: bold;
   border-radius: 8px;
-
-  //font-weight: 200;
-  //box-shadow: 1px 1px 8px rgb(241, 241, 241), -1px -1px 8px rgb(241, 241, 241);
 }
 
 .modernButton:hover {
@@ -43,7 +60,10 @@ img {
 }
 /* ===== */
 
+
 /* navbar styles overriding */
+// nothing super important here, just same changes to replace the bland default jekyll look
+// with something a little nicer and that matches the geosmart aesthetic
 .greedy-nav .visible-links a {
   color: var(--main-color);
   padding: 0.3rem 0.7rem;
@@ -68,13 +88,9 @@ img {
 }
 /* ===== */
 
-.site-title {
-  content: url('../GeoSMART_logo.svg');
-}
 
-@media (min-width: 80em) {
-  .page {
-    width: calc(100% - 200px);
-    padding-right: 200px;
-  }
+/* styles used in home.md, should be self-explanatory */
+.home {
+  padding: 3rem;
 }
+/* ===== */

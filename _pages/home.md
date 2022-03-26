@@ -36,15 +36,24 @@ feature_row:
     url: "/projects/#cm"
     btn_class: "modernButton"
     btn_label: "Learn more"      
+gallery:
+  - image_path: /assets/images/nsf.jpeg
+    alt: "NSF"
+    title: "National Science Foundation"
+  - image_path: /assets/images/esi.png
+    alt: "UW eScience"
+    title: "University of Washington eScience Institute"      
 ---
 
 
 {% include feature_row %}
 
 <div>
-<h2>Supporting machine learning education and innovation in the geosciences.</h2>
+<h2>Supporting Machine Learning Education and Innovation in the GeoSciences.</h2>
 <p align="justify">
-We support the development of a research workforce capable of advancing fundamental Geoscience challenges through broad adoption of Machine Learning (ML) tools.  Our GeoScience MAchine Learning Resources and Training (GeoSMART) framework will provide an educational pathway that provides a foundation in open source scientific ecosystems and progresses through general ML theory, toolkits and deployment on Cloud computing.
-We aim to: 1) develop tutorials and training materials to ensure accelerated adoption of ML CyberInfrastructure, tools and methods through online and hands-on training and 2) facilitate adopting and integrating program materials into mainstream academic curriculum.
-</p>
+This project supports the development of a research workforce capable of advancing fundamental Geoscience challenges through broad adoption of Machine Learning (ML) tools.  Our GeoScience MAchine Learning Resources and Training (GeoSMART) framework provides an educational pathway that provides a foundation in open source scientific ecosystems and progresses through general ML theory, toolkits and deployment on Cloud computing. 
+<br/><br/>
+We aim to: 1) develop tutorials and training materials to ensure accelerated adoption of ML CyberInfrastructure, tools and methods through online and hands-on training, and 2) facilitate adopting and integrating program materials into mainstream academic curriculum. </p>
 </div>
+
+{% include gallery caption="With support from the **National Science Foundation** (NSF) and the **University of Washington eScience Institute**, we aim to be able to support our geoscience ML focused communities." class="home" %}
