@@ -1683,7 +1683,9 @@ body { --main-color: #557A42; }
 @media (min-width: 80em) { .page { width: calc(100% - 200px); padding-right: 200px; } }
 
 /* style for all images */
-img, .home img { border-radius: 8px; border-width: 1px; border-style: solid; border-color: var(--main-color); box-shadow: 1px 1px 8px #f1f1f1, -1px -1px 8px #f1f1f1; }
+.archive__item-teaser { overflow: visible; }
+
+img, .home img { border-radius: 8px; border-width: 2px; border-style: solid; border-color: var(--main-color); box-shadow: 4px 4px 8px #bdbdbd, -2px -2px 8px #bdbdbd; }
 
 /* ===== */
 /* modernButton styles */
@@ -1701,7 +1703,7 @@ img, .home img { border-radius: 8px; border-width: 1px; border-style: solid; bor
 
 /* ===== */
 /* styles used in home.md, should be self-explanatory */
-.home { padding: 3rem; }
+@media (min-width: 37.5em) { .home { padding: 0 6rem; } }
 
 /* ===== */
 

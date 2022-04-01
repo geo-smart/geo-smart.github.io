@@ -36,12 +36,16 @@ body {
 
 /* style for all images */
 // this adds the subtle shadow, border radius and outline
+.archive__item-teaser {
+  overflow: visible;
+}
+
 img, .home img {
   border-radius: 8px;
-  border-width: 1px;
+  border-width: 2px;
   border-style: solid;
   border-color: var(--main-color);
-  box-shadow: 1px 1px 8px rgb(241, 241, 241), -1px -1px 8px rgb(241, 241, 241);
+  box-shadow: 4px 4px 8px rgb(189, 189, 189), -2px -2px 8px rgb(189, 189, 189);
 }
 /* ===== */
 
@@ -90,7 +94,10 @@ img, .home img {
 
 
 /* styles used in home.md, should be self-explanatory */
-.home {
-  padding: 3rem;
+@media (min-width: 37.5em) {
+  .home {
+    padding: 0 6rem;
+  }
 }
 /* ===== */
+

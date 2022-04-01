@@ -18,7 +18,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="">
 <meta property="og:title" content="News">
-<meta property="og:url" content="https://geo-smart.github.io/geosmartsite/news/">
+<meta property="og:url" content="http://localhost:4000/geosmartsite/news/">
 
 
   <meta property="og:description" content="Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.">
@@ -34,7 +34,7 @@
 
 
 
-<link rel="canonical" href="https://geo-smart.github.io/geosmartsite/news/">
+<link rel="canonical" href="http://localhost:4000/geosmartsite/news/">
 
 
 
@@ -45,7 +45,7 @@
     
       "@type": "Person",
       "name": null,
-      "url": "https://geo-smart.github.io/geosmartsite/"
+      "url": "http://localhost:4000/geosmartsite/"
     
   }
 </script>
@@ -80,6 +80,24 @@
     <!-- start custom head snippets -->
 
 <!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon/favicon-16x16.png">
+<link rel="manifest" href="/assets/favicon/site.webmanifest">
+<link rel="mask-icon" href="/assets/favicon/safari-pinned-tab.svg" color="#5bbad5">
+<link rel="shortcut icon" href="/assets/favicon/favicon.ico">
+<meta name="apple-mobile-web-app-title" content="GeoSMART">
+<meta name="application-name" content="GeoSMART">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="msapplication-config" content="/assets/favicon/browserconfig.xml">
+<meta name="theme-color" content="#ffffff">
+
+<script>
+    // Since we set the site title to be blank in _config.yml so that we can add the GeoSMART logo to the
+    // site header, we need to do this little hack to override the actual <title> tag being blank.
+    document.title = "GeoSMART";
+</script>
 
 <!-- end custom head snippets -->
 
@@ -161,7 +179,11 @@
         <ul>
    
      <li>
-       <a href="/jekyll/update/2022/01/09/welcome-to-GeoSmart.html">Welcome to GeoSmart</a>
+       <a href="/geosmartsite/2022/03/30/Funding-Opportunity-For-ML-Tutorials.html">Funding Opportunities For ML Tutorials</a>
+     </li>
+   
+     <li>
+       <a href="/geosmartsite/2022/03/30/A-Review-Of-Earth-Artificial-Intelligence.html">A Review Of Earth Artificial Intelligence</a>
      </li>
    
  </ul>

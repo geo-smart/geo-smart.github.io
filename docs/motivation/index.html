@@ -18,7 +18,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="">
 <meta property="og:title" content="Motivation">
-<meta property="og:url" content="https://geo-smart.github.io/geosmartsite/motivation/">
+<meta property="og:url" content="http://localhost:4000/geosmartsite/motivation/">
 
 
   <meta property="og:description" content="Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.">
@@ -34,7 +34,7 @@
 
 
 
-<link rel="canonical" href="https://geo-smart.github.io/geosmartsite/motivation/">
+<link rel="canonical" href="http://localhost:4000/geosmartsite/motivation/">
 
 
 
@@ -45,7 +45,7 @@
     
       "@type": "Person",
       "name": null,
-      "url": "https://geo-smart.github.io/geosmartsite/"
+      "url": "http://localhost:4000/geosmartsite/"
     
   }
 </script>
@@ -80,6 +80,24 @@
     <!-- start custom head snippets -->
 
 <!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon/favicon-16x16.png">
+<link rel="manifest" href="/assets/favicon/site.webmanifest">
+<link rel="mask-icon" href="/assets/favicon/safari-pinned-tab.svg" color="#5bbad5">
+<link rel="shortcut icon" href="/assets/favicon/favicon.ico">
+<meta name="apple-mobile-web-app-title" content="GeoSMART">
+<meta name="application-name" content="GeoSMART">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="msapplication-config" content="/assets/favicon/browserconfig.xml">
+<meta name="theme-color" content="#ffffff">
+
+<script>
+    // Since we set the site title to be blank in _config.yml so that we can add the GeoSMART logo to the
+    // site header, we need to do this little hack to override the actual <title> tag being blank.
+    document.title = "GeoSMART";
+</script>
 
 <!-- end custom head snippets -->
 
@@ -164,14 +182,14 @@
 Machine learning offers tools that are particularly well suited to addressing research challenges in geosciences. Many fundamental earth system processes such as fluid and solid dynamics, affecting everything from crustal deformation to climate patterns, are non-linear and not well represented in existing deterministic models. It is also difficult to measure all components of the systems we are studying (e.g. the base of an ice sheet or a continental plate boundary), but we often can measure the second order impacts of these physical systems (e.g. ice sheet surface velocity or GPS uplift rates). ML provides novel approaches for discovering trends in these observations that may illuminate new understandings of driving physical processes. Traditional geoscience modeling uses a top-down approach based on our understanding of the physical processes and their representation in physics-based models, but it is limited by that particular representation. In contrast, ML can discover patterns and trends in large amounts of data, as it is based on a bottom-up approach in which algorithms learn relationships between input data and output. ML models are also highly efficient and, in some cases, more accurate because of their flexibility to accommodate nonlinearity and/or nonGaussianity. Recent approaches combine physics-based modeling from domain science with ML for building powerful prediction systems that are performant and easier to interpret. 
 </p>
 
-<img src="https://geo-smart.github.io/geosmartsite/assets/images/bi.jpg" alt="" class="full" />
+<img src="http://localhost:4000/geosmartsite/assets/images/bi.jpg" alt="" class="full" />
 <br /><br />
 
 <p align="justify">
 As geoscience has entered an era in which both in-situ and remote sensing observations are dense and global (Fig. 1), advances in observational techniques have dramatically increased the spatial and temporal resolution and therefore, data quality and volume. ML tools can assist handling large volumes of observations, modeling, analysis, and forecasting of the environment by increasing the speed and accuracy of computations. For the specific case of routine global monitoring of volcanic unrest, synthetic aperture radar can detect surface displacements in the months leading up to an eruption. However, the data volume and velocity from satellite sensors is too great for scientists to manually scrutinize each observation (NASA’s upcoming NISAR mission will generate 85TB/day, IRIS seismic data archive is reaching PB and is expecting a multifold increase), which is why automated ML methods for anomaly detection are essential for future hazard assessment (e.g. Aenantrasirichai et. al. 2018). ML has demonstrated value throughout many geoscience disciplines for data preprocessing, postprocessing, modeling and predicting.
 </p>
 
-<img src="https://geo-smart.github.io/geosmartsite/assets/images/motv1.png" alt="" class="full" />
+<img src="http://localhost:4000/geosmartsite/assets/images/motv1.png" alt="" class="full" />
 <br /><br />
 
 <p align="justify">
@@ -190,7 +208,7 @@ ML and Cloud Computing Many of the remote sensing data, model outputs, time seri
 <p align="justify">
 We will cultivate the development of discipline-specific ML libraries, workflows and communities of practice capable of sustaining future growth of ML cybertraining opportunities. To address the general lack of educational material in ML for geoscientific applications we will assemble a team of geoscience educators to create a novel ML curriculum. These materials could then be included in several university courses to further broaden our impact on emerging ML communities. Our GeoSMART implementation plan will guide participants through training in fundamental open source ML toolkits and data science skills. 
 </p>
-<img src="https://geo-smart.github.io/geosmartsite/assets/images/mlac.jpg" alt="" class="full" />
+<img src="http://localhost:4000/geosmartsite/assets/images/mlac.jpg" alt="" class="full" />
 <br /><br />
 <p align="justify">
 With these fundamental skills, participants will then progress through interactive events including hackweeks, project-led and peer-to-peer mentoring activities and incubators. By building tools using open source and cloud-accessible platforms, and by partnering with colleges and institutions who currently lack computing resources for ML workflows, we will democratize access to our cybertraining materials and ensure more people can be included in helping to solve urgent geoscience challenges. 

@@ -18,14 +18,14 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="">
 <meta property="og:title" content="">
-<meta property="og:url" content="https://geo-smart.github.io/geosmartsite/">
+<meta property="og:url" content="http://localhost:4000/geosmartsite/">
 
 
   <meta property="og:description" content="GeoSMART  GeoScience MAchine Learning Resources and Training.">
 
 
 
-  <meta property="og:image" content="https://geo-smart.github.io/geosmartsite/assets/images/mm-home-page-feature.jpg">
+  <meta property="og:image" content="http://localhost:4000/geosmartsite/assets/images/home.jpg">
 
 
 
@@ -36,7 +36,7 @@
 
 
 
-<link rel="canonical" href="https://geo-smart.github.io/geosmartsite/">
+<link rel="canonical" href="http://localhost:4000/geosmartsite/">
 
 
 
@@ -47,7 +47,7 @@
     
       "@type": "Person",
       "name": null,
-      "url": "https://geo-smart.github.io/geosmartsite/"
+      "url": "http://localhost:4000/geosmartsite/"
     
   }
 </script>
@@ -82,6 +82,24 @@
     <!-- start custom head snippets -->
 
 <!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon/favicon-16x16.png">
+<link rel="manifest" href="/assets/favicon/site.webmanifest">
+<link rel="mask-icon" href="/assets/favicon/safari-pinned-tab.svg" color="#5bbad5">
+<link rel="shortcut icon" href="/assets/favicon/favicon.ico">
+<meta name="apple-mobile-web-app-title" content="GeoSMART">
+<meta name="application-name" content="GeoSMART">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="msapplication-config" content="/assets/favicon/browserconfig.xml">
+<meta name="theme-color" content="#ffffff">
+
+<script>
+    // Since we set the site title to be blank in _config.yml so that we can add the GeoSMART logo to the
+    // site header, we need to do this little hack to override the actual <title> tag being blank.
+    document.title = "GeoSMART";
+</script>
 
 <!-- end custom head snippets -->
 
@@ -143,7 +161,7 @@
 
 
 <div class="page__hero--overlay"
-  style="background-color: #5e616c; background-image: url('/geosmartsite/assets/images/mm-home-page-feature.jpg');"
+  style="background-color: #5e616c; background-image: url('/geosmartsite/assets/images/home.jpg');"
 >
   
     <div class="wrapper">
@@ -204,7 +222,7 @@
           
 
           
-            <p><a href="/geosmartsite/projects/#mfl" class="btn modernButton">Learn more</a></p>
+            <p><a href="/geosmartsite/projects/" class="btn modernButton">Learn more</a></p>
           
         </div>
       </div>
@@ -232,7 +250,7 @@
           
 
           
-            <p><a href="/geosmartsite/projects/#sfc" class="btn modernButton">Learn more</a></p>
+            <p><a href="/geosmartsite/curriculum/" class="btn modernButton">Learn more</a></p>
           
         </div>
       </div>
@@ -260,7 +278,7 @@
           
 
           
-            <p><a href="/geosmartsite/projects/#cm" class="btn modernButton">Learn more</a></p>
+            <p><a href="/geosmartsite/codeweek/" class="btn modernButton">Learn more</a></p>
           
         </div>
       </div>
@@ -273,8 +291,7 @@
 <h2>Supporting Machine Learning Education and Innovation in the GeoSciences.</h2>
 <p align="justify">
 This project supports the development of a research workforce capable of advancing fundamental Geoscience challenges through broad adoption of Machine Learning (ML) tools.  Our GeoScience MAchine Learning Resources and Training (GeoSMART) framework provides an educational pathway that provides a foundation in open source scientific ecosystems and progresses through general ML theory, toolkits and deployment on Cloud computing. 
-<br /><br />
-We aim to: 1) develop tutorials and training materials to ensure accelerated adoption of ML CyberInfrastructure, tools and methods through online and hands-on training, and 2) facilitate adopting and integrating program materials into mainstream academic curriculum. </p>
+</p>
 </div>
 
 <figure class="half home">
