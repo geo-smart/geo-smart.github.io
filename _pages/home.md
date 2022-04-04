@@ -11,7 +11,7 @@ header:
 excerpt: >
   <font size="+8"><b>GeoSMART</b></font>
   <br/>
-  GeoScience MAchine Learning Resources and Training.
+  GeoScience MAchine Learning Resources and Training
   <br/>
   <small></small>
 feature_row:
@@ -22,7 +22,7 @@ feature_row:
     url: "/projects/"
     btn_class: "modernButton"
     btn_label: "Learn more"
-  - image_path: /assets/images/bcte.png
+  - image_path: /assets/images/hackweek.jpg
     alt: "fully responsive"
     title: "Building Communities and Training Events"
     excerpt: "With our materials and training events in ML tools and fundamentals of ML theory we aim to build a community interested in our offerings. In addition to our online materials, we plan to host GeoSMART hackweek events."
@@ -49,7 +49,7 @@ gallery:
 {% include feature_row %}
 
 <div>
-<h2>Supporting Machine Learning Education and Innovation in the GeoSciences.</h2>
+<h2>Supporting Machine Learning Education and Innovation in the GeoSciences</h2>
 <p align="justify">
 This project supports the development of a research workforce capable of advancing fundamental Geoscience challenges through broad adoption of Machine Learning (ML) tools.  Our GeoScience MAchine Learning Resources and Training (GeoSMART) framework provides an educational pathway that provides a foundation in open source scientific ecosystems and progresses through general ML theory, toolkits and deployment on Cloud computing. 
 </p>

@@ -1,1 +1,1 @@
-Sitemap: http://localhost:4000/geosmartsite/sitemap.xml
+Sitemap: https://geo-smart.github.io/geosmartsite/sitemap.xml

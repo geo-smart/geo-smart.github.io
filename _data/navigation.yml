@@ -1,10 +1,10 @@
 main:
   - title: "Projects"
     url: /projects/
-#  - title: "Curriculum"
-#    url: /curriculum/
-#  - title: "Codeweek"
-#    url: /codeweek/
+  - title: "Curriculum"
+    url: /curriculum/
+  - title: "Codeweek"
+    url: /codeweek/
 #
 #    sublinks:
 #    - title: Materials for Learning
