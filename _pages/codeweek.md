@@ -2,6 +2,11 @@
 permalink: /codeweek/
 title: "Codeweek"
 id: "Codeweek"
+gallery:
+- image_path: /assets/images/codeweek_left.jpg
+  alt: "Codeweek"
+- image_path: /assets/images/codeweek_right.jpg
+  alt: "Codeweek"
 ---
 
 <div>
@@ -12,6 +17,8 @@ With our materials and training events in ML tools and fundamentals of ML theory
 Hackweeks are time-bounded events that blend elements of a summer school with open project work or "hacking", and are designed in a way that encourages immersive, interactive learning in a space that is welcoming to people of all backgrounds. The content within a hackweek is intentionally designed co-creatively with participants, and there are facilitated opportunities for networking and community building. 
 </p>
 </div>
+
+{% include gallery %}
 
 
 
