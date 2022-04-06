@@ -19,12 +19,10 @@ These online resources will be designed to host:
 
 <ul>
 <li> pre-developed learning modules on data science and ML basics </li>
-
 <li>  hackweek training tutorials and video recordings  </li>
-
 <li> scientific use case example computational workflows </li>
-
 </ul>
+
 <p align="justify">Our tutorials and use cases will use principles of active learning methods including problem-based learning, peer-learning and collaborative and cooperative learning. Based on our experience leading hackweeks, we will initially build tutorial teams from our existing networks of data science partners, and over time we will recruit past participants to lead future training. Our unrestricted publicly accessible content will catalyze the adoption of ML CI and will be the foundation for future collaborations and development of community shareable code
 </p>
 </div>
