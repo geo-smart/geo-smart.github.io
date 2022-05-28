@@ -1,0 +1,28 @@
+{
+  "name": "geosmart_minifier",
+  "version": "1.0.0",
+  "description": "Build and minify script for the GeoSMART site.",
+  "main": "production.js",
+  "type": "module",
+  "directories": {
+    "doc": "../docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/geo-smart/geosmartsite.git"
+  },
+  "author": "Stefan Todoran",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/geo-smart/geosmartsite/issues"
+  },
+  "homepage": "https://github.com/geo-smart/geosmartsite#readme",
+  "dependencies": {
+    "fs-extra": "^10.1.0",
+    "minify": "^9.0.0",
+    "try-to-catch": "^3.0.1"
+  }
+}

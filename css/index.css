@@ -725,6 +725,14 @@ textarea.w-select {
 }
 
 @media screen and (max-width:991px) {
+  figure {
+    margin: 0 !important;
+  }
+
+  .w-richtext figure {
+    max-width: 100% !important;
+  }
+
   .w-container {
     max-width: 728px
   }
@@ -793,6 +801,9 @@ textarea.w-select {
 }
 
 @media screen and (max-width:767px) {
+  .heading {
+    font-size: 1.25em !important;
+  }
 
   .w-hidden-main,
   .w-hidden-medium {

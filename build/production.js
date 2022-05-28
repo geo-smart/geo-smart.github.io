@@ -1,6 +1,6 @@
 import {minify} from 'minify';
 import tryToCatch from 'try-to-catch';
-import * as fs from 'fs';
+import fse from 'fs-extra';
 
 async function grabAndMinify(file) {
   const [error, data] = await tryToCatch(minify, file);
@@ -11,63 +11,40 @@ async function grabAndMinify(file) {
   return data;
 }
 
-function handleError(err) {
+function handleError(err, action) {
   if (err) {
-    console.log("(!) > Error occured while writing:\n" + err.message);
+    console.log(`(!) > Error occurred while ${action}:\n` + err.message);
     throw new Error("FAILED");
   } else {
-    console.log('> Successfully wrote to docs/blog.js');
+    console.log(`(+) > Successfully finished ${action}`);
   }
 }
 
 async function main() {
-  // JS FOLDER JAVSCRIPT FILES
-  console.log("\n(./js/) > (./docs/js/)");
-  console.log("> Grabbing and minifying blog.js");
-  const blog_js = await grabAndMinify('../js/blog.js');
-  fs.writeFile('../docs/js/blog.js', blog_js, handleError);
+  const src = '../';
+  const dest = '../docs/';
 
-  // CSS FOLDER CSS FILES
-  console.log("\n(./css/) > (./docs/css/)");
-  console.log("> Grabbing and minifying index.css");
-  const css = await grabAndMinify('../css/index.css');
-  fs.writeFile('../docs/css/index.css', css, handleError);
+  const files = [
+    'js/blog.js', 'css/index.css', 'post/posts.js',
+    'blog.html', 'contact.html', 'index.html', 'motivation.html', 'team.html',
+    'work/materials.html', 'work/curriculum.html', 'work/codeweek.html',
+  ];
 
-  // ROOT FOLDER HTML FILES
-  console.log("\n(./) > (./docs/)");
-  console.log("> Grabbing and minifying blog.html");
-  const blog = await grabAndMinify('../blog.html');
-  fs.writeFile('../docs/blog.html', blog, handleError);
+  for (let i = 0; i < files.length; i++) {
+    const src_file = src + files[i];
+    const dest_file = dest + files[i];
+    console.log(`\n(copy & minify) ${src_file} --> ${dest_file}\n`);
+    const mini = await grabAndMinify(src_file);
+    fse.writeFile(dest_file, mini, (err) => {
+      handleError(err, `writing to ${dest_file}`);
+    });
+  }
 
-  console.log("> Grabbing and minifying contact.html");
-  const contact = await grabAndMinify('../contact.html');
-  fs.writeFile('../docs/contact.html', contact, handleError);
-
-  console.log("> Grabbing and minifying index.html");
-  const index = await grabAndMinify('../index.html');
-  fs.writeFile('../docs/index.html', index, handleError);
-
-  console.log("> Grabbing and minifying motivation.html");
-  const motivation = await grabAndMinify('../motivation.html');
-  fs.writeFile('../docs/motivation.html', motivation, handleError);
-
-  console.log("> Grabbing and minifying team.html");
-  const team = await grabAndMinify('../team.html');
-  fs.writeFile('../docs/team.html', team, handleError);
-
-  // WORK FOLDER HTML FILES
-  console.log("\n(./work/) > (./docs/work/)");
-  console.log("> Grabbing and minifying materials.html");
-  const materials = await grabAndMinify('../work/materials.html');
-  fs.writeFile('../docs/work/materials.html', materials, handleError);
-
-  console.log("> Grabbing and minifying curriculum.html");
-  const curriculum = await grabAndMinify('../work/curriculum.html');
-  fs.writeFile('../docs/work/curriculum.html', curriculum, handleError);
-
-  console.log("> Grabbing and minifying codeweek.html");
-  const codeweek = await grabAndMinify('../work/codeweek.html');
-  fs.writeFile('../docs/work/codeweek.html', codeweek, handleError);
+  console.log(`\n(recursive copy) ${src + 'assets'} --> ${dest + 'assets'}\n`);
+  fse.copySync(src + 'assets', dest + 'assets', {overwrite: true},
+    (err) => {
+      handleError(err, `copying to ${dest_file}`);
+  });
 }
 
 console.log("\n>>> Starting minification of GeoSMART site...");
