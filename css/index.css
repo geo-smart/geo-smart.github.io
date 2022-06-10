@@ -3,6 +3,8 @@ html {
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
   height: 100%
+
+  /* GeoSMART green: #557A42 */
 }
 
 article,
@@ -200,6 +202,85 @@ th {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale
 }
+
+/* INTERACTIVE ORBIT GRAPHIC */
+.interactive-orbit {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.earth-icon {
+  width: 480px;
+}
+
+.right-orbit {
+  transform: translateX(3vw);
+}
+
+.left-orbit {
+  transform: translateX(-3vw);
+}
+
+.interactive-orbit > p {
+  text-align: center;
+}
+
+.orbit-tab {
+  position: absolute;
+  top: calc(var(--order) * 75px + 10px);
+  cursor: pointer;
+}
+
+.orbit-tab p {
+  opacity: 0 !important; /* not sure why it has to be !important */
+  position: absolute;
+  width: min(300px, 30vw);
+  transition: opacity 0.2s, transform 0.2s;
+  pointer-events: none; /* otherwise weird hover behavior */
+}
+
+.orbit-tab.wide p {
+  width: min(400px, 25vw);
+}
+
+.orbit-tab:hover p {
+  opacity: 1 !important;
+}
+
+.orbit-tab.left {
+  /*right: calc(50% + 140px + calc(var(--offset) * 30px));*/
+  right: calc(50% + 85px + 2.7vw + calc(var(--offset) * 30px));
+}
+
+.orbit-tab.left p {
+  text-align: right;
+  transform: translateX(-100%) translateY(-20px);
+}
+
+.orbit-tab.left:hover p {
+  transform: translateX(calc(-100% - 20px)) translateY(-20px);
+}
+
+.orbit-tab.right {
+  /*left: calc(50% + 140px + calc(var(--offset) * 30px));*/
+  left: calc(50% + 85px + 2.7vw + calc(var(--offset) * 30px));
+}
+
+.orbit-tab.right p {
+  text-align: left;
+  transform: translateX(50px) translateY(-20px);
+}
+
+.orbit-tab.right:hover p {
+  transform: translateX(70px) translateY(-20px);
+}
+
+.mobile-orbit {
+  display: none;
+}
+/* END INTERACTIVE ORBIT STYLES */
 
 .hidden {
   display: none !important;
@@ -725,6 +806,14 @@ textarea.w-select {
 }
 
 @media screen and (max-width:991px) {
+  .interactive-orbit {
+    display: none;
+  }
+
+  .mobile-orbit {
+    display: block;
+  }
+
   figure {
     margin: 0 !important;
   }
@@ -3733,6 +3822,11 @@ figcaption {
 }
 
 @media screen and (max-width:767px) {
+  .image.rounded {
+    width: 100%;
+    margin: 5% 0;
+  }
+
   .section {
     margin-right: 15px;
     margin-left: 15px
