@@ -203,82 +203,51 @@ th {
   -moz-osx-font-smoothing: grayscale
 }
 
+::selection {
+  /*background: #85AD71;*/
+  background: #B3D89C;
+}
+
 /* INTERACTIVE ORBIT GRAPHIC */
-.interactive-orbit {
-  position: relative;
+.interactive-orbit-container {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.earth-icon {
-  width: 480px;
+.interactive-orbit {
+  max-width: 800px;
 }
 
-.right-orbit {
-  transform: translateX(3vw);
-}
-
-.left-orbit {
-  transform: translateX(-3vw);
-}
-
-.interactive-orbit > p {
-  text-align: center;
+.interactive-orbit p {
+  font-family: Montserrat, sans-serif;
+  fill: #1a1b1f;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 400;
 }
 
 .orbit-tab {
-  position: absolute;
-  top: calc(var(--order) * 75px + 10px);
   cursor: pointer;
 }
 
 .orbit-tab p {
-  opacity: 0 !important; /* not sure why it has to be !important */
-  position: absolute;
-  width: min(300px, 30vw);
+  opacity: 0 !important;
   transition: opacity 0.2s, transform 0.2s;
-  pointer-events: none; /* otherwise weird hover behavior */
 }
 
-.orbit-tab.wide p {
-  width: min(400px, 25vw);
+.orbit-tab.left p {
+  transform: translateX(50px) scale(0.8);
+  text-align: right;
+}
+.orbit-tab.right p {
+  transform: translateX(-50px) scale(0.8);
+  text-align: left;
 }
 
 .orbit-tab:hover p {
   opacity: 1 !important;
-}
-
-.orbit-tab.left {
-  /*right: calc(50% + 140px + calc(var(--offset) * 30px));*/
-  right: calc(50% + 85px + 2.7vw + calc(var(--offset) * 30px));
-}
-
-.orbit-tab.left p {
-  text-align: right;
-  transform: translateX(-100%) translateY(-20px);
-}
-
-.orbit-tab.left:hover p {
-  transform: translateX(calc(-100% - 20px)) translateY(-20px);
-}
-
-.orbit-tab.right {
-  /*left: calc(50% + 140px + calc(var(--offset) * 30px));*/
-  left: calc(50% + 85px + 2.7vw + calc(var(--offset) * 30px));
-}
-
-.orbit-tab.right p {
-  text-align: left;
-  transform: translateX(50px) translateY(-20px);
-}
-
-.orbit-tab.right:hover p {
-  transform: translateX(70px) translateY(-20px);
-}
-
-.mobile-orbit {
-  display: none;
+  transform: translateX(0) scale(1);
 }
 /* END INTERACTIVE ORBIT STYLES */
 
@@ -806,14 +775,6 @@ textarea.w-select {
 }
 
 @media screen and (max-width:991px) {
-  .interactive-orbit {
-    display: none;
-  }
-
-  .mobile-orbit {
-    display: block;
-  }
-
   figure {
     margin: 0 !important;
   }
@@ -890,6 +851,10 @@ textarea.w-select {
 }
 
 @media screen and (max-width:767px) {
+  .interactive-orbit-container p, .interactive-orbit-container .label {
+    display: none;
+  }
+
   .heading {
     font-size: 1.25em !important;
   }
