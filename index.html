@@ -32,25 +32,14 @@
       width="200" alt="" class="logo-image"/></a>
       <div class="menu">
         <nav role="navigation" class="navigation-items w-nav-menu">
-          <div data-hover="true" data-delay="100" class="w-dropdown">
-            <div class="navigation-item w-dropdown-toggle">
-              <div class="w-icon-dropdown-toggle"></div>
-              <div>PROJECTS</div>
-            </div>
-            <nav class="w-dropdown-list">
-              <a href="work/materials.html"
-                class="navigation-item w-dropdown-link">MATERIALS</a>
-              <a href="work/curriculum.html"
-                class="navigation-item w-dropdown-link">CURRICULUM</a>
-              <a href="work/codeweek.html"
-                class="navigation-item w-dropdown-link">CODEWEEK</a>
-            </nav>
-          </div>
+          <a href="curriculum.html" class="navigation-item w-nav-link">CURRICULUM</a>
+          <a href="codeweek.html" class="navigation-item w-nav-link">CODEWEEK</a>
           <a href="motivation.html" class="navigation-item w-nav-link">MOTIVATION</a>
           <a href="team.html" class="navigation-item w-nav-link">TEAM</a>
-          <a href="blog.html" class="navigation-item w-nav-link">NEWS</a>
+          <a href="news.html" class="navigation-item w-nav-link">NEWS</a>
         </nav>
-        <div class="menu-button w-nav-button">
+        <div class="menu-button w-nav-button" style="-webkit-user-select: text;" tabindex="0" id="menu-button"
+          aria-label="menu" role="button" aria-controls="w-nav-overlay-0" aria-haspopup="menu" aria-expanded="true">
           <img
           src="assets/img/mobile_menu.png"
           width="22" alt="" class="menu-icon"/>
@@ -59,6 +48,15 @@
       <a href="contact.html" class="button cc-contact-us w-inline-block">
         <div>GET INVOLVED</div>
       </a>
+    </div>
+    <div class="w-nav-overlay invisible" data-wf-ignore="" id="w-nav-overlay-0" style="height: 100vh; display: block;">
+      <nav role="navigation" class="navigation-items w-nav-menu" data-nav-menu-open="">
+        <a href="curriculum.html" class="navigation-item w-nav-link w--nav-link-open">CURRICULUM</a>
+        <a href="codeweek.html" class="navigation-item w-nav-link w--nav-link-open">CODEWEEK</a>
+        <a href="motivation.html" class="navigation-item w-nav-link w--nav-link-open">MOTIVATION</a>
+        <a href="team.html" class="navigation-item w-nav-link w--nav-link-open">TEAM</a>
+        <a href="news.html" class="navigation-item w-nav-link w--nav-link-open">NEWS</a>
+      </nav>
     </div>
   </div>
   <!-- END HEADER -->
@@ -86,9 +84,9 @@
                 tutorials and video recordings, and 3) scientific use case example computational workflows.
               </p>
             </div>
-            <a href="work/materials.html" class="button w-inline-block">
-              <div>Learn More</div>
-            </a>
+<!--            <a href="work/materials.html" class="button w-inline-block">-->
+<!--              <div>Learn More</div>-->
+<!--            </a>-->
           </div>
           <img src="assets/img/materials.png" id="w-node-_86e64837-0616-515b-4568-76c147234d3f-910776aa" alt="" class="image rounded"/>
         </div>
@@ -102,7 +100,7 @@
                 plan to host GeoSMART hackweek events.
               </p>
             </div>
-            <a href="work/curriculum.html" class="button w-inline-block">
+            <a href="curriculum.html" class="button w-inline-block">
               <div>Learn More</div>
             </a>
           </div>
@@ -121,7 +119,7 @@
                 make their classrooms engaging and successful.
               </p>
             </div>
-            <a href="work/codeweek.html" class="button w-inline-block">
+            <a href="codeweek.html" class="button w-inline-block">
               <div>Learn More</div>
             </a>
           </div>
@@ -181,7 +179,6 @@
   <!-- END FOOTER -->
 
   <script src="js/index.js" type="text/javascript"></script>
-  <script src="js/index_b.js" type="text/javascript"></script>
   <!--[if lte IE 9]>
   <script src="//cdnjs.cloudflare.com/ajax/libs/placeholders/3.0.2/placeholders.min.js"></script>
   <![endif]-->

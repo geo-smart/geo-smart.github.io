@@ -25,10 +25,19 @@ async function main() {
   const dest = '../docs/';
 
   const files = [
-    'js/blog.js', 'css/index.css', 'post/posts.js',
-    'blog.html', 'contact.html', 'index.html', 'motivation.html', 'team.html',
-    'work/materials.html', 'work/curriculum.html', 'work/codeweek.html',
+    'js/blog.js', 'js/index.js', 'css/index.css', 'post/posts.js',
+    'news.html', 'contact.html', 'index.html', 'motivation.html',
+    'team.html', 'curriculum.html', 'codeweek.html',
   ];
+
+  const dirs = ['js', 'css', 'post'];
+
+  for (let i = 0; i < dirs.length; i++) {
+    console.log(`\n(setup) creating empty ${dest + dirs[i]} folder`)
+    if (!fse.existsSync(dest + dirs[i])){
+      fse.mkdirSync(dest + dirs[i]);
+    }
+  }
 
   for (let i = 0; i < files.length; i++) {
     const src_file = src + files[i];

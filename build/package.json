@@ -22,7 +22,7 @@
   "homepage": "https://github.com/geo-smart/geosmartsite#readme",
   "dependencies": {
     "fs-extra": "^10.1.0",
-    "minify": "^9.0.0",
+    "minify": "^9.1.0",
     "try-to-catch": "^3.0.1"
   }
 }

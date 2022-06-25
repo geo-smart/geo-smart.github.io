@@ -255,6 +255,12 @@ th {
   display: none !important;
 }
 
+.invisible {
+  visibility: hidden !important;
+  pointer-events: none !important;
+  transition: visibility 800ms;
+}
+
 .w-icon-slider-right:before {
   content: "\e600"
 }
@@ -284,6 +290,10 @@ th {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box
+}
+
+html, body {
+  scroll-behavior: smooth !important;
 }
 
 body {
@@ -1947,14 +1957,22 @@ textarea.w-select {
   position: relative
 }
 
+.w-nav-overlay nav {
+  transition: transform 400ms;
+  transform: translateY(0);
+}
+
+.w-nav-overlay.invisible nav {
+  transform: translateY(-100%);
+}
+
 .w-nav-overlay {
   position: absolute;
   overflow: hidden;
-  display: none;
   top: 100%;
   left: 0;
   right: 0;
-  width: 100%
+  width: 100%;
 }
 
 .w-nav-overlay [data-nav-menu-open] {
