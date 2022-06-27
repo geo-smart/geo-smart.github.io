@@ -208,8 +208,36 @@ th {
   background: #B3D89C;
 }
 
+/* INTERACTIVE SATELLITE GRAPHIC*/
+.interactive-satellite {
+  max-width: 1000px;
+}
+
+.satellite-description p::selection, .satellite strong::selection {
+  background: rgba(26, 27, 31, 0.25);
+}
+
+.satellite foreignObject p, .satellite-icon:hover ~ foreignObject p {
+  opacity: 1;
+}
+
+foreignObject.satellite-description p {
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.satellite-icon {
+  cursor: pointer;
+  transition: r 0.2s;
+}
+
+.satellite-icon:hover {
+  r: 24;
+}
+/* END INTERACTIVE SATELLITE STYLES */
+
 /* INTERACTIVE ORBIT GRAPHIC */
-.interactive-orbit-container {
+.interactive-orbit-container, .interactive-satellite-container {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -229,6 +257,7 @@ th {
 
 .orbit-tab {
   cursor: pointer;
+  transition: r 0.2s;
 }
 
 .orbit-tab p {
@@ -237,17 +266,25 @@ th {
 }
 
 .orbit-tab.left p {
-  transform: translateX(50px) scale(0.8);
+  transform: translateX(50px) scale(0.75);
   text-align: right;
 }
 .orbit-tab.right p {
-  transform: translateX(-50px) scale(0.8);
+  transform: translateX(-50px) scale(0.75);
   text-align: left;
 }
 
 .orbit-tab:hover p {
   opacity: 1 !important;
   transform: translateX(0) scale(1);
+}
+
+.orbit-tab:hover > circle {
+  r: 24;
+}
+
+.orbit-tab foreignObject {
+  pointer-events: none;
 }
 /* END INTERACTIVE ORBIT STYLES */
 
@@ -784,7 +821,7 @@ textarea.w-select {
   display: none !important
 }
 
-@media screen and (max-width:991px) {
+@media screen and (max-width:1050px) {
   figure {
     margin: 0 !important;
   }
@@ -2039,7 +2076,7 @@ textarea.w-select {
   position: static
 }
 
-@media screen and (max-width:991px) {
+@media screen and (max-width:1050px) {
   .w-nav[data-collapse=medium] .w-nav-menu {
     display: none
   }
@@ -2230,6 +2267,10 @@ a {
   transition: opacity .2s;
   color: #1a1b1f;
   text-decoration: underline
+}
+
+.rich-text a {
+  color: #647959;
 }
 
 a:hover {
@@ -3564,7 +3605,7 @@ figcaption {
   margin-bottom: 15px
 }
 
-@media screen and (max-width:991px) {
+@media screen and (max-width:1050px) {
   .heading {
     text-align: center;
     font-size: 1.5em; /* default h2 font size seems to be 2em */
@@ -4044,7 +4085,7 @@ figcaption {
   grid-row-end: 3
 }
 
-@media screen and (max-width:991px) {
+@media screen and (max-width:1050px) {
 
   #w-node-_0691a522-6fbe-b8a5-6ee3-6297256dac6c-910776aa,
   #w-node-_3f61509a-fac7-b0d5-3763-509be70585a6-060776b4,
