@@ -89,36 +89,75 @@
       <div class="interactive-satellite-container">
         <svg class="interactive-satellite" viewBox="0 0 1200 460" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
           <rect id="Background" width="1200" height="460" fill="white"/>
+
           <path id="Blue Orbit" d="M712.583 165C743.897 219.237 759.09 275.598 758.6 322.7C758.109 369.957 741.944 406.702 712 423.99C682.056 441.278 642.152 436.905 600.98 413.702C559.944 390.575 518.73 349.237 487.417 295C456.103 240.763 440.91 184.402 441.4 137.3C441.891 90.0427 458.056 53.2984 488 36.0103C517.944 18.7222 557.848 23.0952 599.02 46.2981C640.056 69.4249 681.27 110.763 712.583 165Z" stroke="#6996CA" stroke-opacity="0.25" stroke-width="12"/>
           <g class="satellite" id="Blue">
-            <circle class="satellite-icon" id="Blue Icon" cx="825" cy="416" r="25" fill="#6996CA"/>
+            <g id="Blue Icon" class="satellite-icon">
+              <circle id="Body" cx="825" cy="416" r="25" fill="#6996CA"/>
+              <g id="Sheets">
+                <rect id="Paper" x="838.459" y="403.81" width="20" height="14" transform="rotate(92.1733 838.459 403.81)" stroke="white" stroke-width="2"/>
+                <rect id="Paper_2" x="834.343" y="406.423" width="20" height="14" transform="rotate(85.6017 834.343 406.423)" fill="#6996CA" stroke="white" stroke-width="2"/>
+                <line id="Text" x1="825.945" y1="414.591" x2="831.927" y2="414.131" stroke="white"/>
+                <line id="Text_2" x1="824.18" y1="417.736" x2="832.157" y2="417.123" stroke="white"/>
+                <line id="Text_3" x1="824.411" y1="420.727" x2="832.387" y2="420.114" stroke="white"/>
+              </g>
+              <g id="Pencil">
+                <line id="Line 1" x1="814.467" y1="407.255" x2="815.024" y2="424.245" stroke="white" stroke-width="3"/>
+                <line id="Line 4" x1="815.106" y1="426.744" x2="815.205" y2="429.743" stroke="white" stroke-width="3"/>
+                <line id="Line 2" x1="813.55" y1="425.044" x2="816.548" y2="424.946" stroke="white" stroke-width="0.5"/>
+                <line id="Line 3" x1="813.582" y1="426.044" x2="816.581" y2="425.945" stroke="white" stroke-width="0.5"/>
+                <path id="Tip" d="M813.277 407.044L814.325 402.908L815.642 406.966L813.277 407.044Z" fill="#6996CA" stroke="white" stroke-width="0.5"/>
+                <path id="Lead" d="M814.304 402.257L814.81 404.492L813.945 404.52L814.304 402.257Z" fill="white"/>
+              </g>
+            </g>
             <foreignObject x="805" y="310" width="350px" height="80px" class="satellite-description" style="color: #6996CA"><p>
                 ML and domain science education to accelerate ML-based scientific discovery
             </p></foreignObject>
             <foreignObject x="865" y="375" width="350px" height="100px" style="color: #6996CA; font-size: 20px"><p>
-              <strong>ML and domain science education</strong>
+              <strong style="font-weight: 900;">ML and domain science education</strong>
             </p></foreignObject>
           </g>
+
           <path id="Yellow Orbit" d="M600 102C662.627 102 719.034 117.023 759.581 140.998C800.261 165.053 824 197.424 824 232C824 266.576 800.261 298.947 759.581 323.002C719.034 346.977 662.628 362 600 362C537.373 362 480.966 346.977 440.419 323.002C399.739 298.947 376 266.576 376 232C376 197.424 399.739 165.053 440.419 140.998C480.966 117.023 537.373 102 600 102Z" stroke="#FFE352" stroke-opacity="0.25" stroke-width="12"/>
           <g class="satellite" id="Yellow">
-            <circle class="satellite-icon" id="Yellow Icon" cx="305" cy="240" r="25" fill="#FFE352"/>
+            <g id="Yellow Icon" class="satellite-icon">
+              <circle id="Body" cx="305" cy="240" r="25" fill="#FFE352"/>
+              <g id="Arrow">
+                <line id="X" x1="316.966" y1="227.463" x2="312.293" y2="229.242" stroke="white" stroke-width="2"/>
+                <line id="Y" x1="315.676" y1="226.884" x2="317.454" y2="231.558" stroke="white" stroke-width="2"/>
+              </g>
+              <g id="Axes">
+                <line id="X_2" x1="290" y1="253" x2="320" y2="253" stroke="white" stroke-width="2"/>
+                <line id="Y_2" x1="291" y1="254" x2="291" y2="224" stroke="white" stroke-width="2"/>
+              </g>
+              <path id="Line 1_2" d="M295.329 248.258L301 239.5L306 240L308.5 233L313 234.5L315.5 229" stroke="white" stroke-width="2"/>
+            </g>
             <foreignObject x="70" y="200" width="200px" height="100px" style="color: #FFE352; font-size: 20px; text-align: right;"><p>
-              <strong>Increased data volume</strong>
+              <strong style="font-weight: 900;">Increased data volume</strong>
             </p></foreignObject>
             <foreignObject x="-50" y="265" width="375px" height="100px" class="satellite-description" style="color: #FFE352; text-align: right;"><p>
               More variables and data source, higher spatiotemporal resolution
             </p></foreignObject>
           </g>
+
           <path id="Red Orbit" d="M712.583 295C681.27 349.237 640.056 390.575 599.02 413.702C557.848 436.905 517.944 441.278 488 423.99C458.056 406.702 441.891 369.957 441.4 322.7C440.91 275.598 456.103 219.237 487.417 165C518.73 110.763 559.944 69.4249 600.98 46.2982C642.152 23.0952 682.056 18.7222 712 36.0103C741.944 53.2984 758.109 90.0427 758.6 137.3C759.09 184.402 743.897 240.763 712.583 295Z" stroke="#F67A7A" stroke-opacity="0.25" stroke-width="12"/>
           <g class="satellite" id="Red">
-            <circle class="satellite-icon" id="Red Icon" cx="825" cy="45" r="25" fill="#F77A7A"/>
+            <g id="Red Icon" class="satellite-icon">
+              <circle id="Body" cx="825" cy="45" r="25" fill="#F77A7A"/>
+              <line id="Line" x1="819" y1="49" x2="831" y2="49" stroke="white" stroke-width="2"/>
+              <path id="Bulb" d="M819 46C807.578 23.1126 842.579 23.0659 831 46" stroke="white" stroke-width="2"/>
+              <line id="End" x1="823" y1="58" x2="827" y2="58" stroke="white" stroke-width="2"/>
+              <line id="Line_2" x1="819" y1="55" x2="831" y2="55" stroke="white" stroke-width="2"/>
+              <line id="Line_3" x1="819" y1="52" x2="831" y2="52" stroke="white" stroke-width="2"/>
+            </g>
             <foreignObject x="865" y="5" width="200px" height="100px" style="color: #F77A7A; font-size: 20px"><p>
-              <strong>ML for advancing discovery</strong>
+              <strong style="font-weight: 900;">ML for advancing discovery</strong>
             </p></foreignObject>
             <foreignObject x="805" y="65" width="375px" height="100px" class="satellite-description" style="color: #F77A7A"><p>
               ML methods and tools aid in  detection of patterns and changes from large amounts of data
             </p></foreignObject>
           </g>
+
           <rect id="Earth" x="517" y="150" width="165" height="163" fill="url(#pattern0)"/>
           <g id="Satellite 3">
             <rect id="Bg" x="763.51" y="36.5585" width="48.4567" height="38.3863" transform="rotate(135.883 763.51 36.5585)" fill="white"/>

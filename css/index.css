@@ -208,7 +208,9 @@ th {
   background: #B3D89C;
 }
 
-/* INTERACTIVE SATELLITE GRAPHIC*/
+/* INTERACTIVE SATELLITE GRAPHIC */
+/*   (some styles shared with    */
+/*   orbit graphic, see below)   */
 .interactive-satellite {
   max-width: 1000px;
 }
@@ -219,20 +221,13 @@ th {
 
 .satellite foreignObject p, .satellite-icon:hover ~ foreignObject p {
   opacity: 1;
+  text-shadow: 0px 0px 3px rgba(190, 190, 190, 0.75);
 }
 
 foreignObject.satellite-description p {
-  opacity: 0;
+  /*opacity: 0;*/
   transition: opacity 0.2s;
-}
-
-.satellite-icon {
-  cursor: pointer;
-  transition: r 0.2s;
-}
-
-.satellite-icon:hover {
-  r: 24;
+  font-weight: bold;
 }
 /* END INTERACTIVE SATELLITE STYLES */
 
@@ -255,7 +250,7 @@ foreignObject.satellite-description p {
   font-weight: 400;
 }
 
-.orbit-tab {
+.orbit-tab, .satellite-icon {
   cursor: pointer;
   transition: r 0.2s;
 }
@@ -279,7 +274,7 @@ foreignObject.satellite-description p {
   transform: translateX(0) scale(1);
 }
 
-.orbit-tab:hover > circle {
+.orbit-tab:hover > circle, .satellite-icon:hover > circle {
   r: 24;
 }
 
