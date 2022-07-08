@@ -1,6 +1,6 @@
 # GeoSMART
 
-Site live at https://geo-smart.github.io/geosmartsite/
+Site live at https://geo-smart.github.io/
 
 ## Adding Blog Posts
 
