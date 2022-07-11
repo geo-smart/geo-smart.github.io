@@ -24,12 +24,6 @@ async function main() {
   const src = '../';
   const dest = '../docs/';
 
-  const files = [
-    'js/blog.js', 'js/index.js', 'css/index.css', 'post/posts.js',
-    'news.html', 'contact.html', 'index.html', 'motivation.html',
-    'team.html', 'curriculum.html', 'codeweek.html', 'tools.html',
-  ];
-
   const dirs = ['js', 'css', 'post'];
 
   for (let i = 0; i < dirs.length; i++) {
@@ -38,6 +32,13 @@ async function main() {
       fse.mkdirSync(dest + dirs[i]);
     }
   }
+
+  const files = [
+    'js/blog.js', 'js/index.js', 'js/header.js',
+    'css/index.css', 'post/posts.js', 'header.html',
+    'news.html', 'contact.html', 'index.html', 'motivation.html',
+    'team.html', 'curriculum.html', 'codeweek.html', 'tools.html',
+  ];
 
   for (let i = 0; i < files.length; i++) {
     const src_file = src + files[i];

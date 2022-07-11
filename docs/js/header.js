@@ -1,0 +1,1 @@
+fetch("header.html").then((e=>e.text())).then((e=>{const t=document.querySelector("script#replace_with_header"),r=document.createElement("div");r.innerHTML=e,t.parentNode.replaceChild(r,t)}));
