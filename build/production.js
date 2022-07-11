@@ -35,7 +35,7 @@ async function main() {
 
   const files = [
     'js/blog.js', 'js/index.js', 'js/header.js',
-    'css/index.css', 'post/posts.js', 'header.html',
+    'css/index.css', 'post/posts.js',
     'news.html', 'contact.html', 'index.html', 'motivation.html',
     'team.html', 'curriculum.html', 'codeweek.html', 'tools.html',
   ];

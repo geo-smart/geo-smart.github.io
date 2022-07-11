@@ -28,8 +28,8 @@ The ONLY changes you should have to do manually would be to add the path names o
 <br><br>
 The easiest and safest way to do this would be to just delete all the contents of the docs folder before you build.
 
-To change the header, go to the header.html file and modify it there. This will automatically affect every page on the
-site, since the header.html is dynamically added by a script on page load.
+To change the header, go to the header.js file and modify it there. This will automatically affect every page on the
+site, since the header.js is automatically replaces itself on page load.
 
 #### TODO
 
