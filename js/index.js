@@ -1,8 +1,12 @@
 'use strict';
-(function() {
+(function () {
 
   window.addEventListener('load', init);
 
+  /**
+   * Initialization function that should handle anything that needs to occur
+   * on page load (include changing from one page to another).
+   */
   function init() {
     setNavbarHighlight(document.URL);
 
@@ -11,8 +15,15 @@
     menu_btn.addEventListener('click', () => {
       menu.classList.toggle('invisible');
     });
+
+    window.addEventListener('resize', fixMenuVisibility);
   }
 
+  /**
+   * Uses the url to determine which page the user is currently on and appropriately style
+   * the navbar buttons.
+   * @param {string} url the page url, given by document.URL
+   */
   function setNavbarHighlight(url) {
     const page_regex = /\/[a-zA-Z0-9]+\.html/;
     let raw = url.match(page_regex);
@@ -31,6 +42,21 @@
           buttons[i].classList.remove('w--current');
         }
       }
+    }
+  }
+
+  /**
+   * In the event that the mobile navigation menu is open and then the window is resized
+   * to a larger size that uses the regular navigation menu, this hides the mobile menu.
+   */
+  function fixMenuVisibility() {
+    const mobile_menu = document.querySelector('.w-nav-overlay');
+    if (window.innerWidth > 1150) {
+      // We don't use class 'invisible' since otherwise this would overwrite the
+      // menu's visibility. We just want to hide it if the user resizes back to a wider width.
+      mobile_menu.classList.add('hidden');
+    } else {
+      mobile_menu.classList.remove('hidden');
     }
   }
 

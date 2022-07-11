@@ -291,6 +291,34 @@ foreignObject.satellite-description p {
   transition: visibility 800ms;
 }
 
+.under-construction-banner {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  margin-top: 5rem;
+}
+
+.under-construction-svg {
+  height: max(60px, 10vh);
+  animation: ucs-scroll 8s linear infinite;
+}
+
+@keyframes ucs-scroll {
+  0% {
+    transform: none;
+  }
+  100% {
+    transform: translateX(-85px);
+  }
+}
+
+.under-construction-text {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
 .w-icon-slider-right:before {
   content: "\e600"
 }
@@ -1223,10 +1251,10 @@ textarea.w-select {
   z-index: -100
 }
 
-.w-background-video>video::-webkit-media-controls-start-playback-button {
-  display: none !important;
-  -webkit-appearance: none
-}
+/*.w-background-video>video::-webkit-media-controls-start-playback-button {*/
+/*  display: none !important;*/
+/*  -webkit-appearance: none*/
+/*}*/
 
 .w-background-video--control {
   position: absolute;
@@ -1967,7 +1995,7 @@ textarea.w-select {
 
 .w-nav-menu {
   position: relative;
-  float: right
+  float: right;
 }
 
 [data-nav-menu-open] {
@@ -2851,7 +2879,7 @@ figcaption {
 }
 
 .intro-content {
-  width: 70%;
+  width: 80%;
   max-width: 1140px;
   text-align: center
 }
@@ -3177,38 +3205,6 @@ figcaption {
   opacity: .7
 }
 
-/* .project-overview-header {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  height: 620px;
-  margin-bottom: 100px;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-  -ms-flex-align: center;
-  align-items: center;
-  background-color: #f4f4f4;
-  background-image: url("https://uploads-ssl.webflow.com/625a071ddcac5e37c60776a7/625a071ddcac5e7aca0776db_portfolio%201%20-%20wide.svg");
-  background-position: 50% 50%;
-  background-size: cover;
-  color: #fff
-}
-
-.project-overview-header.cc-project-2-header {
-  background-image: url("https://uploads-ssl.webflow.com/625a071ddcac5e37c60776a7/625a071ddcac5e32bb0776d7_portfolio%202%20-%20wide.svg");
-  background-position: 50% 50%
-}
-
-.project-overview-header.cc-project-3-header {
-  background-image: url("https://uploads-ssl.webflow.com/625a071ddcac5e37c60776a7/625a071ddcac5ed8ac0776dc_portfolio%203%20-%20wide.svg");
-  background-size: cover
-} */
-
 .project-details-grid {
   margin-top: 100px;
   margin-bottom: 100px;
@@ -3530,14 +3526,8 @@ figcaption {
   opacity: .7
 }
 
-.image {
-  width: 100%
-}
-
-.image.rounded {
-  width: 80%;
-  margin: 2.5% 10%;
-  border-radius: 5px
+.rounded {
+  border-radius: 5px;
 }
 
 .column {
@@ -3592,14 +3582,25 @@ figcaption {
   margin-bottom: 15px
 }
 
-.tool-buttons {
+.project-container {
   display: flex;
   flex-direction: row;
   justify-content: center;
 }
 
+.tool-buttons {
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: center;
+  align-items: center;
+}
+
 .tool-buttons a {
-  margin: 0 1rem;
+  margin: 0.5rem 1rem;
+}
+
+.tool-buttons path {
+  transition: fill 0.5s;
 }
 
 .tool-buttons a:hover path {
@@ -3623,45 +3624,6 @@ figcaption {
   .menu {
     position: static;
     margin-left: 30px
-  }
-}
-
-@media screen and (max-width:1050px) {
-  .heading {
-    text-align: center;
-    font-size: 1.5em; /* default h2 font size seems to be 2em */
-  }
-
-  .container {
-    margin-top: 0px;
-  }
-
-  .section.cc-cta {
-    padding-right: 0;
-    padding-left: 0
-  }
-
-  .styleguide-block {
-    text-align: center
-  }
-
-  .button {
-    -webkit-box-pack: center;
-    -webkit-justify-content: center;
-    -ms-flex-pack: center;
-    justify-content: center
-  }
-
-  .heading-jumbo {
-    font-size: 56px;
-    line-height: 70px
-  }
-
-  .logo-link.w--current {
-    -webkit-box-flex: 1;
-    -webkit-flex: 1;
-    -ms-flex: 1;
-    flex: 1
   }
 
   .menu-icon {
@@ -3701,6 +3663,55 @@ figcaption {
 
   .navigation-items {
     background-color: #fff
+  }
+}
+
+@media screen and (max-width: 1150px) {
+  .heading {
+    text-align: center;
+    font-size: 1.5em; /* default h2 font size seems to be 2em */
+  }
+
+  .heading-jumbo {
+    font-size: 48px;
+    line-height: 60px
+  }
+}
+
+@media screen and (max-width:1050px) {
+  .project-container {
+    flex-direction: column;
+  }
+
+  .tool-buttons {
+    flex-direction: row;
+  }
+
+  .container {
+    margin-top: 0px;
+  }
+
+  .section.cc-cta {
+    padding-right: 0;
+    padding-left: 0
+  }
+
+  .styleguide-block {
+    text-align: center
+  }
+
+  .button {
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center
+  }
+
+  .logo-link.w--current {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    flex: 1
   }
 
   .cta-text {
@@ -3858,11 +3869,6 @@ figcaption {
 }
 
 @media screen and (max-width:767px) {
-  .image.rounded {
-    width: 100%;
-    margin: 5% 0;
-  }
-
   .section {
     margin-right: 15px;
     margin-left: 15px
@@ -3893,10 +3899,10 @@ figcaption {
     text-align: left
   }
 
-  .heading-jumbo {
-    font-size: 50px;
-    line-height: 64px
-  }
+  /*.heading-jumbo {*/
+  /*  font-size: 48px;*/
+  /*  line-height: 56px*/
+  /*}*/
 
   .heading-jumbo-small {
     font-size: 30px;
@@ -3918,10 +3924,6 @@ figcaption {
 
   .intro-header {
     height: 280px
-  }
-
-  .intro-content {
-    width: 80%
   }
 
   .our-services-grid {
@@ -4028,6 +4030,9 @@ figcaption {
 }
 
 @media screen and (max-width:1050px) {
+  #cm-image, #bcte-image, #mfl-image {
+    width: 100%;
+  }
 
   #cm-node,
   #mfl-node,
