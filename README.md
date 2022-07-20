@@ -28,8 +28,8 @@ The ONLY changes you should have to do manually would be to add the path names o
 <br><br>
 The easiest and safest way to do this would be to just delete all the contents of the docs folder before you build.
 
-To change the header, go to the header.js file and modify it there. This will automatically affect every page on the
-site, since the header.js is automatically replaces itself on page load.
+To change the header, go to the `header.js` file and modify it there. This will automatically affect every page on the
+site, since the `header.js` script automatically replaces itself on page load.
 
 #### TODO
 
@@ -43,6 +43,11 @@ beneficial, since it is pretty gigantic at the moment.
 
 Unlike the header, the footer on each page has not been factored out into a separate file from where it can be modified.
 It is not a priority since it probably won't be modified often, but something to keep in mind.
+
+Finally, at some point the way news/blog posts are done, namely through `blog.js` and `posts.js`, could be improved. There
+is definitely a better way to store and edit posts than in javascript, and the way the post body is stored could be
+changed so that it can be formatted. As most posts are currently just short blurbs that link to a full article somewhere
+else, it is unnecessary, but this may change.
 
 #### Keep in Mind
 

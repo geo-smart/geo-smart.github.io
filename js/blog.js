@@ -18,7 +18,7 @@
       // Fill out the title, date and content
       post.querySelector('#blog-item-title').innerHTML = posts[i].title;
       post.querySelector('#blog-item-date').innerHTML = posts[i].date;
-      post.querySelector('#blog-item-summary').innerHTML = posts[i].body;
+      post.querySelector('#blog-item-summary').innerHTML = (posts[i].blurb) ? posts[i].blurb : posts[i].body;
       
       container.appendChild(post);
     }
@@ -36,6 +36,7 @@
   function toggleView() {
     document.getElementById('blog-items-list').classList.toggle('hidden');
     document.getElementById('blog-post').classList.toggle('hidden');
+    window.scroll(0,0);
   }
 
 })();
