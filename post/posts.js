@@ -36,7 +36,7 @@ const posts = [
   {
     "title": "A Review Of Earth Artificial Intelligence",
     "date": "Feb 21, 2022",
-    "body": "Researchers Cristea and Sun talk about collaborating on the GeoSMART project, machine learning and how the ESIP Lab connected them and opened up opportunities to address gaps in machine learning education for geoscientists.",
+    "body": "GeoSMART researchers Sun and Cristea in collaboration with a larger group of AI practitioners published a review manuscript on the current status, technology, use cases, challenges, and opportunities of applying AI techniques in the Geosciences.",
     "link": "https://www.sciencedirect.com/science/article/pii/S0098300422000036",
   },
   {
