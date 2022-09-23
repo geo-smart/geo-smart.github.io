@@ -3579,7 +3579,11 @@ figcaption {
 
 .heading {
   margin-top: 5px;
-  margin-bottom: 15px
+  margin-bottom: 15px;
+}
+
+.heading, .section-heading, .work-heading {
+  line-height: 1.5em;
 }
 
 .project-container {
@@ -4168,4 +4172,36 @@ figcaption {
   .paragraph-2 {
     font-size: 14px
   }
+}
+
+.book-section {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  filter: grayscale(1);
+  border: 1px solid #fff;
+  transition: filter 0.5s ease, border-color 0.5s ease;
+
+  text-decoration: none;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 10px 0;
+}
+
+.book-section:hover {
+  filter: none;
+  border-color: #dbdbdb;
+}
+
+.book-icon {
+  width: 7em;
+  margin: 0 1em;
+}
+
+.book-section-desc {
+  display: flex;
+  flex-direction: column;
+  max-width: 20em;
+  margin: 0 1em;
 }
