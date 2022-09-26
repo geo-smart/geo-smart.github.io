@@ -34,8 +34,10 @@
 
       const buttons = document.querySelectorAll('.navigation-item');
       for (let i = 0; i < buttons.length; i++) {
-        const tab = buttons[i].innerText.toLowerCase();
-
+        const tab = buttons[i].innerHTML.toLowerCase();
+        // For some reason innerText doesn't work for the mobile buttons,
+        // even though they should be identical (sans css) to the desktop ones?? 
+        
         if (tab === page) {
           buttons[i].classList.add('w--current');
         } else {

@@ -1,7 +1,7 @@
 const content = "<!-- HEADER -->\n" +
   "<div id=\"scroll-top\" data-collapse=\"medium\" data-animation=\"default\" data-duration=\"400\" data-easing=\"ease\" data-easing2=\"ease\"\n" +
   "     role=\"banner\" class=\"navigation w-nav\">\n" +
-  "  <div class=\"navigation-wrap\"><a href=\"index.html\" aria-current=\"page\" class=\"logo-link w-nav-brand w--current\"><img\n" +
+  "  <div class=\"navigation-wrap\"><a href=\"index.html\" aria-current=\"page\" class=\"logo-link w-nav-brand\"><img\n" +
   "    src=\"assets/GeoSMART_logo.svg\"\n" +
   "    width=\"200\" alt=\"\" class=\"logo-image\"/></a>\n" +
   "    <div class=\"menu\">\n" +
