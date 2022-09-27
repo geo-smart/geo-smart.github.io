@@ -677,16 +677,13 @@ textarea.w-select {
   margin: 10px 0;
 }
 
-/* If the device can hover */
-@media (hover: hover) {
-  .book-section {
-    filter: grayscale(1);
-  }
+.book-section {
+  filter: grayscale(1);
+}
 
-  .book-section:hover {
-    filter: none;
-    border-color: #dbdbdb;
-  }
+.book-section:hover {
+  filter: none;
+  border-color: #dbdbdb;
 }
 
 .book-icon {
@@ -2064,6 +2061,15 @@ a:active {
     width: 90%;
     max-width: 470px;
     text-align: left
+  }
+
+  .book-section {
+    filter: none;
+  }
+
+  .book-section:hover {
+    filter: none;
+    border-color: #fff;
   }
 
   .container {
