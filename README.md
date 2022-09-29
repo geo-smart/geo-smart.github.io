@@ -24,8 +24,6 @@ To change the header, go to the `header.js` file and modify it there. This will 
 
 At some point the `production.js` script needs to be improved. As of now, it basically is just a bunch of hard coded calls to the `minify` npm package. If `js` or `html` files are added to the site structure, have their names refactored, or anything of that sort changed, `production.js` will at best miss the changes and at worst break the `docs` version of the site in some way.
 
-It is not particularly urgent but going through `index.css` and deleting all of the styles that are unused would also be beneficial, since it is pretty gigantic at the moment.
-
 Unlike the header, the footer on each page has not been factored out into a separate file from where it can be modified. It is not a priority since it probably won't be modified often, but something to keep in mind.
 
 Finally, at some point the way news/blog posts are done, namely through `blog.js` and `posts.js`, could be improved. There is definitely a better way to store and edit posts than in javascript, and the way the post body is stored could be changed so that it can be formatted. As most posts are currently just short blurbs that link to a full article somewhere else, it is unnecessary, but this may change.
