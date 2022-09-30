@@ -1145,6 +1145,11 @@ textarea.w-select {
   flex: 0 0 auto
 }
 
+.paragraph {
+  position: static;
+  width: 75%;
+}
+
 .paragraph-bigger {
   margin-bottom: 10px;
   opacity: 1;
