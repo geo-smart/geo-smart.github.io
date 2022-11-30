@@ -44,26 +44,25 @@
       <div class="w-layout-grid contact-form-grid">
         <div class="contact-form-wrap">
           <div class="contact-form w-form">
-            <form id="wf-form-Contact" name="wf-form-Contact" data-name="Contact" method="get"
+            <form id="contact-form" name="contact-form" data-name="Contact" method="get"
               class="get-in-touch-form">
               <label for="name">Name</label>
               <input type="text" class="text-field cc-contact-field w-input" maxlength="256" name="name"
-                data-name="Name" placeholder="Enter your name" id="Name" />
+                data-name="Name" placeholder="Enter your name" id="name-field"/>
               <label for="Email-2">Email Address</label>
               <input type="email" class="text-field cc-contact-field w-input" maxlength="256" name="Email"
-                data-name="Email" placeholder="Enter your email" id="Email" required="" />
+                data-name="Email" placeholder="Enter your email" required="" id="email-field"/>
               <label for="Message">Message</label>
-              <textarea id="Message" name="Message" maxlength="5000" data-name="Message"
-                placeholder="Hi there, I’m reaching out because I think we can collaborate…"
-                class="text-field cc-textarea cc-contact-field w-input">
-              </textarea>
-              <input type="submit" value="Submit" data-wait="Please wait..." class="button w-button" />
+              <textarea name="Message" maxlength="5000" data-name="Message" id="message-field"
+                placeholder="Hi there, I'm reaching out because I think we can collaborate…"
+                class="text-field cc-textarea cc-contact-field w-input"></textarea>
+              <input type="submit" value="Submit" data-wait="Please wait..." class="animatable-hide button w-button" id="contact-submit"/>
             </form>
 
-            <div class="status-message cc-success-message w-form-done">
+            <div class="status-message cc-success-message w-form-done animatable-hide anim-hide">
               <div>Thank you! Your submission has been received!</div>
             </div>
-            <div class="status-message cc-error-message w-form-fail">
+            <div class="status-message cc-error-message w-form-fail animatable-hide anim-hide">
               <div>Oops! Something went wrong while submitting the form.</div>
             </div>
           </div>
@@ -107,6 +106,7 @@
   <!-- END FOOTER -->
 
   <script src="js/index.js" type="text/javascript"></script>
+  <script src="js/contact.js" type="text/javascript"></script>
 </body>
 
 </html>
