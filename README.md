@@ -8,6 +8,12 @@ Inside the `post` folder, see `posts.js`. This file contains a `const` that is a
 
 ## Development Instructions
 
+#### Running the Site Locally
+
+The way the navigation of the site works has been changed in a way that necessitates changing how one tests the site locally. Since `<a>` links that take the user back to the `index.html` home page no longer have an `href` value of `index.html` but rather of `/`, simply opening one of the `html` page files in the browser no longer matches online user experience. 
+
+Instead, run `python -m http.server` in the root directory. Then, navigate to http://localhost:8000/, or replace port 8000 if the command line interface indicates the server was not hosted on the defaut port of 8000.
+
 #### Project Structure
 
 The root of the github pages site is in the `docs` folder. The files inside of the `docs` folder should just be a minified version of those outside the `docs` folder.
@@ -22,15 +28,17 @@ To change the header, go to the `header.js` file and modify it there. This will 
 
 #### TODO
 
-At some point the `production.js` script needs to be improved. As of now, it basically is just a bunch of hard coded calls to the `minify` npm package. If `js` or `html` files are added to the site structure, have their names refactored, or anything of that sort changed, `production.js` will at best miss the changes and at worst break the `docs` version of the site in some way.
+At some point the `production.js` script needs to be improved. As of now, it basically is just a bunch of hard coded calls to the `minify` npm package. If `js` or `html` files are added to the site structure, have their names refactored, or anything of that sort is changed, `production.js` will at best miss the changes and at worst break the `docs` version of the site in some way.
 
 Unlike the header, the footer on each page has not been factored out into a separate file from where it can be modified. It is not a priority since it probably won't be modified often, but something to keep in mind.
 
 Finally, at some point the way news/blog posts are done, namely through `blog.js` and `posts.js`, could be improved. There is definitely a better way to store and edit posts than in javascript, and the way the post body is stored could be changed so that it can be formatted. As most posts are currently just short blurbs that link to a full article somewhere else, it is unnecessary, but this may change.
 <br><br>
 Potentially, posts could be stored in some `posts.csv`, which a script then turns into a json similar to what `posts.js` currently is and then blog.js remains the same. This however does
-not fix the lack of formatting.
+not fix the lack of formatting. This would allow the posts to be fetched from a different location however, so that the site need not be pushed to a redeployed any time a post needs to be added.
 
 #### Keep in Mind
 
-The `head` of each page as well as the sections labeled 'header' and 'footer' are the same on every page. If you change it somewhere, you should change it everywhere.
+The `head` of each page as well as the sections labeled 'footer' are (almost) the same on every page. If you change it somewhere, you should change it everywhere.
+
+What you should change about the `head` from page to page is the title, while the footer is identical on each page.
