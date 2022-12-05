@@ -38,6 +38,7 @@ async function main() {
     'css/index.css', 'post/posts.js',
     'news.html', 'contact.html', 'index.html', 'motivation.html',
     'team.html', 'curriculum.html', 'codeweek.html', 'tools.html',
+    'google6676251793b4eed2.html',
   ];
 
   for (let i = 0; i < files.length; i++) {
