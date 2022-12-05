@@ -25,12 +25,16 @@
    * @param {string} url the page url, given by document.URL
    */
   function setNavbarHighlight(url) {
-    const page_regex = /\/[a-zA-Z0-9]+\.html/;
+    // Matches the /page.html part of a url
+    // const page_regex = /\/[a-zA-Z0-9]+\.html/;
+    // Matches the /page part of a url
+    const page_regex = /\/[a-zA-Z0-9]+$/;
     let raw = url.match(page_regex);
 
     if (raw) {
       raw = raw[0];
-      const page = raw.substring(1, raw.length - 5).toLowerCase();
+      // const page = raw.substring(1, raw.length - 5).toLowerCase();
+      const page = raw.substring(1).toLowerCase();
 
       const buttons = document.querySelectorAll('.navigation-item');
       for (let i = 0; i < buttons.length; i++) {
