@@ -12,7 +12,7 @@ Inside the `post` folder, see `posts.js`. This file contains a `const` that is a
 
 The way the navigation of the site works has been changed in a way that necessitates changing how one tests the site locally. Since `<a>` links that take the user back to the `index.html` home page no longer have an `href` value of `index.html` but rather of `/`, simply opening one of the `html` page files in the browser no longer matches online user experience. 
 
-Instead, run `python -m http.server` in the root directory. Then, navigate to http://localhost:8000/, or replace port 8000 if the command line interface indicates the server was not hosted on the defaut port of 8000.
+Instead, run `python -m http.server` in the root directory (or the `docs` directory if testing the production version of the site). Then, navigate to http://localhost:8000/, or replace port 8000 if the command line interface indicates the server was not hosted on the defaut port of 8000.
 
 #### Project Structure
 
