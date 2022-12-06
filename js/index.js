@@ -17,6 +17,15 @@
     });
 
     window.addEventListener('resize', fixMenuVisibility);
+
+    // The scroll top button should work even without js enabled so it uses
+    // an anchor, however that appends an ugly '#scroll-top' to the url so
+    // for users with js enabled, we do this:
+    const scroll_btn = document.getElementById('scroll-top-button');
+    scroll_btn.addEventListener('click', (evt) => {
+      window.scrollTo({top: '0'});
+      evt.preventDefault();
+    });
   }
 
   /**
@@ -25,15 +34,13 @@
    * @param {string} url the page url, given by document.URL
    */
   function setNavbarHighlight(url) {
-    // Matches the /page.html part of a url
     // const page_regex = /\/[a-zA-Z0-9]+\.html/;
-    // Matches the /page part of a url
     const page_regex = /\/[a-zA-Z0-9]+$/;
     let raw = url.match(page_regex);
 
     if (raw) {
       raw = raw[0];
-      // const page = raw.substring(1, raw.length - 5).toLowerCase();
+      // Removing the '/' char preceding the page name
       const page = raw.substring(1).toLowerCase();
 
       const buttons = document.querySelectorAll('.navigation-item');
