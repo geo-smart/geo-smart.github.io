@@ -12,7 +12,7 @@ Inside the `post` folder, see `posts.js`. This file contains a `const` that is a
 
 The way the navigation of the site works is structured in a way that necessitates changing how one tests the site locally. Since the `<a>` links that manage site navigation no longer include `.html` extensions, simply opening `index.html` with your browser will not accurately mimic the end user experience.
 
-Instead, run `python server.py` from the root directory (or `python ../server.py` from the `docs` directory if testing the production version of the site). Then, navigate to http://localhost:8000/ to view the website.
+Instead, run `python server.py` from the root directory, or include the `--docs` flag if testing the production version of the site. (Alternatively one can also run `python ../server.py` from the `docs` directory to test the production version of the site, since the server operates on relative paths. What is important is to be aware that which folder the server is run from matters.) Then, navigate to http://localhost:8000/ to view the website.
 
 The `server.py` code runs with python's `http.server` module and uses a modified version of `SimpleHTTPRequestHandler` in order to handle `<a>` links not including `.html` extensions.
 
