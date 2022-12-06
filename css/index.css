@@ -669,7 +669,7 @@ textarea.w-select {
   align-items: center;
 
   border: 1px solid #fff;
-  transition: filter 0.5s ease, border-color 0.5s ease;
+  transition: border-color 0.5s ease;
 
   text-decoration: none;
   border-radius: 5px;
@@ -677,12 +677,7 @@ textarea.w-select {
   margin: 10px 0;
 }
 
-.book-section {
-  filter: grayscale(0.6);
-}
-
 .book-section:hover {
-  filter: none;
   border-color: #dbdbdb;
 }
 
