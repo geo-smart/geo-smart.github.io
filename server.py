@@ -23,6 +23,7 @@ class NoExtensionHandler(SimpleHTTPRequestHandler):
 
 if len(sys.argv) == 1:
   directory = ""
+  print(f"Serving from root directory...")
   run(HTTPServer, NoExtensionHandler)
 elif len(sys.argv) == 2:
   flags = ["--docs", "--production"]

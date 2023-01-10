@@ -1206,52 +1206,42 @@ textarea.w-select {
   padding-left: 1%;
   padding-right: 2%;
   margin-top: -2px; /* fixes border gap */
-  border: 1px solid #00000000;
-  transition: border 0.5s ease;
 }
 
 .labeled-container > .rich-text {
   width: unset !important;
-  /* margin-left: unset !important; */
-  margin-right: unset !important;
-  max-width: unset !important;
-  padding-top: 25px;
-  padding-bottom: 25px;
-  margin-left: 1em !important;
+  padding: 2em 1em 2em 32px;
+  border: 1px solid #00000000;
+  border-left: 1px solid #c7c7c7;
+  transition: border 0.5s ease;
 }
 
 .vertical-label-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  /* margin-right: 1em; */
-  transition: opacity 0.25s ease;
-  opacity: .35;
+  writing-mode: tb;
+  text-align: center;
+  transform: rotate(180deg);
+  transition: color 0.25s ease;
+  margin-right: -16px;
+  color: #b8b8b8;
 }
 
 .vertical-label {
-  display: block;
-  writing-mode: vertical-lr;
+  background-color: white;
   text-transform: uppercase;
   white-space: nowrap;
   letter-spacing: .5rem;
-  transform: rotate(-180deg) translateY(.35em);
-}
-
-.vertical-bar {
-  width: 1px;
-  height: 100%;
-  flex-grow: 1;
-  background-color: rgb(46, 46, 46);
+  padding-top: .5rem;
+  /* padding-bottom: 10px; */
 }
 
 @media screen and (min-width: 479px) {
-  .labeled-container:hover {
+  .labeled-container:hover > .rich-text {
     border: 1px solid #eee;
+    border-left: 1px solid #707070;
   }
 
   .labeled-container:hover .vertical-label-container {
-    opacity: .65;
+    color: #585858;
   }
 }
 
@@ -1800,6 +1790,14 @@ input.w-button {
   .w-nav[data-collapse=small] .w-nav-button {
     display: block
   }
+
+  .labeled-container > .rich-text {
+    padding: 1em 1em 1em 32px;
+  }
+
+  .vertical-label-container {
+    margin-left: -4px;
+  }
 }
 
 @media screen and (max-width:479px) {
@@ -2228,6 +2226,7 @@ a:active {
 
   .vertical-label {
     letter-spacing: .7rem;
+    padding-top: .7rem;
   }
 
   .section {
@@ -2379,6 +2378,7 @@ a:active {
 
   .vertical-label {
     letter-spacing: 1rem;
+    padding-top: 1rem;
   }
 
   .w-col {
