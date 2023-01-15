@@ -45,7 +45,9 @@
 
       const buttons = document.querySelectorAll('.navigation-item');
       for (let i = 0; i < buttons.length; i++) {
-        const tab = buttons[i].innerHTML.toLowerCase();
+        const tab = buttons[i].innerHTML.toLowerCase().replace(/\s/g, '');
+
+        console.log(tab, page);
         // For some reason innerText doesn't work for the mobile buttons,
         // even though they should be identical (sans css) to the desktop ones?? 
         

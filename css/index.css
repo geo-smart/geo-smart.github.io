@@ -1108,7 +1108,8 @@ textarea.w-select {
 }
 
 .navigation-item:hover {
-  opacity: .9
+  /* opacity: .9 */
+  opacity: 1
 }
 
 .navigation-item:active {
@@ -1767,6 +1768,48 @@ input.w-button {
   display: block
 }
 
+.dropdown {
+  margin-right: 5px;
+  cursor: pointer;
+}
+
+.dropdown::after {
+  content: "";
+  background-image: url(../assets/dropdown.svg);
+  background-size: 10px 10px;
+  width: 10px;
+  height: 10px;
+  display: inline-block;
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  /* opacity to match and not overwrite that of <a> styles */
+  transition: opacity .2s, transform .2s;
+}
+
+.dropdown:hover::after {
+  transform: translateY(-50%) rotate(-90deg);
+}
+
+.dropdown-body {
+  position: absolute;
+  top: -50%;
+  left: 50%;
+  transform: translateX(calc(-50% + 10px)) scale(0.75);
+  opacity: 0;
+  background-color: white;
+  border: 1px solid #dbdbdb;
+  transition: opacity .2s, top .2s, transform .2s;
+  border-radius: 5px;
+}
+
+.dropdown:hover > .dropdown-body {
+  opacity: 1;
+  top: 100%;
+  transform: translateX(calc(-50% + 10px));
+}
+
 @media screen and (max-width:1150px) {
   .w-nav[data-collapse=medium] .w-nav-menu {
     display: none
@@ -1823,6 +1866,10 @@ input.w-button {
   min-width: 200px
 }
 /* END MENU */
+
+.badge {
+  display: inline;
+}
 
 .work-heading {
   margin-top: 10px;
@@ -2183,6 +2230,10 @@ a:active {
 
   .contact-form-wrap {
     padding: 30px
+  }
+
+  .divider {
+    margin-top: 15px;
   }
 
   .heading {
