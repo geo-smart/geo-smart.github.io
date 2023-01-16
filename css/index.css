@@ -1773,6 +1773,10 @@ input.w-button {
   cursor: pointer;
 }
 
+.dropdown:active {
+  opacity: 1;
+}
+
 .dropdown::after {
   content: "";
   background-image: url(../assets/dropdown.svg);
