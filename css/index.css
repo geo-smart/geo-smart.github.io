@@ -681,7 +681,7 @@ textarea.w-select {
   text-decoration: none;
   border-radius: 5px;
   padding: 10px;
-  margin: 10px 0;
+  margin: 10px;
 }
 
 .book-section:hover {
@@ -1336,6 +1336,20 @@ textarea.w-select {
   display: block;
   width: 70%;
   margin: 100px auto
+}
+
+.two-column {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.two-column > div {
+  display: flex;
+  flex-direction: column;
+  /* justify-content: flex-start; */
+  align-items: center;
 }
 
 .team-members {
@@ -2037,6 +2051,15 @@ a:active {
 
   .rich-text {
     width: 80%;
+  }
+
+  .two-column {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .two-column > div:first-child {
+    margin-bottom: 4em;
   }
 
   .labeled-container {

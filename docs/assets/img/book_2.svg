@@ -5,10 +5,10 @@
 <path d="M217.971 1051H1160.97V1096H216.471L217.971 1051Z" fill="black"/>
 <path d="M105.471 71.4999C105.471 55.4997 123.971 -1.55568e-05 198.471 0H282.971L235.971 775H117.971C29.4715 783 36.9663 1051 118 1051H218L216.471 1096H117.971C38.9715 1096 -16.5286 996 4.47137 867L105.471 71.4999Z" fill="black"/>
 <path d="M184.697 750L232.347 25H949.612L1129.06 750H184.697Z" fill="#557A42" stroke="black" stroke-width="50"/>
-<path d="M267 650L431 650" stroke="black" stroke-width="12" stroke-dasharray="300 10"/>
-<path d="M262 676L467 676" stroke="black" stroke-width="12" stroke-miterlimit="1.41421" stroke-dasharray="200 25 75 10"/>
-<path d="M298 177.5H459" stroke="black" stroke-width="15" stroke-dasharray="2000 0.1 1600 200"/>
-<path d="M300 148H483" stroke="black" stroke-width="15" stroke-dasharray="2000 300 1600 0.1"/>
-<path d="M302 119H450" stroke="black" stroke-width="15" stroke-dasharray="2000 300 1600 200"/>
-<path d="M304 90H504" stroke="black" stroke-width="15" stroke-dasharray="2000 200"/>
+<path d="M267 650L431 650" stroke="black" stroke-width="12" stroke-dasharray="75 10"/>
+<path d="M262 676L467 676" stroke="black" stroke-width="12" stroke-miterlimit="1.41421" stroke-dasharray="60 10 75 15"/>
+<path d="M298 177.5H459" stroke="black" stroke-width="15" stroke-dasharray="100 10 50 200"/>
+<path d="M300 148H483" stroke="black" stroke-width="15" stroke-dasharray="50 15 1600 0.1"/>
+<path d="M302 119H450" stroke="black" stroke-width="15" stroke-dasharray="30 15 60 10"/>
+<path d="M304 90H504" stroke="black" stroke-width="15" stroke-dasharray="100 10"/>
 </svg>

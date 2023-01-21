@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-8" />
-  <title>Curriculum</title>
+  <title>Use Cases</title>
   <meta content="width=device-width, initial-scale=1" name="viewport" />
   <link href="css/index.css" rel="stylesheet" type="text/css" />
   <link href="assets/favicon.ico" rel="shortcut icon" type="image/x-icon" />
@@ -60,31 +60,63 @@
       <img src="assets/curricula_badge.svg" class="clickable badge"/>
     </div>
   </div>
-  <div class="home-content-wrap wf-section">
-    <div class="label cc-light">Materials</div>
-    <h2 class="heading">Use Case Jupyter Books</h2>
-    <a class="book-section" target="_blank" href="https://geo-smart.github.io/scm_geosmart_use_case/">
-      <img class="book-icon" src="assets/img/book_2.svg" alt="" />
-      <div class="book-section-desc">
-        <div class="label cc-light">Use Case Book</div>
-        <p>Tutorial book demonstrating ML use case in snow cover mapping</p>
-      </div>
-    </a>
-    <a class="book-section disabled" target="_blank" href="https://geo-smart.github.io/">
-      <div class="book-section-desc">
-        <div class="label cc-light">Use Case Book</div>
-        <p>Workflow utilizing MODIS snow cover to extrapolate binary snow covered area (Coming Soon)</p>
-      </div>
-      <img class="book-icon" src="assets/img/book_1.svg" alt="" />
-    </a>
-    <a class="book-section" target="_blank" href="https://github.com/geo-smart/use_case_template">
-      <img class="book-icon" src="assets/img/template_book.svg" alt="" />
-      <div class="book-section-desc">
-        <div class="label cc-light">Template Book</div>
-        <p>Resource for contributing to the geoscience machine learning library</p>
-      </div>
-    </a>
-  </div>
+  <section class="home-content-wrap wf-section two-column">
+
+    <!-- 1ST COLUMN -->
+    <div>
+      <div class="label cc-light">Materials</div>
+      <h2 class="heading">Use Case Books</h2>
+      <a class="book-section" target="_blank" href="https://geo-smart.github.io/scm_geosmart_use_case/">
+        <img class="book-icon" src="assets/img/book_2.svg" alt="" />
+        <div class="book-section-desc">
+          <div class="label cc-light">Snow Hydrology</div>
+          <p>Tutorial book demonstrating ML use case in snow cover mapping</p>
+        </div>
+      </a>
+      <a class="book-section" target="_blank" href="https://github.com/geo-smart/use_case_template">
+        <div class="book-section-desc">
+          <div class="label cc-light">Template Book</div>
+          <p>Resource for contributing to the geoscience machine learning library</p>
+        </div>
+        <img class="book-icon" src="assets/img/template_book.svg" alt="" />
+      </a>
+    </div>
+
+    <!-- 2ND COLUMN -->
+    <div>
+      <div class="label cc-light">Coming Soon</div>
+      <h2 class="heading">Future Books</h2>
+      <a class="book-section disabled" target="_blank" href="https://geo-smart.github.io/deepicedrainpipe">
+        <img class="book-icon" src="assets/img/book_5.svg" alt="" />
+        <div class="book-section-desc">
+          <div class="label cc-light">Glaciology</div>
+          <p>Mapping and monitoring deep subglacial water activity in Antarctica</p>
+        </div>
+      </a>
+      <a class="book-section disabled" target="_blank" href="https://geo-smart.github.io/">
+        <div class="book-section-desc">
+          <div class="label cc-light">Snow Hydrology</div>
+          <p>Workflow utilizing MODIS snow cover to extrapolate binary snow covered area</p>
+        </div>
+        <img class="book-icon" src="assets/img/book_1.svg" alt="" />
+      </a>
+      <a class="book-section disabled" target="_blank" href="https://github.com/GatorGlaciology/gstatsimbook">
+        <img class="book-icon" src="assets/img/book_6.svg" alt="" />
+        <div class="book-section-desc">
+          <div class="label cc-light">Geostatistics</div>
+          <p>Functions for interpolating and simulating geospatial phenomena</p>
+        </div>
+      </a>
+      <a class="book-section disabled" target="_blank" href="https://github.com/geo-smart/global_lstm_swe_modeling">
+        <div class="book-section-desc">
+          <div class="label cc-light">Snow Hydrology</div>
+          <p>High resolution predictions of global snow using recurrent neural networks</p>
+        </div>
+        <img class="book-icon" src="assets/img/book_7.svg" alt="" />
+      </a>
+    </div>
+
+  </section>
   <!-- END MAIN PAGE CONTENT -->
 
   <!-- FOOTER -->

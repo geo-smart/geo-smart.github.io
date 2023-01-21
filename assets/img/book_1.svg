@@ -5,7 +5,7 @@
 <path d="M265 0H984.5L1161.5 775H218L265 0Z" fill="#557A42"/>
 <path d="M105.5 71.4999C105.5 55.4997 124 -1.55568e-05 198.5 0H283L236 775H118C29.5001 783 36.9662 1051 118 1051H218L216.5 1096H118C39.0002 1096 -16.4999 996 4.5 867L105.5 71.4999Z" fill="black"/>
 <path d="M369.659 223L374.346 73.5H896.301L922.546 223H369.659Z" fill="#5C8647" stroke="black" stroke-width="10"/>
-<path d="M359 327.5H542" stroke="black" stroke-width="15" stroke-dasharray="300 100 800 50"/>
-<path d="M361 298.5H509" stroke="black" stroke-width="15" stroke-dasharray="900 100 800 200"/>
-<path d="M363 269.5H563" stroke="black" stroke-width="15" stroke-dasharray="900 100"/>
+<path d="M359 327.5H542" stroke="black" stroke-width="15" stroke-dasharray="30 10 80 5"/>
+<path d="M361 298.5H509" stroke="black" stroke-width="15" stroke-dasharray="90 10 80 20"/>
+<path d="M363 269.5H563" stroke="black" stroke-width="15" stroke-dasharray="90 10"/>
 </svg>
