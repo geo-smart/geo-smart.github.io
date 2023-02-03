@@ -32,7 +32,7 @@ To change the header, go to the `header.js` file and modify it there. This will 
 
 #### TODO
 
-At some point the `production.js` script needs to be improved. As of now, it basically is just a bunch of hard coded calls to the `minify` npm package. If `js` or `html` files are added to the site structure, have their names refactored, or anything of that sort is changed, `production.js` will at best miss the changes and at worst break the `docs` version of the site in some way.
+At some point the `production.js` script needs to be improved. As of now, it basically is just a bunch of hard coded calls to the `minify` npm package. If `js` or `html` files are added to the site structure, have their names refactored, or anything of that sort is changed, `production.js` will at best miss the changes and at worst break the `docs` version of the site in some way. A small update to make before then would be to add a `--full` flag so that the entirety of the docs folder is deleted and build based on site contents. At the moment, removed assets still persist in the `docs` version of the site, for instance.
 
 Unlike the header, the footer on each page has not been factored out into a separate file from where it can be modified. It is not a priority since it probably won't be modified often, but something to keep in mind.
 
