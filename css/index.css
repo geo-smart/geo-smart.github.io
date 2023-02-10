@@ -378,7 +378,7 @@ html[data-w-dynpage] [data-w-cloak] {
 
 p {
   margin-top: 0;
-  margin-bottom: 10px
+  margin-bottom: 10px;
 }
 
 figure {
@@ -1267,10 +1267,35 @@ textarea.w-select {
 
 .rich-text {
   width: 70%;
+  /* width: min(70%, 75em); */
   margin-right: auto;
   margin-bottom: 0;
   margin-left: auto;
   padding-top: 0
+}
+
+.books-container {
+  width: min(70%, 75em);
+  margin-right: auto;
+  margin-bottom: 0;
+  margin-left: auto;
+  padding-top: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.books-container > section {
+  margin-bottom: 45px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.books-container > section > p {
+  margin-top: 15px;
+  margin-bottom: 25px;
+  opacity: .6;
 }
 
 .rich-text p {
@@ -2218,6 +2243,10 @@ a:active {
     grid-column-end: 2;
     -ms-grid-row-span: 1;
     grid-row-end: 2
+  }
+
+  .books-container {
+    width: 100%;
   }
 
   .blog-summary-wrap {
