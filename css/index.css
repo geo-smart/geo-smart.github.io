@@ -1376,12 +1376,12 @@ textarea.w-select {
   background-color: #f4f4f4;
   border-radius: 5px;
   overflow: hidden;
-  transition: border-radius 0.5s ease, transform 0.5s ease;
+  transition: border-radius 0.2s ease, transform 0.2s ease;
 }
 
 .team-pic:hover {
   border-radius: 10px;
-  transform: scale(0.97);
+  transform: scale(0.99);
 }
 
 .team-member-title-wrap {
