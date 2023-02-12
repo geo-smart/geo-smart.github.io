@@ -127,6 +127,7 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 input[type=search] {
+  appearance: none;
   -webkit-appearance: none
 }
 
@@ -538,29 +539,82 @@ textarea.w-select {
   grid-template-columns: 1fr 1.5fr
 }
 
-/* BUTTON */
+/* FILLING BUTTON STYLES */
 .button {
+  position: relative;
   padding: 12px 25px;
   border: 1px solid var(--primary-color);
   border-radius: 5px;
   background-color: #fff;
-  -webkit-transition: background-color .4s, opacity .4s, color .4s;
-  transition: background-color .4s, opacity .4s, color .4s;
-  color: var(--primary-color);
   font-size: 12px;
   line-height: 20px;
   letter-spacing: 2px;
   text-decoration: none;
-  text-transform: uppercase
+  text-transform: uppercase;
+  overflow: hidden;
+
+  --anim-speed: 0.5s;
+  transition: transform var(--anim-speed) ease;
+  -webkit-transition: transform var(--anim-speed) ease;
+  /* -webkit-transition: background-color .4s, opacity .4s, color .4s; */
+  /* transition: background-color .4s, opacity .4s, color .4s; */
 }
 
-.button:hover {
+/* .button:hover {
   background-color: var(--primary-color);
   color: #fff
+} */
+
+.button-background {
+  transition: background-color var(--anim-speed) ease;
+  background-color: white;
+  opacity: 1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
 }
 
+.button-fill {
+  background-color: var(--primary-color);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: .5em;
+  height: .5em;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+}
+
+.color-text {
+  position: relative;
+  color: var(--primary-color);
+  transition: color var(--anim-speed) ease;
+}
+
+.button:hover .button-background {
+  transition: background-color var(--anim-speed) cubic-bezier(.5,0,1,.5);
+  background-color: var(--primary-color);
+  opacity: 0;
+}
+
+.button:hover .button-fill {
+  transition: transform var(--anim-speed) ease, opacity calc(var(--anim-speed) * 0.1) ease;
+  transform: translate(-50%, -50%) scale(30);
+  /* May need to change scale factor based on button width... */
+  opacity: 1;
+}
+
+.button:hover .color-text {
+  color: white;
+}
+
+/* END FILLING BUTTON */
+
 .button:active {
-  background-color: #43464d
+  background-color: #454d43
 }
 
 .button.cc-jumbo-button {
@@ -582,7 +636,7 @@ textarea.w-select {
   background-color: #e1e1e1
 }
 
-.button.cc-contact-us {
+/* .button.cc-contact-us {
   position: relative;
   z-index: 5;
   background-color: #fff
@@ -590,7 +644,7 @@ textarea.w-select {
 
 .button.cc-contact-us:hover {
   background-color: var(--primary-color)
-}
+} */
 
 .button.cc-white-button {
   padding: 16px 35px;

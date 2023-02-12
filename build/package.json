@@ -12,14 +12,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/geo-smart/geosmartsite.git"
+    "url": "git+https://github.com/geo-smart/geo-smart.github.io.git"
   },
   "author": "Stefan Todoran",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/geo-smart/geosmartsite/issues"
+    "url": "https://github.com/geo-smart/geo-smart.github.io/issues"
   },
-  "homepage": "https://github.com/geo-smart/geosmartsite#readme",
+  "homepage": "https://github.com/geo-smart/geo-smart.github.io#readme",
   "dependencies": {
     "fs-extra": "^10.1.0",
     "minify": "^9.1.0",

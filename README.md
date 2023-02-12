@@ -12,9 +12,9 @@ Inside the `post` folder, see `posts.js`. This file contains a `const` that is a
 
 The way the navigation of the site works is structured in a way that necessitates changing how one tests the site locally. Since the `<a>` links that manage site navigation no longer include `.html` extensions, simply opening `index.html` with your browser will not accurately mimic the end user experience.
 
-Instead, run `python server.py` from the root directory, or include the `--docs` flag if testing the production version of the site. (Alternatively one can also run `python ../server.py` from the `docs` directory to test the production version of the site, since the server operates on relative paths. What is important is to be aware that which folder the server is run from matters.) Then, navigate to http://localhost:8000/ to view the website.
+Instead, run `python server.py` from the root directory, or include the `--docs` flag if testing the production version of the site. (Alternatively one can also run `python ../server.py` from the `docs` directory to test the production version of the site, since the server operates on relative paths. What is important is to be aware that which folder the server is run from matters). Then, navigate to http://localhost:8000/ to view the website.
 
-The `server.py` code runs with python's `http.server` module and uses a modified version of `SimpleHTTPRequestHandler` in order to handle `<a>` links not including `.html` extensions.
+The `server.py` code runs with python's `http.server` module and uses a modified version of `SimpleHTTPRequestHandler` in order to handle `<a>` links not including `.html` extensions. It also has a second optional flag, `--watch`, which watches the `header.html` file for changes. If it detects any, it runs `build/header.py` allowing for easier development of the header. This flag is mutually exclusive with `--docs`.
 
 ### Project Structure
 
@@ -24,7 +24,7 @@ The root of the github pages site is in the `docs` folder. The files inside of t
 
 When you have made changes to files outside the `docs` folder, to see those changes reflected on the actual site (in the `docs` folder) you must run `production.js`. Open a cmd prompt to the `build` directory and type `node production.js`. This should update the contents of `docs` to mirror the site files outside of `docs`, except minified. The easiest and safest way to do this would be to just delete all the contents of the docs folder before you build.
 
-Make sure you *DO NOT* run `production.js` from any directory other than the `build` directory! The script works relative to project structure and will be thrown off if run from the root directory.
+Make sure you *DO NOT* run `production.js` from any directory other than the `build` or root directory! The script works relative to project structure and will maybe be thrown off if run from a different directory.
 
 Note that `production.js` may need to be modified if you change the structure of the site, add files, or remove files. The exception to this is if you add files to the `assets` folder, as all of the contents of this folder are automatically copied to `docs`. The build script will automatically minify and copy all the `html` and `js` files it knows about to the  `docs` folder. The ONLY changes you should have to do manually would be to add the path names of any new files you add (.html or .js) to the list called `files` in `production.js`, or to remove their paths if you remove them from the site (make sure to remove them from `docs` too, which can be most simply acheived by deleting all contents on site build).
 

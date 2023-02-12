@@ -21,8 +21,13 @@ function handleError(err, action) {
 }
 
 async function main() {
-  const src = '../';
-  const dest = '../docs/';
+  let src = './';
+  let dest = './docs/';
+  
+  if (process.cwd().includes("build")) {
+    src = '../';
+    dest = '../docs/';
+  }
 
   const dirs = ['js', 'css', 'post'];
 
