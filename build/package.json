@@ -2,7 +2,7 @@
   "name": "geosmart_minifier",
   "version": "1.0.0",
   "description": "Build and minify script for the GeoSMART site.",
-  "main": "production.js",
+  "main": "build.js",
   "type": "module",
   "directories": {
     "doc": "../docs"

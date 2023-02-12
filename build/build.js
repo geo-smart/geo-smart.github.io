@@ -33,7 +33,7 @@ async function main() {
 
   for (let i = 0; i < dirs.length; i++) {
     console.log(`\n(setup) creating empty ${dest + dirs[i]} folder`)
-    // fse.rmSync(dest + dirs[i], { recursive: true, force: true }); clear folders
+    fse.rmSync(dest + dirs[i], { recursive: true, force: true }); // clear folders
     if (!fse.existsSync(dest + dirs[i])){
       fse.mkdirSync(dest + dirs[i]);
     }
