@@ -410,7 +410,7 @@ ul {
 }
 
 .blog-summary-wrap:hover .blog-heading-link {
-  opacity: .8
+  /* opacity: .8 */
 }
 
 .blog-heading-link:active {
@@ -676,25 +676,26 @@ textarea.w-select {
 .blog-summary-wrap {
   width: 80%;
   margin-right: auto;
-  margin-bottom: 20px;
   margin-left: auto;
-  padding-right: 10px;
-  padding-left: 10px;
+  padding: 20px;
   border-radius: 5px;
   text-align: left;
   border: 1px solid #00000000;
-  transition: border 0.5s ease;
+  transition: border 0.5s ease, box-shadow 0.5s ease;
 }
 
 .blog-summary-wrap:hover {
   cursor: pointer;
   border: 1px solid #dbdbdb;
+  box-shadow: 0 0 0.4px hsla(230, 13%, 9%, 0.01),
+              0 0 1.5px hsla(230, 13%, 9%, 0.02),
+              0 0 6px hsla(230, 13%, 9%, 0.04);
 }
 
 .blog-item {
   display: block;
   margin-right: auto;
-  margin-bottom: 80px;
+  margin-bottom: 50px;
   margin-left: auto;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
@@ -729,8 +730,8 @@ textarea.w-select {
   flex-direction: row;
   align-items: center;
 
-  border: 1px solid #fff;
-  transition: border-color 0.5s ease;
+  border: 1px solid #ffffff00;
+  transition: border-color 0.5s ease, box-shadow 0.5s ease;
 
   text-decoration: none;
   border-radius: 5px;
@@ -740,6 +741,9 @@ textarea.w-select {
 
 .book-section:hover {
   border-color: #dbdbdb;
+  box-shadow: 0 0 0.4px hsla(230, 13%, 9%, 0.01),
+              0 0 1.5px hsla(230, 13%, 9%, 0.02),
+              0 0 6px hsla(230, 13%, 9%, 0.04);
 }
 
 .book-section.disabled {
@@ -1949,6 +1953,10 @@ input.w-button {
   .w-tab-link {
     display: block
   }
+
+  .blog-summary-wrap {
+    padding: 6px 14px;
+  }
 }
 
 [data-nav-menu-open] {
@@ -2487,7 +2495,7 @@ a:active {
   }
 
   .blog-list-wrap, #blog-post {
-    padding-left: 10px;
+    /* padding-left: 10px; */
     margin-bottom: 0;
   }
 
