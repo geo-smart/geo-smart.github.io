@@ -2332,6 +2332,7 @@ a:active {
 
   .book-section:hover {
     filter: none;
+    box-shadow: none;
     border-color: #fff;
   }
 

@@ -56,8 +56,8 @@
       <p>
         Look for these badges to identify books that make up the GeoSMART library.
       </p>
-      <img src="assets/use_case_badge.svg" class="clickable badge"/>
-      <img src="assets/curricula_badge.svg" class="clickable badge"/>
+      <img src="assets/use_case_badge.svg" class="clickable badge" />
+      <img src="assets/curricula_badge.svg" class="clickable badge" />
     </div>
   </div>
   <section class="home-content-wrap wf-section two-column">
@@ -73,12 +73,26 @@
           <p>Tutorial book demonstrating ML use case in snow cover mapping</p>
         </div>
       </a>
-      <a class="book-section" target="_blank" href="https://github.com/geo-smart/use_case_template">
+      <a class="book-section" target="_blank" href="https://github.com/GatorGlaciology/gstatsimbook">
         <div class="book-section-desc">
-          <div class="label cc-light">Template Book</div>
-          <p>Resource for contributing to the geoscience machine learning library</p>
+          <div class="label cc-light">Geostatistics</div>
+          <p>Functions for interpolating and simulating geospatial phenomena</p>
         </div>
-        <img class="book-icon" src="assets/books/template_book.svg" alt="" />
+        <img class="book-icon" src="assets/books/seismology.svg" alt="" />
+      </a>
+      <a class="book-section" target="_blank" href="https://whitelightning450.github.io/GeoSmart_ML_Tutorial/">
+        <img class="book-icon" src="assets/books/hydrology_1.svg" alt="" />
+        <div class="book-section-desc">
+          <div class="label cc-light">Snow Hydrology</div>
+          <p>Deep learning for large scale SWE estimation</p>
+        </div>
+      </a>
+      <a class="book-section" target="_blank" href="https://geo-smart.github.io/deepicedrainpipe">
+        <div class="book-section-desc">
+          <div class="label cc-light">Glaciology</div>
+          <p>Cloud optimization of point cloud data and ML identification of subglacial lakes</p>
+        </div>
+        <img class="book-icon" src="assets/books/glaciology.svg" alt="" />
       </a>
     </div>
 
@@ -86,47 +100,33 @@
     <div>
       <div class="label cc-light">Coming Soon</div>
       <h2 class="heading">Future Books</h2>
-      <a class="book-section disabled" target="_blank" href="https://geo-smart.github.io/deepicedrainpipe">
-        <img class="book-icon" src="assets/books/glaciology.svg" alt="" />
-        <div class="book-section-desc">
-          <div class="label cc-light">Glaciology</div>
-          <p>Mapping and monitoring deep subglacial water activity in Antarctica</p>
-        </div>
-      </a>
-      <a class="book-section disabled" target="_blank" href="https://github.com/whitelightning450/GeoSmart_ML_Tutorial">
-        <div class="book-section-desc">
-          <div class="label cc-light">Snow Hydrology</div>
-          <p>Deep learning for large scale SWE estimation</p>
-        </div>
-        <img class="book-icon" src="assets/books/hydrology_1.svg" alt="" />
-      </a>
-      <a class="book-section disabled" target="_blank" href="https://github.com/GatorGlaciology/gstatsimbook">
-        <img class="book-icon" src="assets/books/seismology.svg" alt="" />
-        <div class="book-section-desc">
-          <div class="label cc-light">Geostatistics</div>
-          <p>Functions for interpolating and simulating geospatial phenomena</p>
-        </div>
-      </a>
-      <a class="book-section disabled" target="_blank" href="https://github.com/geo-smart/XAI_coastalLA">
-        <div class="book-section-desc">
-          <div class="label cc-light">Sedimentology</div>
-          <p>Interpretable AI for	wetland and coastal sedimentation analysisd</p>
-        </div>
-        <img class="book-icon" src="assets/books/wetlands.svg" alt="" />
-      </a>
-      <a class="book-section disabled" target="_blank" href="https://github.com/geo-smart/flood-risk-ml-tutorial">
-        <img class="book-icon" src="assets/books/hydrology_2.svg" alt="" />
-        <div class="book-section-desc">
-          <div class="label cc-light">Hydrology</div>
-          <p>Enhanced flood risk assessment with machine learning</p>
-        </div>
-      </a>
       <a class="book-section disabled" target="_blank" href="https://github.com/geo-smart/global_lstm_swe_modeling">
+        <img class="book-icon" src="assets/books/hydrology_4.svg" alt="" />
         <div class="book-section-desc">
           <div class="label cc-light">Snow Hydrology</div>
           <p>High resolution predictions of global snow using recurrent neural networks</p>
         </div>
-        <img class="book-icon" src="assets/books/hydrology_4.svg" alt="" />
+      </a>
+      <a class="book-section disabled" target="_blank" href="https://github.com/geo-smart/flood-risk-ml-tutorial">
+        <div class="book-section-desc">
+          <div class="label cc-light">Hydrology</div>
+          <p>Enhanced flood risk assessment with machine learning</p>
+        </div>
+        <img class="book-icon" src="assets/books/hydrology_2.svg" alt="" />
+      </a>
+      <a class="book-section disabled" target="_blank" href="https://github.com/geo-smart/XAI_coastalLA">
+        <img class="book-icon" src="assets/books/wetlands.svg" alt="" />
+        <div class="book-section-desc">
+          <div class="label cc-light">Sedimentology</div>
+          <p>Interpretable AI for wetland and coastal sedimentation analysisd</p>
+        </div>
+      </a>
+      <a class="book-section disabled" target="_blank" href="https://todoran.dev/elwah_dataset_realignment/">
+        <div class="book-section-desc">
+          <div class="label cc-light">Potamology</div>
+          <p>CV workflow for image realignment + cold water refuge mapping</p>
+        </div>
+        <img class="book-icon" src="assets/books/elwah.svg" alt="" />
       </a>
       <!-- <a class="book-section disabled" target="_blank" href="https://geo-smart.github.io/">
         <div class="book-section-desc">
@@ -138,6 +138,32 @@
     </div>
 
   </section>
+  <div class="home-content-wrap wf-section">
+    <div class="label cc-light">Resources</div>
+    <h2 class="heading">Contributing Content</h2>
+    <div class="rich-text w-richtext">
+      <p>
+        Tutorial content can be integrated into jupyterbooks in one of two ways: do it yourself (use the template book
+        and add your content) or by providing use your content (preferably in a github repo) and asking us integrate it.
+        The template book contains extensive instructions for project structure, best practices, as well as having CI/CD
+        deployment to Github Pages and Binder configuration already set up.
+      </p>
+    </div>
+    <a class="book-section" target="_blank" href="https://github.com/geo-smart/use_case_template">
+      <div class="book-section-desc">
+        <div class="label cc-light">Template Book</div>
+        <p>Resource for contributing to the geoscience machine learning library</p>
+      </div>
+      <img class="book-icon" src="assets/books/template_book.svg" alt="" />
+    </a>
+    <div class="rich-text w-richtext">
+      <p>
+        The goal is to provide executable code on some platform. The contributor can choose between Binder, Google
+        Colab, and Free AWS (for smaller cloud-based examples). If none of the above options work for you, please
+        contact us directly to discuss further.
+      </p>
+    </div>
+  </div>
   <!-- END MAIN PAGE CONTENT -->
 
   <!-- FOOTER -->
