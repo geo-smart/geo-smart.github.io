@@ -1977,6 +1977,7 @@ input.w-button {
 }
 /* END MENU */
 
+/* PAGE NAVIGATION */
 #page-navigation {
   position: fixed;
   left: 0;
@@ -2051,6 +2052,17 @@ that is, extra clickable area for accesibility purposes. */
 .page-nav-item.section-shown::after  {
   opacity: 1;
   transform: translateX(0);
+}
+/* END PAGE NAVIGATION */
+
+.animated-item {
+  transition: opacity 0.5s ease, transform 0.5s ease, filter 0.5s ease;
+}
+
+.pre-anim {
+  filter: blur(3px);
+  transform: translateY(25%);
+  opacity: 0;
 }
 
 .badge {

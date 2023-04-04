@@ -21,35 +21,35 @@
 
     // The scroll top button should work even without js enabled so it uses
     // an anchor, however that appends an ugly '#scroll-top' to the url so
-    // for users with js enabled, we do this:
+    // for users with JS enabled, we do this:
     const scroll_btn = document.getElementById('scroll-top-button');
     scroll_btn.addEventListener('click', (evt) => {
       window.scrollTo({ top: '0', behavior: 'smooth' });
       evt.preventDefault();
     });
 
-    // This observer will be run on all elements with the dynamic-item 
-    // class. This class sets their opacity and some other styles to the
-    // pre-animation state. Shown is the post-animation state. The animation
-    // only happens once, since entries the screen is not intersecting don't
-    // get their 'shown' class removed.
+    // DYNAMIC ELEMENTS
 
-    // let options = {
-    //   root: null,
-    //   rootMargin: '0px',
-    //   threshold: 0.4
-    // };
+    // We add the 'pre-anim' class in the javascript rather than the
+    // HTML since we want users without JS enabled to not see an empty page.
+    const animated_items = document.querySelectorAll('.animated-item');
+    animated_items.forEach((element) => element.classList.add('pre-anim'));
 
-    // const observer = new IntersectionObserver((entries) => {
-    //   entries.forEach((entry) => {
-    //     if (entry.isIntersecting) {
-    //       entry.target.classList.add('shown');
-    //     }
-    //   })
-    // }, options);
+    const options = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.3
+    };
 
-    // const dynamic_elements = document.querySelectorAll('.dynamic-item');
-    // dynamic_elements.forEach((element) => observer.observe(element));
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.remove('pre-anim');
+        }
+      })
+    }, options);
+
+    animated_items.forEach((element) => observer.observe(element));
   }
 
   /**
