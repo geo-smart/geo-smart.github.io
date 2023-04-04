@@ -4,6 +4,7 @@ html {
   -webkit-text-size-adjust: 100%;
   height: 100%;
   --primary-color: #557A42;
+  --light-color: #C6D3C0;
 }
 
 article,
@@ -226,6 +227,10 @@ figcaption {
   font-weight: 400;
   font-style: normal
 } */
+
+:focus-visible {
+  outline: 2px solid var(--primary-color);
+}
 
 ::selection {
   /*background: #85AD71;*/
@@ -1972,6 +1977,82 @@ input.w-button {
 }
 /* END MENU */
 
+#page-navigation {
+  position: fixed;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+}
+
+.page-nav-bar {
+  position: absolute;
+  height: calc(100% - 2em);
+  top: 1em;
+  width: 1px;
+  left: 1.5em;
+  background-color: var(--primary-color);
+}
+
+.page-nav-item {
+  position: relative;
+  height: 1em;
+  width: 1em;
+  border: 1px solid var(--primary-color);
+  border-radius: 0.5em;
+  background-color: white;
+  margin: 1em 1em;
+  transition: background-color 0.5s ease, transform 0.1s ease;
+  text-decoration: none;
+}
+
+.page-nav-item:hover {
+  background-color: var(--light-color);
+}
+
+.page-nav-item.section-shown {
+  background-color: var(--primary-color);
+}
+
+.page-nav-item:active {
+  transform: scale(0.9);
+}
+
+/* This element functions as hit slop for the button,
+that is, extra clickable area for accesibility purposes. */
+.page-nav-item::before {
+  content: "";
+  position: absolute;
+  height: 2em;
+  width: 2em;
+  border-radius: 2em;
+  transform: translate(-25%, -25%);
+}
+
+.page-nav-item::after {
+  content: var(--label);
+  position: absolute;
+  top: -50%;
+  left: calc(100% + 0.5em);
+  white-space: nowrap;
+  color: var(--primary-color);
+  opacity: 0;
+  transform: translateX(-0.5em);
+  transition: opacity 0.2s ease, transform 0.5s ease;
+  pointer-events: none;
+}
+
+.page-nav-item:hover::after  {
+  opacity: 0.75;
+  transform: translateX(0);
+}
+
+.page-nav-item.section-shown::after  {
+  opacity: 1;
+  transform: translateX(0);
+}
+
 .badge {
   display: inline;
 }
@@ -2134,6 +2215,10 @@ a:active {
 
   .navigation-items {
     background-color: #fff
+  }
+
+  #page-navigation {
+    display: none;
   }
 
   .rich-text {

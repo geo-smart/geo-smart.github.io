@@ -39,8 +39,9 @@
     </div>
   </div>
   <!-- END BANNER -->
+
   <!-- MAIN PAGE CONTENT -->
-  <div class="home-content-wrap wf-section">
+  <div class="home-content-wrap wf-section page-nav-section-marker" id="Use_Cases">
     <div class="label cc-light">Projects</div>
     <h2 class="heading">Self-contained Machine Learning Use Cases</h2>
     <div class="rich-text w-richtext">
@@ -60,8 +61,8 @@
       <img src="assets/curricula_badge.svg" class="clickable badge" />
     </div>
   </div>
-  <section class="home-content-wrap wf-section two-column">
 
+  <section class="home-content-wrap wf-section two-column page-nav-section-marker" id="Library_Collection">
     <!-- 1ST COLUMN -->
     <div>
       <div class="label cc-light">Materials</div>
@@ -136,17 +137,19 @@
         <img class="book-icon" src="assets/img/book_1.svg" alt="" />
       </a> -->
     </div>
-
   </section>
-  <div class="home-content-wrap wf-section">
+
+  <div class="home-content-wrap wf-section page-nav-section-marker" id="Contributing">
     <div class="label cc-light">Resources</div>
     <h2 class="heading">Contributing Content</h2>
     <div class="rich-text w-richtext">
       <p>
         Tutorial content can be integrated into jupyterbooks in one of two ways: do it yourself (use a template book
         and add your content) or by providing use your content (preferably in a github repo) and asking us integrate it.
-        The regular template book contains extensive instructions for project structure, best practices, as well as having CI/CD
-        deployment to Github Pages and Binder configuration already set up.
+        The barebones template contains the minimum amount of files for setting up an online jupyter notebook, including
+        the automated CI/CD deployment to Github Pages. The regular template book contains everything the barebones
+        template has as well as extensive instructions for getting started, setup for conda environments to promote 
+        reproducibility, and setup for building binder environments from via conda.
       </p>
     </div>
     <a class="book-section" target="_blank" href="https://github.com/geo-smart/use_case_template">
@@ -165,6 +168,7 @@
     </a>
     <div class="rich-text w-richtext">
       <p>
+        If you have any doubts about which to choose, pick the regular template book.
         The goal is to provide executable code on some platform. The contributor can choose between Binder, Google
         Colab, and Free AWS (for smaller cloud-based examples). If none of the above options work for you, please
         contact us directly to discuss further.
@@ -172,6 +176,12 @@
     </div>
   </div>
   <!-- END MAIN PAGE CONTENT -->
+
+  <!-- PAGE NAVIGATION -->
+  <div id="page-navigation" class="hidden">
+    <div class="page-nav-bar"></div>
+  </div>
+  <!-- ENG PAGE NAVIGATION -->
 
   <!-- FOOTER -->
   <div class="section">

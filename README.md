@@ -6,6 +6,18 @@ Site live at https://geo-smart.github.io/
 
 Inside the `post` folder, see `posts.js`. This file contains a `const` that is a list of javascript objects. In order to add a blog post, add a javascript object to this list containing the post's information. More detailed instructions can be found in the comment at the top of the `posts.js` file itself, including a template to copy and paste.
 
+## Adding & Modifying Page Navigation
+
+The page navigation side bar is built based on any elements with class `page-nav-section-marker` on the page. These should typically be the div or section containers as opposed to the headers. To add a section to the page navigation, give it the class `page-nav-section-marker` and an id representing the name except with underscores substituted for whitespace. For instance, if you want the node on the page navigation menu to read "Help Section" then the id should read "Help_Section". Once you have marked all sections with the appropriate class and given each an id, add the following html to the page just above the footer:
+
+```html
+<!-- PAGE NAVIGATION -->
+<div id="page-navigation" class="hidden">
+  <div class="page-nav-bar"></div>
+</div>
+<!-- ENG PAGE NAVIGATION -->
+```
+
 ## Development Instructions
 
 ### Running the Site Locally
