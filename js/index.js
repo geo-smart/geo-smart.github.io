@@ -10,7 +10,7 @@
   function init() {
     setNavbarHighlight(document.URL);
     constructPageNavigation();
-    // addAnimationObserver();
+    addAnimationObserver();
 
     const menu_btn = document.getElementById('menu-button');
     const menu = document.getElementById('w-nav-overlay-0');
@@ -95,7 +95,7 @@
 
       for (let i = 0; i < nav_markers.length; i++) {
         const href = '#' + nav_markers[i].id;
-        const label = '"' + nav_markers[i].id.replace('_', ' ') + '"';
+        const label = '"' + nav_markers[i].id.replace(/_/g, ' ') + '"';
 
         const nav_button = createNavButton(href, label);
         nav_container.appendChild(nav_button);

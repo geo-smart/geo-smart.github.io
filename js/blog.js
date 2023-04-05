@@ -36,7 +36,7 @@
   function toggleView() {
     document.getElementById('blog-items-list').classList.toggle('hidden');
     document.getElementById('blog-post').classList.toggle('hidden');
-    window.scroll(0,0);
+    window.scrollTo({ top: '0', behavior: 'smooth' });
   }
 
 })();

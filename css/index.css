@@ -244,6 +244,10 @@ figcaption {
   max-width: 1000px;
 }
 
+.interactive-satellite-container {
+  margin-bottom: 30px;
+}
+
 .satellite-description p::selection, .satellite strong::selection {
   background: rgba(26, 27, 31, 0.25);
 }
@@ -369,8 +373,7 @@ body {
 .w-button {
   display: inline-block;
   padding: 9px 15px;
-  background-color: #3898ec;
-  color: #fff;
+  color: var(--primary-color);
   border: 0;
   line-height: inherit;
   text-decoration: none;
@@ -619,7 +622,8 @@ textarea.w-select {
 /* END FILLING BUTTON */
 
 .button:active {
-  background-color: #454d43
+  color: white;
+  background-color: var(--primary-color)
 }
 
 .button.cc-jumbo-button {
@@ -667,6 +671,10 @@ textarea.w-select {
   background-color: hsla(0, 0%, 100%, .9)
 }
 /* END BUTTON */
+
+.title-group {
+  text-align: center;
+}
 
 .blog-heading {
   margin-bottom: 50px;
@@ -1274,7 +1282,7 @@ textarea.w-select {
 
 .labeled-container > .rich-text {
   width: unset !important;
-  padding: 2em 1em 2em 32px;
+  padding: 3em 1em 3em 32px;
   border: 1px solid #00000000;
   border-left: 1px solid #c7c7c7;
   transition: border 0.5s ease;
@@ -2062,8 +2070,13 @@ that is, extra clickable area for accesibility purposes. */
 .pre-anim {
   transition: none;
   filter: blur(3px);
-  transform: translateY(25%);
+  transform: translateY(25px);
   opacity: 0;
+}
+
+.pre-anim.simple-anim {
+  filter: none;
+  transform: scale(0.75);
 }
 
 .badge {

@@ -41,10 +41,12 @@
   <!-- END BANNER -->
   
   <!-- MAIN PAGE CONTENT -->
-  <div class="home-content-wrap">
-    <div class="label cc-light">Projects</div>
-    <h2 class="heading">Class Curriculum Development</h2>
-    <div class="rich-text w-richtext">
+  <div class="home-content-wrap page-nav-section-marker" id="Class_Curriculum">
+    <div class="title-group animated-item pre-anim">
+      <div class="label cc-light">Projects</div>
+      <h2 class="heading">Class Curriculum Development</h2>
+    </div>
+    <div class="rich-text w-richtext animated-item pre-anim">
       <p>
         We aim to develop educational materials that will contain an à-la-carte menu of lectures, tutorials, and a
         collection of research-style course projects. What little existing educational materials for machine learning in
@@ -58,52 +60,54 @@
         class curriculum content and end to end machine learning workflows intended for a more experienced audience. If
         you'd like to contribute to the GeoSMART library, find more information <a href="/getinvolved">here</a>.
       </p>
+    </div>
+    <div class="rich-text w-richtext animated-item pre-anim">
       <figure class="w-richtext-align-center w-richtext-figure-type-image">
         <img class="image rounded" src="assets/img/classroom.jpg" loading="lazy" alt="" />
       </figure>
     </div>
   </div>
-  <div class="home-content-wrap">
+  <div class="home-content-wrap page-nav-section-marker" id="Earth_Data_Science">
     <div class="books-container">
-      <div class="label cc-light">Materials</div>
-      <h2 class="heading">Curriculum Jupyter Books</h2>
+      <div class="title-group animated-item pre-anim">
+        <div class="label cc-light">Materials</div>
+        <h2 class="heading">Curriculum Jupyter Books</h2>
+      </div>
 
       <!-- FIRST BOOK -->
       <section>
-        <a class="book-section" target="_blank" href="https://geo-smart.github.io/curriculum-book/">
+        <a class="book-section animated-item pre-anim" target="_blank" href="https://geo-smart.github.io/curriculum-book/">
           <img class="book-icon" src="assets/books/curriculum_1.svg" alt="" />
           <div class="book-section-desc">
             <div class="label cc-light">University of Washington</div>
             <p>Data science for earth and planetary systems (ESS 490/590)</p>
           </div>
         </a>
-        <p>
+        <p class="animated-item pre-anim">
           This UW course serves as an introduction to data science for Earth and planetary systems. Class materials take
           the form of Jupyter Notebook tutorials with sample datasets, recorded lectures, links to Cloud computing
           resources and tutorials supported by the University of Washington eScience Institute. The GeoSMART classroom
           curriculum taught at the University of Washington consolidates these materials in a 10-12 week, four part
           multi-credit course covering:
         </p>
-        <ul role="list">
+        <ul class="animated-item pre-anim" role="list">
           <li>basics in software carpentry and access to cloud resources for 1-2 weeks</li>
           <li>introduction to ML tools for geosciences on small data sets for 3 weeks</li>
-          <li>development and deployment of these tools to larger datasets as part of a course projects for 6-10 weeks
-          </li>
-          <li>project reporting with presentations, best practices for sharing open-source software, and tutorial
-            development</li>
+          <li>development and deployment of these tools to larger datasets as part of a course projects for 6-10 weeks</li>
+          <li>project reporting with presentations, best practices for sharing open-source software, and tutorial development</li>
         </ul>
       </section>
 
       <!-- SECOND BOOK -->
-      <section>
-        <a class="book-section" target="_blank" href="https://arbennett.github.io/python_for_water_weather_climate/">
+      <section class="page-nav-section-marker" id="ML_for_Climate">
+        <a class="book-section animated-item pre-anim" target="_blank" href="https://arbennett.github.io/python_for_water_weather_climate/">
           <img class="book-icon" src="assets/books/curriculum_2.svg" alt="" />
           <div class="book-section-desc">
             <div class="label cc-light">University of Arizona</div>
             <p>Python for research in water, weather, and climate (HWRS 401/501)</p>
           </div>
         </a>
-        <p>
+        <p class="animated-item pre-anim">
           Data handling is a significant part of a machine learning workflow. This course is intended to introduce the
           basics of the modern data science stack for water, weather, and climate research, and can serve as a resource
           for learning data preparation for machine learning workflows. This course is based on the content originally
@@ -113,26 +117,33 @@
       </section>
 
       <!-- THIRD BOOK -->
-      <section>
-        <a class="book-section" target="_blank" href="https://uwgda-jupyterbook.readthedocs.io/en/latest/">
+      <section class="page-nav-section-marker" id="Geospatial_Analysis">
+        <a class="book-section animated-item pre-anim" target="_blank" href="https://uwgda-jupyterbook.readthedocs.io/en/latest/">
           <img class="book-icon" src="assets/books/curriculum_3.svg" alt="" />
           <div class="book-section-desc">
             <div class="label cc-light">University of Washington</div>
             <p>Geospatial Data Analysis with Python (CEE467/CEWA567)</p>
           </div>
         </a>
-        <p>
+        <p class="animated-item pre-anim">
           Machine learning has been successfully used in remote sensing and geospatial applications. The Geospatial Data
           Analysis with Python class taught at the University of Washington explores geospatial data processing,
           analysis, interpretation, and visualization techniques using Python and open-source tools/libraries. The class
           content covers fundamental concepts, real-world data engineering problems, and data science applications using
           a variety of geospatial and remote sensing datasets that can inform data preparation for machine learning
-          workflows.
+          workflows. Highlights:
         </p>
+        <ul class="animated-item pre-anim" role="list">
+          <li>aspects of both data engineering and data science, with exploratory data analysis approach</li>
+          <li>learn how to programatically answer real-world remote sensing and GIS questions (and how to ask new questions)</li>
+          <li>query and process geospatial data on-the-fly, without manual downloads</li>
+          <li>limited emphasis on machine learning, but some examples scattered throughout labs (e.g., K-means clustering)</li>
+          <li>examples focus on Washington state and Western U.S., with applications in snow hydrology and other CEE disciplines</li>
+        </ul>
       </section>
 
       <!-- FUTURE BOOK -->
-      <a class="book-section disabled" target="_blank" href="https://geo-smart.github.io/">
+      <a class="book-section disabled animated-item pre-anim" target="_blank" href="https://geo-smart.github.io/">
         <img class="book-icon" src="assets/books/curriculum_4.svg" alt="" />
         <div class="book-section-desc">
           <div class="label cc-light">Coming Soon</div>
@@ -142,6 +153,12 @@
     </div>
   </div>
   <!-- END MAIN PAGE CONTENT -->
+
+  <!-- PAGE NAVIGATION -->
+  <div id="page-navigation" class="hidden">
+    <div class="page-nav-bar"></div>
+  </div>
+  <!-- ENG PAGE NAVIGATION -->
 
   <!-- FOOTER -->
   <div class="section">
