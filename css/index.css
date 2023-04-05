@@ -2063,7 +2063,7 @@ that is, extra clickable area for accesibility purposes. */
 }
 /* END PAGE NAVIGATION */
 
-.animated-item {
+/* .animated-item {
   transition: opacity 0.5s ease, transform 0.5s ease, filter 0.5s ease;
 }
 
@@ -2077,7 +2077,7 @@ that is, extra clickable area for accesibility purposes. */
 .pre-anim.simple-anim {
   filter: none;
   transform: scale(0.75);
-}
+} */
 
 .badge {
   display: inline;

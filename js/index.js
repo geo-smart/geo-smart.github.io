@@ -10,7 +10,7 @@
   function init() {
     setNavbarHighlight(document.URL);
     constructPageNavigation();
-    addAnimationObserver();
+    // addAnimationObserver();
 
     const menu_btn = document.getElementById('menu-button');
     const menu = document.getElementById('w-nav-overlay-0');
