@@ -2060,6 +2060,7 @@ that is, extra clickable area for accesibility purposes. */
 }
 
 .pre-anim {
+  transition: none;
   filter: blur(3px);
   transform: translateY(25%);
   opacity: 0;

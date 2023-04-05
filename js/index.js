@@ -10,6 +10,7 @@
   function init() {
     setNavbarHighlight(document.URL);
     constructPageNavigation();
+    // addAnimationObserver();
 
     const menu_btn = document.getElementById('menu-button');
     const menu = document.getElementById('w-nav-overlay-0');
@@ -27,29 +28,6 @@
       window.scrollTo({ top: '0', behavior: 'smooth' });
       evt.preventDefault();
     });
-
-    // DYNAMIC ELEMENTS
-
-    // We add the 'pre-anim' class in the javascript rather than the
-    // HTML since we want users without JS enabled to not see an empty page.
-    const animated_items = document.querySelectorAll('.animated-item');
-    animated_items.forEach((element) => element.classList.add('pre-anim'));
-
-    const options = {
-      root: null,
-      rootMargin: '0px',
-      threshold: 0.3
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.remove('pre-anim');
-        }
-      })
-    }, options);
-
-    animated_items.forEach((element) => observer.observe(element));
   }
 
   /**
@@ -161,6 +139,14 @@
     }
   }
 
+  /**
+   * Helper method to constructPageNavigation, creates a page navigation
+   * button/node with the given href and label.
+   * 
+   * @param {string} href The id of the target element to scroll to
+   * @param {string} label Displayed next to the node when the section is
+   * active or when the button is hovered 
+   */
   function createNavButton(href, label) {
     const nav_button = document.createElement('a');
     nav_button.classList.add('page-nav-item');
@@ -168,6 +154,38 @@
     nav_button.style.setProperty('--label', label);
 
     return nav_button;
+  }
+
+  /**
+   * Creates an intersection observer which triggers animations for
+   * some elements when they scroll onto the page by modifying their class.
+   */
+  function addAnimationObserver() {
+    const animated_items = document.querySelectorAll('.animated-item');
+    
+    // We could add the 'pre-anim' class in the javascript rather than the HTML 
+    // since we want users without JS enabled to not see an empty page. However, 
+    // at the moment the header is done via JS so the site is broken anyway for 
+    // non-JS users. If we decide to support non-JS users, uncomment this line and
+    // remove class 'pre-anim' from any elements that have it in the HTML.
+    
+    // animated_items.forEach((element) => element.classList.add('pre-anim'));
+
+    const options = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.3
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.remove('pre-anim');
+        }
+      })
+    }, options);
+
+    animated_items.forEach((element) => observer.observe(element));
   }
 
 })();
