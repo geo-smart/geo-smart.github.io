@@ -10,7 +10,7 @@
   function init() {
     setNavbarHighlight(document.URL);
     constructPageNavigation();
-    // addAnimationObserver();
+    addAnimationObserver();
 
     const menu_btn = document.getElementById('menu-button');
     const menu = document.getElementById('w-nav-overlay-0');
@@ -121,7 +121,7 @@
 
       // This function ensures that the proper navigation button is shown as active
       // based on the section the page is currently scrolled to.
-      window.addEventListener("scroll", function () {
+      function handleNavigationHighlight() {
         let furthest = 0;
         for (let i = 1; i < nav_buttons.length; i++) {
           const marker = nav_markers[i - 1];
@@ -135,7 +135,10 @@
 
         nav_buttons[0].classList.remove('section-shown');
         nav_buttons[furthest].classList.add('section-shown');
-      });
+      }
+
+      window.addEventListener("scroll", handleNavigationHighlight);
+      handleNavigationHighlight(); // Run this once in case we reload partway down the page.
     }
   }
 
@@ -156,36 +159,60 @@
     return nav_button;
   }
 
+  // /**
+  //  * Creates an intersection observer which triggers animations for
+  //  * some elements when they scroll onto the page by modifying their class.
+  //  */
+  // function addAnimationObserverOld() {
+  //   const animated_items = document.querySelectorAll('.animated-item');
+
+  //   // We could add the 'pre-anim' class in the javascript rather than the HTML 
+  //   // since we want users without JS enabled to not see an empty page. However, 
+  //   // at the moment the header is done via JS so the site is broken anyway for 
+  //   // non-JS users. If we decide to support non-JS users, uncomment this line and
+  //   // remove class 'pre-anim' from any elements that have it in the HTML.
+
+  //   // animated_items.forEach((element) => element.classList.add('pre-anim'));
+
+  //   const options = {
+  //     root: null,
+  //     rootMargin: '0px',
+  //     threshold: 0.3
+  //   };
+
+  //   const observer = new IntersectionObserver((entries) => {
+  //     entries.forEach((entry) => {
+  //       if (entry.isIntersecting) {
+  //         entry.target.classList.remove('pre-anim');
+  //       }
+  //     })
+  //   }, options);
+
+  //   animated_items.forEach((element) => observer.observe(element));
+  // }
+
   /**
    * Creates an intersection observer which triggers animations for
    * some elements when they scroll onto the page by modifying their class.
    */
   function addAnimationObserver() {
-    const animated_items = document.querySelectorAll('.animated-item');
-    
-    // We could add the 'pre-anim' class in the javascript rather than the HTML 
-    // since we want users without JS enabled to not see an empty page. However, 
-    // at the moment the header is done via JS so the site is broken anyway for 
-    // non-JS users. If we decide to support non-JS users, uncomment this line and
-    // remove class 'pre-anim' from any elements that have it in the HTML.
-    
-    // animated_items.forEach((element) => element.classList.add('pre-anim'));
+    const pop_anim_items = document.querySelectorAll('.pop-anim');
 
     const options = {
       root: null,
       rootMargin: '0px',
-      threshold: 0.3
+      threshold: 0.45
     };
 
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          entry.target.classList.remove('pre-anim');
+          entry.target.classList.add('active');
         }
       })
     }, options);
 
-    animated_items.forEach((element) => observer.observe(element));
+    pop_anim_items.forEach((element) => observer.observe(element));
   }
 
 })();
