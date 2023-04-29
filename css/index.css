@@ -1178,6 +1178,7 @@ textarea.w-select {
   text-transform: uppercase
 }
 
+.navigation-item:focus-within,
 .navigation-item:hover {
   /* opacity: .9 */
   opacity: 1
@@ -1469,15 +1470,14 @@ textarea.w-select {
   width: 100%;
   height: auto;
   margin-bottom: 40px;
-  background-color: #f4f4f4;
-  border-radius: 5px;
+  border-radius: 50%;
   overflow: hidden;
   transition: border-radius 0.2s ease, transform 0.2s ease;
 }
 
 .team-pic:hover {
-  border-radius: 10px;
-  transform: scale(0.99);
+  border-radius: 25%;
+  transform: scale(0.95);
 }
 
 .team-member-title-wrap {
@@ -1918,6 +1918,7 @@ input.w-button {
   border-radius: 5px;
 }
 
+.dropdown:focus-within > .dropdown-body,
 .dropdown:hover > .dropdown-body {
   opacity: 1;
   top: 100%;
@@ -2050,53 +2051,23 @@ that is, extra clickable area for accesibility purposes. */
   transform: translateX(-0.5em);
   transition: opacity 0.2s ease, transform 0.5s ease;
   pointer-events: none;
+  border-radius: 0.25em;
+  padding-right: 0.5em;
+  background-color: #fffc;
 }
 
 .page-nav-item:hover::after  {
   opacity: 0.75;
   transform: translateX(0);
+  background-color: #fff;
 }
 
 .page-nav-item.section-shown::after  {
   opacity: 1;
   transform: translateX(0);
+  background-color: #fffc;
 }
 /* END PAGE NAVIGATION */
-
-/* .animated-item {
-  transition: opacity 0.5s ease, transform 0.5s ease, filter 0.5s ease;
-} */
-
-/* .pre-anim {
-  transition: none;
-  filter: blur(3px);
-  transform: translateY(25px);
-  opacity: 0;
-} */
-
-/* .pre-anim.simple-anim {
-  filter: none;
-  transform: scale(0.75);
-} */
-
-.pop-anim {
-  opacity: 0;
-}
-
-.pop-anim.active {
-  animation: pop-in 0.75s cubic-bezier(0.175, 0.885, 0.35, 1.275) forwards;
-  animation-delay: calc(var(--delay) * 1ms);
-}
-
-@keyframes pop-in {
-  0% {
-    opacity: 0;
-    transform: scale(0.5);
-  }
-  100% {
-    opacity: 1;
-  }
-}
 
 .badge {
   display: inline;
@@ -2189,6 +2160,47 @@ a:active {
   color: #434d44
 }
 
+/* ========== */
+/* ANIMATIONS */
+.animated-item {
+  transition: all 0.5s ease;
+}
+
+.pre-anim {
+  transition: none;
+}
+
+.simple-anim.pre-anim {
+  transform: scale(0.75);
+  opacity: 0;
+}
+
+.blur-in-anim.pre-anim {
+  filter: blur(3px);
+  transform: translateY(25px);
+  opacity: 0;
+}
+
+.pop-anim.pre-anim {
+  opacity: 0;
+}
+
+.pop-anim:not(.pre-anim) {
+  opacity: 0;
+  animation: pop-in 0.75s cubic-bezier(0.175, 0.885, 0.35, 1.275) forwards;
+  animation-delay: calc(var(--delay) * 1ms);
+}
+
+@keyframes pop-in {
+  0% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
 /* ===== BEGIN SCREEN SIZE SPECIFIC STYLES ===== */
 /* Styles cascade down, with styles for desktop  */
 /* applying to all sizes, tablet styles applying */
@@ -2262,8 +2274,8 @@ a:active {
     background-color: #fff
   }
 
-  #page-navigation {
-    display: none;
+  .page-nav-item.section-shown::after {
+    opacity: 0;
   }
 
   .rich-text {
@@ -2435,6 +2447,10 @@ a:active {
     grid-column-end: 2;
     -ms-grid-row-span: 1;
     grid-row-end: 2
+  }
+
+  #page-navigation {
+    display: none;
   }
 
   .books-container {
