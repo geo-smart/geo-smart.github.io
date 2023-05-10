@@ -133,6 +133,12 @@
           }
         }
 
+        // If the last section is too short to ever be highlighted but we have
+        // scrolled to the bottom of the page, just override and mark it. The
+        // -5 is a hack, for some reason these numbers are just slightly off?
+        if ((window.innerHeight + window.scrollY) >= document.body.scrollHeight - 5) {
+          furthest = nav_buttons.length - 1;
+        }
         nav_buttons[0].classList.remove('section-shown');
         nav_buttons[furthest].classList.add('section-shown');
       }

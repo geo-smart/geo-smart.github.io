@@ -2026,8 +2026,10 @@ input.w-button {
 #page-navigation {
   position: fixed;
   left: 0;
-  top: 50%;
-  transform: translateY(-50%);
+  /* Sometimes, halfway down is less than the size of the banner
+  and header navigation. These are at least 240px always. */
+  top: max(40%, 240px);
+  /* transform: translateY(-50%); */
   display: flex;
   flex-direction: column;
 }
