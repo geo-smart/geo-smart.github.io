@@ -54,8 +54,7 @@
 
         if (tab === page) {
           buttons[i].classList.add('w--current');
-        } else {
-          buttons[i].classList.remove('w--current');
+          buttons[i].setAttribute("aria-current", "page");
         }
       }
     }

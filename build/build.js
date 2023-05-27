@@ -42,7 +42,7 @@ async function main() {
   const files = [
     'js/blog.js', 'js/index.js', 'js/header.js', 'js/contact.js',
     'css/index.css', 'post/posts.js',
-    'news.html', 'getinvolved.html', 'index.html', 'motivation.html',
+    'news.html', 'getinvolved.html', 'index.html', 'motivation.html', 'book.html',
     'team.html', 'curriculum.html', 'codeweek.html', 'tools.html', 'usecases.html',
     'google6676251793b4eed2.html',
   ];

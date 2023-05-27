@@ -2,6 +2,35 @@ from http.server import HTTPServer, SimpleHTTPRequestHandler
 import sys
 import os
 
+directory = ""
+watch = False
+geosmart = r"""
+   _____            _____ __  __          _____ _______ 
+  / ____|          / ____|  \/  |   /\   |  __ \__   __|
+ | |  __  ___  ___| (___ | \  / |  /  \  | |__) | | |   
+ | | |_ |/ _ \/ _ \\___ \| |\/| | / /\ \ |  _  /  | |   
+ | |__| |  __/ (_) |___) | |  | |/ ____ \| | \ \  | |   
+  \_____|\___|\___/_____/|_|  |_/_/    \_\_|  \_\ |_|   
+"""
+
+# Found this funky little function on stack overflow:
+# https://stackoverflow.com/questions/40419276/python-how-to-print-text-to-console-as-hyperlink
+def link(uri, label=None):
+    if label is None: 
+        label = uri
+    parameters = ''
+
+    # OSC 8 ; params ; URI ST <name> OSC 8 ;; ST 
+    escape_mask = '\033]8;{};{}\033\\{}\033]8;;\033\\'
+
+    return escape_mask.format(parameters, uri, label)
+
+def prepare(message: str):
+  os.system('cls' if os.name=='nt' else 'clear')
+  print(geosmart)
+  print(message)
+  print("Server ready and waiting at", link("http://localhost:8000/"))
+
 def run(server_class=HTTPServer, handler_class=SimpleHTTPRequestHandler):
   server_address = ("", 8000)
   httpd = server_class(server_address, handler_class)
@@ -44,13 +73,11 @@ class FileWatcher(object):
     else:
       return False # file unchanged
 
+# ============ #
 # *** MAIN *** #
 
-directory = ""
-watch = False
-
 if len(sys.argv) == 1:
-  print("Serving from root directory...")
+  prepare("Serving from root directory...")
   run(HTTPServer, NoExtensionHandler)
 
 elif len(sys.argv) == 2:
@@ -59,14 +86,14 @@ elif len(sys.argv) == 2:
 
   if sys.argv[1] in dir_flags:
     directory = "/docs"
-    print(f"Recieved '{sys.argv[1]}' flag, serving from /docs/ directory...")
+    prepare(f"Recieved '{sys.argv[1]}' flag, serving from /docs/ directory...")
     run(HTTPServer, NoExtensionHandler)
 
   elif sys.argv[1] in head_flags:
     watch = True
     watcher = FileWatcher("header.html")
     print("Serving from root directory...")
-    print(f"Recieved '{sys.argv[1]}' flag, watching header.html for changes...")
+    prepare(f"Recieved '{sys.argv[1]}' flag, watching header.html for changes...")
     run(HTTPServer, NoExtensionHandler)
   
   else:
