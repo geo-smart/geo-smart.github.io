@@ -1,7 +1,8 @@
 'use strict';
-(function() {
-  
+(function () {
+
   window.addEventListener('load', init);
+  var scrollDist = 0;
 
   function init() {
     addAccessibleClickListener(document.getElementById('blog-post-return'), toggleView);
@@ -21,7 +22,7 @@
       post.querySelector('.blog-item-title').innerHTML = posts[i].title;
       post.querySelector('.blog-item-date').innerHTML = posts[i].date;
       post.querySelector('.blog-item-summary').innerHTML = (posts[i].blurb) ? posts[i].blurb : posts[i].body;
-      
+
       container.appendChild(post);
     }
   }
@@ -36,16 +37,32 @@
   }
 
   function toggleView() {
+    if (scrollDist) {
+      scrollToWithDelay(scrollDist, 'smooth');
+      scrollDist = 0;
+    } else {
+      scrollDist = window.scrollY;
+      scrollToWithDelay(0);
+    }
+
     document.getElementById('blog-items-list').classList.toggle('hidden');
     document.getElementById('blog-post').classList.toggle('hidden');
-    window.scrollTo({ top: '0', behavior: 'smooth' });
+  }
+
+  // In firefox there is a bug and scrolling immediately after modifying
+  // the dom (in a way that affects document height) won't work.
+  function scrollToWithDelay(scrollY, scrollBehavior) {
+    scrollBehavior = scrollBehavior || 'instant';
+    setTimeout(() => {
+      window.scrollTo({ top: scrollY, behavior: scrollBehavior });
+    }, 1);
   }
 
   // Adds the given function as both a click event listener
   // and a keydown event listener for accessiblity reasons.
   function addAccessibleClickListener(elem, func) {
     elem.addEventListener('click', func);
-    elem.addEventListener('keydown', function(event) {
+    elem.addEventListener('keydown', function (event) {
       if (event.key === 'Enter') func(event);
     });
   }

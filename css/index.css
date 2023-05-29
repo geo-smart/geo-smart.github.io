@@ -692,6 +692,11 @@ textarea.w-select {
 .blog-list-wrap {
   /* margin-top: 60px; */
   margin-bottom: 100px;
+  transition: opacity 0.5s ease;
+}
+
+#blog-post {
+  transition: opacity 0.5s ease;
 }
 
 .blog-summary-wrap {
