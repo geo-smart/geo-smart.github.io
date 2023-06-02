@@ -29,7 +29,7 @@ async function main() {
     dest = '../docs/';
   }
 
-  const dirs = ['js', 'css', 'post'];
+  const dirs = ['js', 'css'];
 
   for (let i = 0; i < dirs.length; i++) {
     console.log(`\n(setup) creating empty ${dest + dirs[i]} folder`)
@@ -40,8 +40,8 @@ async function main() {
   }
 
   const files = [
+    'css/index.css',
     'js/blog.js', 'js/index.js', 'js/header.js', 'js/contact.js',
-    'css/index.css', 'post/posts.js',
     'news.html', 'getinvolved.html', 'index.html', 'motivation.html', 'book.html',
     'team.html', 'curriculum.html', 'codeweek.html', 'tools.html', 'usecases.html',
     'google6676251793b4eed2.html',

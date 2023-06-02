@@ -27,8 +27,7 @@
       n.className += t + "js", ("ontouchstart" in o || o.DocumentTouch && c instanceof DocumentTouch) && (n.className += t + "touch")
     }(window, document);
   </script>
-  <script type="text/javascript" src="js/blog.js"></script>
-  <script type="text/javascript" src="post/posts.js"></script>
+  <script src="js/index.js" type="text/javascript"></script>
 </head>
 
 <body>
@@ -48,15 +47,28 @@
       <div class="w-dyn-list">
         <div role="list" class="blog-list-wrap w-dyn-items">
 
-          <section id="blog-post-item" role="listitem" class="blog-item w-dyn-item hidden animated-item pre-anim blur-in-anim">
+          <section id="blog-post-item" role="listitem"
+            class="blog-item w-dyn-item hidden animated-item pre-anim blur-in-anim">
             <div class="blog-summary-wrap" tabindex="0">
-              <div class="blog-item-title blog-heading-link clickable">Template Blog Post</div>
-              <div class="blog-item-summary paragraph-light">
+              <h2 class="blog-item-title blog-heading-link clickable">Template Blog Post</h2>
+              <p class="blog-item-summary paragraph-light">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sit amet lectus tincidunt, accumsan mi a,
                 euismod ligula. Maecenas malesuada interdum libero id tincidunt. Pellentesque elementum purus at
                 elementum dignissim.
-              </div>
+              </p>
               <div class="blog-item-date label cc-blog-date">Month Day, Year</div>
+            </div>
+          </section>
+
+          <section id="blog-loader" role="listitem" class="blog-item w-dyn-item">
+            <div class="blog-summary-wrap" tabindex="0">
+              <h2 class="blog-item-title blog-heading-link loading-text">Template Blog Post</h2>
+              <p class="blog-item-summary paragraph-light loading-text">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sit amet lectus tincidunt, accumsan mi a,
+                euismod ligula. Maecenas malesuada interdum libero id tincidunt. Pellentesque elementum purus at
+                elementum dignissim.
+              </p>
+              <div class="blog-item-date label cc-blog-date loading-text">Month Day, Year</div>
             </div>
           </section>
 
@@ -113,7 +125,44 @@
   </div>
   <!-- END FOOTER -->
 
-  <script src="js/index.js" type="text/javascript"></script>
+  <!-- BLOG POSTS -->
+  <!-- Insert this script at the bottom of the HTML, but before you use any Firebase services -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-app.js"
+
+    // If you enabled Analytics in your project, add the Firebase SDK for Google Analytics
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-analytics.js"
+
+    // Add Firebase products that you want to use
+    import { getAuth } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-auth.js"
+    import { getFirestore } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-firestore.js"
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyDtv_mjLaZQImF4KoKy6s-moer6TtOVJiI",
+      authDomain: "geosmart-uw.firebaseapp.com",
+      projectId: "geosmart-uw",
+      storageBucket: "geosmart-uw.appspot.com",
+      messagingSenderId: "244030791746",
+      appId: "1:244030791746:web:f6c34ef4b145ab7d1a8ddb",
+      measurementId: "G-9L9TCCS7HD"
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+
+    // Initialize Cloud Firestore and get a reference to the service
+    import { collection, getDocs } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-firestore.js";
+
+    const db = getFirestore(app);
+    const querySnapshot = await getDocs(collection(db, "posts"));
+
+    const loadEvent = new Event("posts-loaded");
+    loadEvent.posts = querySnapshot;
+    window.dispatchEvent(loadEvent);
+  </script>
+  <script type="text/javascript" src="js/blog.js"></script>
+  <!-- END BLOG POSTS -->
 </body>
 
 </html>

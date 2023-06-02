@@ -416,7 +416,7 @@ ul {
 }
 
 .blog-heading-link {
-  margin-bottom: 10px;
+  margin: 0 0 10px;
   font-size: 30px;
   line-height: 46px;
   font-weight: 400;
@@ -430,6 +430,38 @@ ul {
 
 .blog-heading-link:active {
   opacity: .7
+}
+
+#blog-loader {
+  pointer-events: none;
+}
+
+.loading-text {
+  user-select: none;
+  background: linear-gradient(90deg, rgba(194, 194, 194, 1) 35%, rgba(228, 228, 228, 1) 45%, rgba(236, 236, 236, 1) 50%, rgba(228, 228, 228, 1) 55%, rgba(194, 194, 194, 1) 65%);
+  background-size: 200% 100%;
+  background-position: 100%;
+  animation: loading-text-glint 4s infinite cubic-bezier(.46, .03, .52, .96);
+  color: transparent
+}
+
+.loading-text.blog-item-title {
+  width: 40%;
+  white-space: nowrap
+}
+
+.loading-text.blog-item-date {
+  width: 30%
+}
+
+@keyframes loading-text-glint {
+  0% {
+    background-position: 100%;
+  }
+
+  50% {
+    background-position: 0%;
+  }
 }
 
 fieldset {
@@ -1499,7 +1531,7 @@ textarea.w-select {
   outline: 1px solid #dbdbdb
 }
 
-.pub-book-section > p.info-text {
+.pub-book-section>p.info-text {
   margin-left: 2em
 }
 
@@ -2760,7 +2792,7 @@ a:active {
     font-size: 14px
   }
 
-  .pub-book-section > p.info-text {
+  .pub-book-section>p.info-text {
     font-size: 14px
   }
 
