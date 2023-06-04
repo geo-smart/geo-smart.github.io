@@ -27,7 +27,6 @@
       n.className += t + "js", ("ontouchstart" in o || o.DocumentTouch && c instanceof DocumentTouch) && (n.className += t + "touch")
     }(window, document);
   </script>
-  <script src="js/index.js" type="text/javascript"></script>
 </head>
 
 <body>
@@ -111,12 +110,16 @@
   <div class="section">
     <div class="divider"></div>
     <div class="container footer">
-      <div class="footer-wrap">
-        <a href="https://stefantodoran.github.io/" target="_blank" class="webflow-link w-inline-block">
+      <div class="footer-wrap news-footer-wrap">
+        <a href="https://stefantodoran.github.io/" target="_blank" class="tiny-width-fix webflow-link w-inline-block">
           <img src="assets/img/design.png" height="17" alt="" class="webflow-logo-tiny" />
           <div class="paragraph-tiny">Website Design</div>
         </a>
-        <a href="#scroll-top" class="webflow-link w-inline-block" id="scroll-top-button">
+        <a href="#refresh" class="webflow-link w-inline-block tiny-width-fix">
+          <img src="assets/img/refresh.png" height="15" alt="" class="webflow-logo-tiny" />
+          <div class="paragraph-tiny">Refresh Feed</div>
+        </a>
+        <a href="#scroll-top" class="webflow-link w-inline-block" id="scroll-top-button" title="Scroll to top">
           <div class="paragraph-tiny">© GeoSMART</div>
           <img src="assets/img/tiny_geosmart.png" width="15" alt="" class="webflow-logo-tiny" />
         </a>
@@ -125,44 +128,8 @@
   </div>
   <!-- END FOOTER -->
 
-  <!-- BLOG POSTS -->
-  <!-- Insert this script at the bottom of the HTML, but before you use any Firebase services -->
-  <script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-app.js"
-
-    // If you enabled Analytics in your project, add the Firebase SDK for Google Analytics
-    import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-analytics.js"
-
-    // Add Firebase products that you want to use
-    import { getAuth } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-auth.js"
-    import { getFirestore } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-firestore.js"
-
-    const firebaseConfig = {
-      apiKey: "AIzaSyDtv_mjLaZQImF4KoKy6s-moer6TtOVJiI",
-      authDomain: "geosmart-uw.firebaseapp.com",
-      projectId: "geosmart-uw",
-      storageBucket: "geosmart-uw.appspot.com",
-      messagingSenderId: "244030791746",
-      appId: "1:244030791746:web:f6c34ef4b145ab7d1a8ddb",
-      measurementId: "G-9L9TCCS7HD"
-    };
-
-    // Initialize Firebase
-    const app = initializeApp(firebaseConfig);
-    const analytics = getAnalytics(app);
-
-    // Initialize Cloud Firestore and get a reference to the service
-    import { collection, getDocs } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-firestore.js";
-
-    const db = getFirestore(app);
-    const querySnapshot = await getDocs(collection(db, "posts"));
-
-    const loadEvent = new Event("posts-loaded");
-    loadEvent.posts = querySnapshot;
-    window.dispatchEvent(loadEvent);
-  </script>
-  <script type="text/javascript" src="js/blog.js"></script>
-  <!-- END BLOG POSTS -->
+  <script src="js/index.js" type="text/javascript"></script>
+  <script type="module" src="js/blog.js"></script>
 </body>
 
 </html>

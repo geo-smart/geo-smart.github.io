@@ -4,7 +4,7 @@ Site live at https://geo-smart.github.io/
 
 ## Adding Blog Posts
 
-Inside the `post` folder, see `posts.js`. This file contains a `const` that is a list of javascript objects. In order to add a blog post, add a javascript object to this list containing the post's information. More detailed instructions can be found in the comment at the top of the `posts.js` file itself, including a template to copy and paste.
+To add blog posts, please refer to the site dashboard, found [here](https://github.com/geo-smart/site-dashboard).
 
 ## Adding & Modifying Page Navigation
 

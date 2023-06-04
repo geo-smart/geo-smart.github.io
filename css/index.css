@@ -995,6 +995,10 @@ textarea.w-select {
   align-items: center
 }
 
+.news-footer-wrap {
+  width: 27em;
+}
+
 .get-in-touch-form {
   display: -webkit-box;
   display: -webkit-flex;
@@ -2777,6 +2781,20 @@ a:active {
   .contact-form-grid,
   .status-message.cc-no-data {
     width: 100%
+  }
+
+  .news-footer-wrap {
+    flex-direction: column-reverse;
+    padding-top: 50px;
+    padding-bottom: 70px;
+  }
+
+  .news-footer-wrap .webflow-link {
+    margin-bottom: 1.5em;
+  }
+  .news-footer-wrap .webflow-link.tiny-width-fix {
+    display: flex;
+    flex-direction: row-reverse;
   }
 
   .heading-jumbo {
