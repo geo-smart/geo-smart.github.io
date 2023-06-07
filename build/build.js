@@ -29,11 +29,13 @@ async function main() {
     dest = '../docs/';
   }
 
+  console.log(`(setup) clearing ${dest} folder and contents`);
+  fse.rmSync(dest, { recursive: true, force: true });
+  fse.mkdirSync(dest);
+  
   const dirs = ['js', 'css'];
-
   for (let i = 0; i < dirs.length; i++) {
     console.log(`\n(setup) creating empty ${dest + dirs[i]} folder`)
-    fse.rmSync(dest + dirs[i], { recursive: true, force: true }); // clear folders
     if (!fse.existsSync(dest + dirs[i])){
       fse.mkdirSync(dest + dirs[i]);
     }
