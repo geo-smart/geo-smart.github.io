@@ -8,7 +8,10 @@ import { collection, getDocs } from "https://www.gstatic.com/firebasejs/9.22.1/f
   // GLOBAL VARIABLES
   window.addEventListener("load", init);
   var blogPosts = null;
-  var scrollDist = 0;
+  var scrollDist = undefined;
+  // When on the blog list view, scrollDist should be undefined
+  // and when on the blog post view, scrollDist should be a number.
+  // Otherwise, the autoscroll feature will break.
 
   // PRE INIT SETUP
   const firebaseConfig = {
@@ -154,9 +157,9 @@ import { collection, getDocs } from "https://www.gstatic.com/firebasejs/9.22.1/f
   }
 
   function toggleView() {
-    if (scrollDist) {
+    if (scrollDist !== undefined) {
       scrollToWithDelay(scrollDist, "smooth");
-      scrollDist = 0;
+      scrollDist = undefined;
     } else {
       scrollDist = window.scrollY;
       scrollToWithDelay(0);
@@ -210,6 +213,10 @@ import { collection, getDocs } from "https://www.gstatic.com/firebasejs/9.22.1/f
 
     if (post) {
       showBlogPost(post);
+      // Whenver on a post page, scrollDist should
+      // be zero. This way navigating directly to a post or refreshing
+      // on post page doesn't break the autoscroll feature.
+      scrollDist = 0; 
     } else {
       // TODO: add a could not find the blog post page
     }
