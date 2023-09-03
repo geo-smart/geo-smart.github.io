@@ -1,8 +1,8 @@
 from http.server import HTTPServer, SimpleHTTPRequestHandler
 import sys
 import os
-from build.inject import injectAllComponents
 
+from build.inject import injectAllComponents
 from build.utils import logStatus, output
 
 watch = True
@@ -31,7 +31,7 @@ def prepare(message: str):
   os.system("cls" if os.name=="nt" else "clear")
   output(geosmart)
   output(message)
-  output("Server ready and waiting at", link("http://localhost:8000/"))
+  output("Server ready and waiting at" + link("http://localhost:8000/"), logStatus.GOOD)
 
 # ============== #
 # *** SERVER *** #
@@ -47,15 +47,16 @@ def run(server_class=HTTPServer, handler_class=SimpleHTTPRequestHandler):
 
 class NoExtensionHandler(SimpleHTTPRequestHandler):
   def do_GET(self):
-    output("\nUnmodified path:", self.path)
+    print("\nUnmodified path: " + self.path)
+    output("\nUnmodified path: " + self.path)
     self.path = directory + self.path
-    output("With directory:", self.path)
+    output("With directory: " + self.path)
     
     home_paths = ["/", "/docs/"]
     # The exclusion of paths with a period excludes image, js and other file types
     if self.path not in home_paths and not "." in self.path:
       self.path += ".html"
-      output("> extension added:", self.path)
+      output("Extension added: " + self.path)
 
     if watch and watcher.check():
       output("Component file modified, injecting updated component(s)...")
@@ -83,7 +84,7 @@ class FileWatcher(object):
 # ============ #
 # *** MAIN *** #
 
-watcher = FileWatcher("header.html")
+watcher = FileWatcher(["_header.html"])
 
 if len(sys.argv) == 1:
   prepare("Serving from root directory...")

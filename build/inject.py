@@ -2,15 +2,14 @@ import os
 import re
 import copy
 from pathlib import Path
-from build.utils import locateAll
 
-from utils import output, logStatus, formatLog, setOutputMode
+from .utils import formatLog, locateAll, logStatus, output, setOutputMode
 
 # =============== #
 # FILE MANAGEMENT #
 
 def readFileData(path: str | Path) -> list[str]:
-  output("Reading HTML data from " + str(path))
+  output(f"Reading HTML data from '{str(path)}'")
 
   with open(path, "r", encoding="utf8") as file:
     lines = file.readlines()
@@ -138,14 +137,15 @@ def injectAllComponents(silent: bool = False):
   else:
     output("Execution starting in root directory, using normal paths\n")
 
-  pages = locateAll(directory, "*.html", ["header.html"])
-  header = readFileData(directory + "header.html")
+  pages = locateAll(directory, "*.html", ["_header.html"])
+  header = readFileData(directory + "_header.html")
   header += ["\n"]
 
+  output("Starting scan for component tags...", newLine=True)
   for page in pages:
     injectComponent(page, header)
 
-  output(f"Processed all {len(pages)} HTML files found\n", logStatus.GOOD, newLine=True)
+  output(f"Processed all {len(pages)} HTML files found\n", logStatus.GOOD)
 
 if __name__ == "__main__":
   injectAllComponents()

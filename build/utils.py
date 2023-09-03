@@ -1,6 +1,5 @@
 from pathlib import Path
 
-
 class logStatus:
   GOOD = "\033[92m"
   WARN = "\033[93m"

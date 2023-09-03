@@ -1,6 +1,28 @@
 import {minify} from 'minify';
 import tryToCatch from 'try-to-catch';
 import fse from 'fs-extra';
+import path from 'path';
+
+function getFilesWithExtension(directoryPath, targetExtension, ignoreUnderscored) {
+  // Check if the directory exists
+  if (!fse.existsSync(directoryPath)) {
+    console.log(`(!) > Directory "${directoryPath}" does not exist!`);
+    throw new Error("FAILED");
+  }
+
+  // Read the contents of the directory
+  const files = fse.readdirSync(directoryPath);
+
+  // Filter files by the extension
+  const filtered = files.filter((file) => {
+    const ext = path.extname(file).toLowerCase();
+    if (ignoreUnderscored && file.startsWith('_')) return false;
+    return ext === targetExtension.toLowerCase();
+  });
+
+  const result = filtered.map(file => directoryPath + file);
+  return result;
+}
 
 async function grabAndMinify(file) {
   const [error, data] = await tryToCatch(minify, file);
@@ -41,18 +63,16 @@ async function main() {
     }
   }
 
-  const files = [
-    'css/index.css',
-    'js/blog.js', 'js/index.js', 'js/header.js', 'js/contact.js',
-    'news.html', 'getinvolved.html', 'index.html', 'motivation.html', 'book.html',
-    'team.html', 'curriculum.html', 'codeweek.html', 'tools.html', 'usecases.html',
-    'google6676251793b4eed2.html',
-  ];
+  const htmlFiles = getFilesWithExtension(src, ".html", true);
+  const cssFiles = getFilesWithExtension(src + "css/", ".css");
+  const jsFiles = getFilesWithExtension(src + "js/", ".js");
 
+  const files = [...htmlFiles, ...cssFiles, ...jsFiles];
   for (let i = 0; i < files.length; i++) {
     const src_file = src + files[i];
     const dest_file = dest + files[i];
     console.log(`\n(copy & minify) ${src_file} --> ${dest_file}\n`);
+    
     const mini = await grabAndMinify(src_file);
     fse.writeFile(dest_file, mini, (err) => {
       handleError(err, `writing to ${dest_file}`);
