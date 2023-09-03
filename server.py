@@ -31,7 +31,7 @@ def prepare(message: str):
   os.system("cls" if os.name=="nt" else "clear")
   output(geosmart)
   output(message)
-  output("Server ready and waiting at" + link("http://localhost:8000/"), logStatus.GOOD)
+  output("Server ready and waiting at " + link("http://localhost:8000/"), logStatus.GOOD)
 
 # ============== #
 # *** SERVER *** #

@@ -3,24 +3,25 @@ import tryToCatch from 'try-to-catch';
 import fse from 'fs-extra';
 import path from 'path';
 
-function getFilesWithExtension(directoryPath, targetExtension, ignoreUnderscored) {
-  // Check if the directory exists
-  if (!fse.existsSync(directoryPath)) {
-    console.log(`(!) > Directory "${directoryPath}" does not exist!`);
+function getFilesWithExtension(root, directory, extension, ignoreUnderscored) {
+  const target = root + directory;
+  if (!fse.existsSync(target)) { // Check if the directory exists
+    console.log(`(!) > Directory "${target}" does not exist!`);
     throw new Error("FAILED");
   }
 
   // Read the contents of the directory
-  const files = fse.readdirSync(directoryPath);
+  const files = fse.readdirSync(target);
 
   // Filter files by the extension
   const filtered = files.filter((file) => {
     const ext = path.extname(file).toLowerCase();
     if (ignoreUnderscored && file.startsWith('_')) return false;
-    return ext === targetExtension.toLowerCase();
+    return ext === extension.toLowerCase();
   });
 
-  const result = filtered.map(file => directoryPath + file);
+  
+  const result = filtered.map(file => directory + file);
   return result;
 }
 
@@ -63,16 +64,16 @@ async function main() {
     }
   }
 
-  const htmlFiles = getFilesWithExtension(src, ".html", true);
-  const cssFiles = getFilesWithExtension(src + "css/", ".css");
-  const jsFiles = getFilesWithExtension(src + "js/", ".js");
+  const htmlFiles = getFilesWithExtension(src, "", ".html", true);
+  const cssFiles = getFilesWithExtension(src, "css/", ".css");
+  const jsFiles = getFilesWithExtension(src, "js/", ".js");
 
   const files = [...htmlFiles, ...cssFiles, ...jsFiles];
   for (let i = 0; i < files.length; i++) {
     const src_file = src + files[i];
     const dest_file = dest + files[i];
     console.log(`\n(copy & minify) ${src_file} --> ${dest_file}\n`);
-    
+
     const mini = await grabAndMinify(src_file);
     fse.writeFile(dest_file, mini, (err) => {
       handleError(err, `writing to ${dest_file}`);

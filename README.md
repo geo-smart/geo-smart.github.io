@@ -45,9 +45,21 @@ The `server.py` code runs with python's `http.server` module and uses a modified
 
 When you have made changes to files outside the `docs` folder, to see those changes reflected on the actual site (in the `docs` folder) you must run `build.js`. Open a cmd prompt to the `build` directory and type `node build.js`. This should update the contents of `docs` to mirror the site files outside of `docs`, except minified.
 
-Make sure you *DO NOT* run `build.js` from any directory other than the `build` or root directory! The script works relative to project structure and will maybe be thrown off if run from a different directory.
+Make sure you *DO NOT* run `build.js` from any directory other than the `build` or root directory! The script works relative to project structure and will maybe be thrown off if run from a different directory. It is also best to run the server from the root directory.
 
-Note that `build.js` may need to be modified if you change the structure of the site, add files, or remove files. The exception to this is if you add files to the `assets` folder, as all of the contents of this folder are automatically copied to `docs`. The build script will automatically minify and copy all the `html` and `js` files it knows about to the  `docs` folder. The ONLY changes you should have to do manually would be to add the path names of any new files you add (.html or .js) to the list called `files` in `build.js`, or to remove their paths if you remove them from the site (make sure to remove them from `docs` too, which can be most simply acheived by deleting all contents on site build).
+```
+node build/build.js
+python server.py
+```
+
+Note that `build.js` may need to be modified if you change the structure of the site. All of the following files are are automatically copied to `docs`: 
+
+* All files inside the `assets` folder
+* All `.html` files in the root folder
+* All `.css` files in the `css` folder
+* All `.js` files in the `js` folder
+
+The only exception to note is that files whose names start with an underscore are ignored, other than files in `assets`. Also, the build script will automatically minify all the `html`, `css`, and `js` files it finds when copying them to the  `docs` folder. 
 
 #### Page Headers
 
@@ -82,7 +94,7 @@ To add a section to the page navigation, give it the class `page-nav-section-mar
 
 Unlike the header, the footer on each page has not been factored out into a separate file from where it can be modified. It is not a priority since it probably won't be modified often, but something to keep in mind. 
 
-The code that inserts the HTML content of `_header.html` wherever there are header tags could easily be modified to work for arbitrary components, e.g. when encountering:
+Also, the code that inserts the HTML content of `_header.html` wherever there are header tags could easily be modified to work for arbitrary components, e.g. when encountering:
 
 ```html
 <!-- %START COMPONENT-NAME -->
@@ -90,7 +102,7 @@ The code that inserts the HTML content of `_header.html` wherever there are head
 <!-- %END COMPONENT-NAME -->
 ```
 
-...the script could search in `component-name.html` or `component-name.comp` for HTML content and insert it between the tags.
+...the script could search in `_component-name.html` for HTML content and insert it between the tags. If this change is made it could be used for other HTML code which is shared between pages, such as the page navigation code, or even some of the `head` code.
 
 ***
 
