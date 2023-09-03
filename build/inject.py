@@ -83,19 +83,19 @@ def cutSubsection(arr: list, start: int, end: int):
   output(f"Cutting subsection {start} : {end}")
   return arr[:start + 1] + arr[end:]
 
-def indentHeader(rawHeaderData, amount):
-  headerData = copy.copy(rawHeaderData)
+def indentLines(rawLines, amount):
+  lines = copy.copy(rawLines)
   indent = " " * amount
 
-  for index in range(len(rawHeaderData)):
-    headerData[index] = indent + headerData[index]
+  for index in range(len(rawLines)):
+    lines[index] = indent + lines[index]
 
-  return headerData
+  return lines
 
 # ======== #
 #   MAIN   #
 
-def injectComponent(targetFile, rawHeaderData):
+def injectComponent(targetFile):
   pageLines = readFileData(targetFile)
   writeLines = copy.copy(pageLines)
 
@@ -119,13 +119,17 @@ def injectComponent(targetFile, rawHeaderData):
     writeLines = cutSubsection(writeLines, index, end)
     modified = True
 
-    headerData = indentHeader(rawHeaderData, indent)
-    index = insertSubsection(writeLines, headerData, index + 1)
+    rawData = readFileData(directory + f"_{found.lower()}.html")
+    rawData += ["\n"] # Ensure the closing tag is on the next line.
+
+    componentData = indentLines(rawData, indent)
+    index = insertSubsection(writeLines, componentData, index + 1)
   
   if modified:
     writeDataToFile(targetFile, writeLines)
 
 def injectAllComponents(silent: bool = False):
+  global directory
   setOutputMode(silent)
   output("Starting header injection...", logStatus.WARN, newLine=True)
 
@@ -138,12 +142,9 @@ def injectAllComponents(silent: bool = False):
     output("Execution starting in root directory, using normal paths\n")
 
   pages = locateAll(directory, "*.html", ["_header.html"])
-  header = readFileData(directory + "_header.html")
-  header += ["\n"]
-
   output("Starting scan for component tags...", newLine=True)
   for page in pages:
-    injectComponent(page, header)
+    injectComponent(page)
 
   output(f"Processed all {len(pages)} HTML files found\n", logStatus.GOOD)
 

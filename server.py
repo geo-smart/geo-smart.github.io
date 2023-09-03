@@ -3,9 +3,11 @@ import sys
 import os
 
 from build.inject import injectAllComponents
-from build.utils import logStatus, output
+from build.utils import locateAll, logStatus, output
 
 watch = True
+watcher = None
+
 directory = ""
 geosmart = r"""
    _____            _____ __  __          _____ _______ 
@@ -28,10 +30,20 @@ def link(uri, label=None):
   return escape_mask.format(parameters, uri, label)
 
 def prepare(message: str):
+  global watcher
+
   os.system("cls" if os.name=="nt" else "clear")
   output(geosmart)
   output(message)
-  output("Server ready and waiting at " + link("http://localhost:8000/"), logStatus.GOOD)
+
+  if watch:
+    output("Searching for components to watch for changes...")
+    components = locateAll("", "_*.html")
+    watcher = FileWatcher(components)
+  else:
+    output("Note that components will not be watched for changes!")
+
+  output("Server ready and waiting at " + link("http://localhost:8000/"), logStatus.GOOD, newLine=True)
 
 # ============== #
 # *** SERVER *** #
@@ -83,8 +95,6 @@ class FileWatcher(object):
 
 # ============ #
 # *** MAIN *** #
-
-watcher = FileWatcher(["_header.html"])
 
 if len(sys.argv) == 1:
   prepare("Serving from root directory...")

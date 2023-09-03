@@ -83,26 +83,15 @@ The page navigation side bar is built based on any elements with class `page-nav
 To add a section to the page navigation, give it the class `page-nav-section-marker` and an id representing the name except with underscores substituted for whitespace. For instance, if you want the node on the page navigation menu to read "Help Section" then the id should read "Help_Section". Once you have marked all sections with the appropriate class and given each an id, add the following html to the page just above the footer:
 
 ```html
-<!-- PAGE NAVIGATION -->
-<div id="page-navigation" class="hidden animated-item pre-anim fade-in-anim">
-  <div class="page-nav-bar"></div>
-</div>
-<!-- ENG PAGE NAVIGATION -->
+<!-- %START NAVIGATION -->
+<!-- %END NAVIGATION -->
 ```
+
+This will insert the navigation component found in `_navigation.html` to the page when `server.py` is run.
 
 # TODO
 
-Unlike the header, the footer on each page has not been factored out into a separate file from where it can be modified. It is not a priority since it probably won't be modified often, but something to keep in mind. 
-
-Also, the code that inserts the HTML content of `_header.html` wherever there are header tags could easily be modified to work for arbitrary components, e.g. when encountering:
-
-```html
-<!-- %START COMPONENT-NAME -->
-...
-<!-- %END COMPONENT-NAME -->
-```
-
-...the script could search in `_component-name.html` for HTML content and insert it between the tags. If this change is made it could be used for other HTML code which is shared between pages, such as the page navigation code, or even some of the `head` code.
+The first svg in `motivation.html` with the earth and satellite images was exported from Figma and therefore stores the images as base64 `xlink`s. This makes the HTML massive and pretty unweildy, so at some point these images should be moved to assets and just use `href`s instead.
 
 ***
 
