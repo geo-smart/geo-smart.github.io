@@ -1,85 +1,156 @@
-import sys
 import os
+import re
+import copy
+from pathlib import Path
 
-silent = False
-def output(data):
-  if not silent:
-    print(data)
+from utils import output, logStatus, formatLog, setOutputMode
 
-def getHeaderHTML(dir):
-  filePath = dir + "header.html"
+# =============== #
+# FILE MANAGEMENT #
 
-  output("Reading HTML data from " + filePath)
-  with open(filePath, "r") as file:
+def readFileData(path: str | Path) -> list[str]:
+  output("Reading HTML data from " + str(path))
+
+  with open(path, "r", encoding="utf8") as file:
     lines = file.readlines()
-    file.close()
 
   return lines
 
-def headerHTMLtoJS(lines):
-  output("Converting HTML data to a JavaScript statement...")
+def writeDataToFile(path: str, lines: list):
+  output("Writing compiled HTML data to " + str(path) + "\n")
 
-  header = "const content = '"  
-  for line in lines:
-    # We are condensing down to a single line, we don't
-    # need the whitespace.
-    data = line.strip()
+  with open(path, "w", encoding="utf8") as file:
+    file.writelines(lines)
 
-    # If the line doesn't end with an > character, it
-    # could be ending with an HTML attribute e.g. foo="bar"
-    # and that needs a space after it!
-    if (data[-1] != ">"):
-      data += " "
-    header += data
-  header += "';\n"
-  return header
+def locateAllPages(root: str = ""):
+  dir = Path(root)
+  pages = sorted(dir.glob("*.html"))
+  output(f"Located {len(pages)} site pages...")
+  return pages
 
-def updateHeaderJS(dir, header):
-  filePath = dir + "js/header.js"
-  writeLines = []
+# =============== #
+# DATA EXTRACTION #
 
-  output("Reading JavaScript data from " + filePath)
-  with open(filePath, "r") as file:
-    readLines = file.readlines()
-    file.close()
+def determineIndentation(line):
+  indentation = 0
 
-    for line in readLines:
-      writeLines.append(line)
+  for char in line:
+    if char == " " or char == "\t":
+      indentation += 1
+
+    # Stop counting at the first non-space, non-tab character.
+    else:
+      break
+
+  return indentation
+
+# Checks for a component tag on the given string line. If
+# there is a component, returns it string name. If end mode
+# is true, checks for end tags, otherwise checks for start tags.
+def checkForComponent(line: str, end: bool = False):
+  pattern = r"<!--\s*%START\s*([A-Z-]*?)\s*-->"
+  if end:
+    pattern = r"<!--\s*%END\s*([A-Z-]*?)\s*-->"
   
-  writeLines[0] = header
-  output("Replaced header line, writing new data to " + filePath)
-  with open(filePath, "w") as file:
-    file.writelines(writeLines)
+  match = re.search(pattern, line)
+  if not match:
+    return None
+  return match.group(1)
 
-def main():
-  output("\nRunning header compilation script...")
+# Returns the index in lines at which the specified component's
+# end tag is found, or -1 if the end tag is not found. Supports
+# an optional starting offset within the lines.
+def findComponentEnd(lines: list[str], name: str, start: int = 0):
+  for index in range(start, len(lines)):
+    found = checkForComponent(lines[index], True)
+
+    if found == name:
+      return index
+    
+  return -1
+
+# =============== #
+# DATA POPULATING #
+
+def splitLineOnComponent(line) -> list[str]:
+  pattern = r"<!--\s*%MLKY.*?\s*-->"
+  parts = re.split(pattern, line)
+  return parts
+
+# Inserts a list into another list at the given index.
+# Return the index of the end of the inserted subsection.
+def insertSubsection(arr: list, sub: list, index: int):
+  output(f"Inserting subsection of length {len(sub)} at {index}")
+  arr[index:index] = sub
+  return index + len(sub) - 1
+
+# Removes subsection of a list, both indices are exclusive.
+def cutSubsection(arr: list, start: int, end: int):
+  output(f"Cutting subsection {start} : {end}")
+  return arr[:start + 1] + arr[end:]
+
+def indentHeader(rawHeaderData, amount):
+  headerData = copy.copy(rawHeaderData)
+  indent = " " * amount
+
+  for index in range(len(rawHeaderData)):
+    headerData[index] = indent + headerData[index]
+
+  return headerData
+
+# ======== #
+#   MAIN   #
+
+def injectHeader(targetFile, rawHeaderData):
+  pageLines = readFileData(targetFile)
+  writeLines = copy.copy(pageLines)
+
+  index = 0
+  modified = False
+
+  for _ in range(len(writeLines)):
+    if not index < len(writeLines):
+      break
+
+    found = checkForComponent(writeLines[index])
+    if not found:
+      index += 1
+      continue
+    indent = determineIndentation(writeLines[index])
+
+    end = findComponentEnd(writeLines, found, index)
+    if end < 0:
+      raise SyntaxError(formatLog(f"Could not find component end tag for {found}", logStatus.FAIL))
+
+    writeLines = cutSubsection(writeLines, index, end)
+    modified = True
+
+    headerData = indentHeader(rawHeaderData, indent)
+    index = insertSubsection(writeLines, headerData, index + 1)
   
+  if modified:
+    writeDataToFile(targetFile, writeLines)
+
+def main(silent: bool = False):
+  setOutputMode(silent)
+  output("Starting header injection...", logStatus.WARN, newLine=True)
+
   path = os.getcwd()
   directory = ""
   if "build" in path:
-    output("Execution starting in /build/ directory, adjusting relative paths")
+    output("Execution starting in /build/ directory, adjusting relative paths\n")
     directory = "../"
   else:
-    output("Execution starting in root directory, using normal paths.")
+    output("Execution starting in root directory, using normal paths\n")
 
-  lines = getHeaderHTML(directory)
-  header = headerHTMLtoJS(lines)
-  updateHeaderJS(directory, header)
+  pages = locateAllPages(directory)
+  header = readFileData(directory + "header.html")
+  header += ["\n"]
 
-  print("\nSuccess!")
+  for page in pages:
+    injectHeader(page, header)
 
-if len(sys.argv) == 1:
-  silent = False
+  output(f"Processed all {len(pages)} HTML files found\n", logStatus.GOOD, newLine=True)
+
+if __name__ == "__main__":
   main()
-
-elif len(sys.argv) == 2:
-  flags = ["--silent", "--s"]
-
-  if sys.argv[1] in flags:
-    silent = True
-    main()
-  else:
-    print(f"Invalid flag provided. Expected one of {str(flags)}, got '{sys.argv[1]}'")
-
-else:
-  print(f"Invalid number of arguments recieved expected at most 1, got {len(sys.argv) - 1}")
