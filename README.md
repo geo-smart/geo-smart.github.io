@@ -33,7 +33,7 @@ The way the navigation of the site works is structured in a way that necessitate
 
 Instead, run `python server.py` from the root directory, or include the `--docs` flag if testing the production version of the site. Alternatively one can also run `python ../server.py` from the `docs` directory to test the production version of the site, since the server operates on relative paths. What is important is to be aware that which folder the server is run from matters. Then, navigate to http://localhost:8000/ to view the website.
 
-The `server.py` code runs with python's `http.server` module and uses a modified version of `SimpleHTTPRequestHandler` in order to handle `<a>` links not including `.html` extensions. It also has a second optional flag, `--watch`, which watches the `header.html` file for changes. If it detects any, it runs `build/header.py` allowing for easier development of the header. This flag is mutually exclusive with `--docs`.
+The `server.py` code runs with python's `http.server` module and uses a modified version of `SimpleHTTPRequestHandler` in order to handle `<a>` links not including `.html` extensions. It also has a second optional flag, `--watch`, which watches the `header.html` file for changes. If it detects any, it runs `build/inject.py` allowing for easier development of the header. This flag is mutually exclusive with `--docs`.
 
 ### Making Changes
 
@@ -45,7 +45,7 @@ Note that `build.js` may need to be modified if you change the structure of the 
 
 #### Page Headers
 
-To change the header, edit `header.html`, then run `header.py`. When running `server.py`, changes to `header.html` will automatically be detected and `header.py` run.
+To change the header, edit `header.html`, then run `inject.py`. When running `server.py`, changes to `header.html` will automatically be detected and `inject.py` run.
 
 This script automatically inserts the html data from `header.html` into each page with the follow header tag.
 
@@ -54,7 +54,7 @@ This script automatically inserts the html data from `header.html` into each pag
 <!-- %END HEADER -->
 ```
 
-On pages with the header, you will see the HTML contents of `header.html` enclosed between these tags. The `header.py` script automatically replaces anything between these tags, so know that changes to anything between the tags will not be saved.
+On pages with the header, you will see the HTML contents of `header.html` enclosed between these tags. The `inject.py` script automatically replaces anything between these tags, so know that changes to anything between the tags will not be saved.
 
 To add the header to a new page, simply include the tags. There does not need to be anything between them.
 

@@ -2,6 +2,7 @@ import os
 import re
 import copy
 from pathlib import Path
+from build.utils import locateAll
 
 from utils import output, logStatus, formatLog, setOutputMode
 
@@ -21,12 +22,6 @@ def writeDataToFile(path: str, lines: list):
 
   with open(path, "w", encoding="utf8") as file:
     file.writelines(lines)
-
-def locateAllPages(root: str = ""):
-  dir = Path(root)
-  pages = sorted(dir.glob("*.html"))
-  output(f"Located {len(pages)} site pages...")
-  return pages
 
 # =============== #
 # DATA EXTRACTION #
@@ -101,7 +96,7 @@ def indentHeader(rawHeaderData, amount):
 # ======== #
 #   MAIN   #
 
-def injectHeader(targetFile, rawHeaderData):
+def injectComponent(targetFile, rawHeaderData):
   pageLines = readFileData(targetFile)
   writeLines = copy.copy(pageLines)
 
@@ -131,7 +126,7 @@ def injectHeader(targetFile, rawHeaderData):
   if modified:
     writeDataToFile(targetFile, writeLines)
 
-def main(silent: bool = False):
+def injectAllComponents(silent: bool = False):
   setOutputMode(silent)
   output("Starting header injection...", logStatus.WARN, newLine=True)
 
@@ -143,14 +138,14 @@ def main(silent: bool = False):
   else:
     output("Execution starting in root directory, using normal paths\n")
 
-  pages = locateAllPages(directory)
+  pages = locateAll(directory, "*.html", ["header.html"])
   header = readFileData(directory + "header.html")
   header += ["\n"]
 
   for page in pages:
-    injectHeader(page, header)
+    injectComponent(page, header)
 
   output(f"Processed all {len(pages)} HTML files found\n", logStatus.GOOD, newLine=True)
 
 if __name__ == "__main__":
-  main()
+  injectAllComponents()
