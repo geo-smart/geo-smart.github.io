@@ -162,7 +162,7 @@ import { collection, getDocs } from "https://www.gstatic.com/firebasejs/9.22.1/f
       scrollDist = undefined;
     } else {
       scrollDist = window.scrollY;
-      scrollToWithDelay(0);
+      scrollToWithDelay(0, "smooth");
     }
 
     document.getElementById("blog-items-list").classList.toggle("hidden");
@@ -213,10 +213,7 @@ import { collection, getDocs } from "https://www.gstatic.com/firebasejs/9.22.1/f
 
     if (post) {
       showBlogPost(post);
-      // Whenver on a post page, scrollDist should
-      // be zero. This way navigating directly to a post or refreshing
-      // on post page doesn't break the autoscroll feature.
-      scrollDist = 0; 
+      if (scrollDist === undefined) scrollDist = 0; 
     } else {
       // TODO: add a could not find the blog post page
     }
