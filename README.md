@@ -80,16 +80,24 @@ To add the header to a new page, simply include the tags. There does not need to
 
 The page navigation side bar is built based on any elements with class `page-nav-section-marker` on the page. These should typically be the div or section containers as opposed to the headers. 
 
-To add a section to the page navigation, give it the class `page-nav-section-marker` and an id representing the name except with underscores substituted for whitespace. For instance, if you want the node on the page navigation menu to read "Help Section" then the id should read "Help_Section". Once you have marked all sections with the appropriate class and given each an id, add the following html to the page just above the footer:
+To add a section to the page navigation, give it the class `page-nav-section-marker` and an id representing the name except with underscores substituted for whitespace. For instance, if you want the node on the page navigation menu to read "Help Section" then the id should read "Help_Section". Once you have marked all sections with the appropriate class and given each an id, add HTML below to the page before any content. The page navigation should be before any page content to ensure that it comes before page content in the tabbing order.
 
 ```html
 <!-- %START NAVIGATION -->
 <!-- %END NAVIGATION -->
 ```
 
-This will insert the navigation component found in `_navigation.html` to the page when `server.py` is run.
+Adding these tags will insert the navigation component found in `_navigation.html` to the page when `server.py` is run.
 
 # TODO
+
+Change refresh functionality on the news page to only remove/replace cached posts if new posts are successfully loaded from the server.
+
+***
+
+Try entire site with screen reader to check for accessibility issues. Many elements will likely be missing `aria-label`s.
+
+***
 
 The first svg in `motivation.html` with the earth and satellite images was exported from Figma and therefore stores the images as base64 `xlink`s. This makes the HTML massive and pretty unweildy, so at some point these images should be moved to assets and just use `href`s instead.
 

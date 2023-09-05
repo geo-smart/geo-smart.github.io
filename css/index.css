@@ -1893,9 +1893,6 @@ input.w-button {
 .w-nav-menu {
   position: relative;
   float: right;
-  box-shadow: inset 0 0 0.4px hsla(230, 13%, 9%, 0.01),
-    inset 0 0 1.5px hsla(230, 13%, 9%, 0.02),
-    inset 0 0 6px hsla(230, 13%, 9%, 0.04);
 }
 
 .w-nav-button {
@@ -2059,6 +2056,9 @@ input.w-button {
   .navigation-items {
     border-top: 1px solid #dbdbdb;
     border-bottom: 1px solid #dbdbdb;
+    box-shadow: inset 0 0 0.4px hsla(230, 13%, 9%, 0.01),
+      inset 0 0 1.5px hsla(230, 13%, 9%, 0.02),
+      inset 0 0 6px hsla(230, 13%, 9%, 0.04);
   }
 }
 
@@ -2112,6 +2112,7 @@ input.w-button {
 /* PAGE NAVIGATION */
 #page-navigation {
   position: fixed;
+  z-index: 1;
   left: 0;
   /* Sometimes, halfway down is less than the size of the banner
   and header navigation. These are at least 240px always. */
@@ -2119,6 +2120,56 @@ input.w-button {
   /* transform: translateY(-50%); */
   display: flex;
   flex-direction: column;
+  transition: opacity 0.5s ease,
+    top 0.5s ease,
+    left 0.5s ease,
+    border-radius 0.5s ease,
+
+    backdrop-filter 0.25s ease,
+    box-shadow 0.25s ease,
+    background-color 0.25s ease,
+    padding 0.25s ease;
+}
+
+#toggle-page-nav {
+  position: relative;
+  display: none;
+  appearance: none;
+  background-image: url(../assets/nav-menu-button.svg);
+
+  /* width + horiz margin should match total size of page-nav-item */
+  width: 1.6em;
+  height: 1.6em;
+  margin: .3em .3em .6em;
+  background-size: 1.6em 1.6em;
+
+  z-index: 1;
+  cursor: pointer;
+  border-radius: 0.4em;
+  /* border: 1px solid transparent; */
+  transition: transform 0.25s ease, margin 0.25s ease;
+}
+
+#toggle-page-nav::after {
+  content: "Sections";
+  color: var(--primary-color);
+  font-weight: 500;
+  position: absolute;
+  top: 0;
+  left: calc(100% + .75em);
+  bottom: 0;
+  opacity: 0;
+}
+
+@keyframes title-in {
+  0% {
+    opacity: 0;
+    transform: translateX(-.5em);
+  }
+  
+  100% {
+    opacity: 1;
+  }
 }
 
 .page-nav-bar {
@@ -2132,62 +2183,65 @@ input.w-button {
 
 .page-nav-item {
   position: relative;
-  height: 1em;
-  width: 1em;
+  transition: opacity 1s ease;
+  transition: opacity 0.15s ease;
+}
+
+.page-nav-item>div {
+  --size: 1em;
+  height: var(--size);
+  width: var(--size);
+  --margin: 1em;
+  margin: var(--margin) var(--margin);
+
   border: 1px solid var(--primary-color);
   border-radius: 0.5em;
   background-color: white;
-  margin: 1em 1em;
-  transition: background-color 0.5s ease, transform 0.1s ease;
-  text-decoration: none;
+  transition: background-color 0.5s ease,
+    opacity 0.15s ease,
+    width 0.25s ease,
+    height 0.25s ease,
+    margin 0.25s ease,
+    transform 0.1s ease;
 }
 
-.page-nav-item:hover {
+.page-nav-item:hover>div {
   background-color: var(--light-color);
 }
 
-.page-nav-item.section-shown {
+.page-nav-item.section-shown>div {
   background-color: var(--primary-color);
 }
 
-.page-nav-item:active {
+.page-nav-item:active>div {
   transform: scale(0.9);
 }
 
-/* This element functions as hit slop for the button,
-that is, extra clickable area for accesibility purposes. */
-.page-nav-item::before {
-  content: "";
+.page-nav-item>span {
   position: absolute;
-  height: 2em;
-  width: 2em;
-  border-radius: 2em;
-  transform: translate(-25%, -25%);
-}
-
-.page-nav-item::after {
-  content: var(--label);
-  position: absolute;
-  top: -50%;
-  left: calc(100% + 0.5em);
+  top: 0.55em;
+  left: calc(100% - 0.5em);
+  text-decoration: none;
   white-space: nowrap;
   color: var(--primary-color);
   opacity: 0;
-  transform: translateX(-0.5em);
-  transition: opacity 0.2s ease, transform 0.5s ease;
   pointer-events: none;
   border-radius: 0.25em;
   padding-right: 0.5em;
   background-color: #fffc;
+  transform: translateX(-0.5em);
+  transition: opacity 0.2s ease,
+    font-size 0.2s ease,
+    transform 0.5s ease-out;
 }
 
-.page-nav-item:hover::after {
+.page-nav-item:hover>span {
   opacity: 0.75;
   transform: translateX(0);
   background-color: #fff;
 }
 
-.page-nav-item.section-shown::after {
+.page-nav-item.section-shown>span {
   opacity: 1;
   transform: translateX(0);
   background-color: #fffc;
@@ -2429,8 +2483,18 @@ p.simple-button.special-margin-hack {
     background-color: #fff
   }
 
-  .page-nav-item.section-shown::after {
-    opacity: 0;
+  .page-nav-item>div {
+    --size: 0.8em;
+    --margin: 0.8em;
+  }
+
+  .page-nav-item>span {
+    font-size: 0.75em;
+    top: 0.45em;
+  }
+
+  .page-nav-bar {
+    left: 1.2em
   }
 
   .rich-text {
@@ -2618,38 +2682,67 @@ p.simple-button.special-margin-hack {
   }
 
   #page-navigation {
-    display: none;
-  }
-
-  /* #page-navigation {
-    background-color: #00000019;
     border-radius: 10px;
     top: unset;
     left: 2vmin;
     bottom: 2vmin;
+
   }
 
-  .page-nav-item {
-    height: 0.75em;
-    width: 0.75em;
-    border-radius: 0.375em;
-    background-color: white;
-    margin: 1em 1em;
+  #page-navigation:not(.closed) {
+    padding-right: calc(var(--label-width, 0) * 1px);
+    background-color: #fff7;
+    backdrop-filter: blur(3px);
+    box-shadow: 0 0 0.4px hsla(230, 13%, 9%, 0.02),
+      0 0 1.5px hsla(230, 13%, 9%, 0.04),
+      0 0 6px hsla(230, 13%, 9%, 0.07);
+  }
+
+  #toggle-page-nav {
+    display: unset;
+  }
+
+  #page-navigation.closed #toggle-page-nav {
+    transform: rotate(-180deg);
+    margin: .3em;
+  }
+
+  #page-navigation:not(.closed) #toggle-page-nav::after {
+    animation: title-in 0.5s ease forwards;
+    animation-delay: 0.25s;
+  }
+
+  #page-navigation.closed #toggle-page-nav::after {
+    opacity: 0 !important;
+    transition: opacity 0.05s ease;
+    pointer-events: none;
+  }
+
+  #page-navigation.closed .page-nav-item>div {
+    margin: -1px calc(var(--margin) + calc(var(--size) / 2)) 0;
+    height: 0;
+    width: 0;
+  }
+
+  #page-navigation.closed .page-nav-item {
+    opacity: 0;
+  }
+
+  .page-nav-item>div {
+    --margin: .7em;
+  }
+
+  .page-nav-item>span {
+    top: 0.35em;
+    opacity: 1;
+    pointer-events: all;
+    transform: translateX(0);
+    background: none !important;
   }
 
   .page-nav-bar {
-    left: 1.375em
+    left: 1.05em;
   }
-
-  .page-nav-item::after {
-    display: none;
-  }
-
-  .page-nav-item::before {
-    height: 3.25em;
-    width: 3.25em;
-    transform: translate(-45%, -45%);
-  } */
 
   .books-container {
     width: 100%;
