@@ -2166,7 +2166,7 @@ input.w-button {
     opacity: 0;
     transform: translateX(-.5em);
   }
-  
+
   100% {
     opacity: 1;
   }
@@ -2219,7 +2219,7 @@ input.w-button {
 
 .page-nav-item>span {
   position: absolute;
-  top: 0.55em;
+  top: 20%;
   left: calc(100% - 0.5em);
   text-decoration: none;
   white-space: nowrap;
@@ -2490,7 +2490,7 @@ p.simple-button.special-margin-hack {
 
   .page-nav-item>span {
     font-size: 0.75em;
-    top: 0.45em;
+    top: 12.5%;
   }
 
   .page-nav-bar {
@@ -2686,7 +2686,6 @@ p.simple-button.special-margin-hack {
     top: unset;
     left: 2vmin;
     bottom: 2vmin;
-
   }
 
   #page-navigation:not(.closed) {
@@ -2719,7 +2718,7 @@ p.simple-button.special-margin-hack {
   }
 
   #page-navigation.closed .page-nav-item>div {
-    margin: -1px calc(var(--margin) + calc(var(--size) / 2)) 0;
+    margin: -1px calc(var(--margin) + calc(var(--size) / 2)) -1px;
     height: 0;
     width: 0;
   }
@@ -2733,7 +2732,7 @@ p.simple-button.special-margin-hack {
   }
 
   .page-nav-item>span {
-    top: 0.35em;
+    top: 7.5%;
     opacity: 1;
     pointer-events: all;
     transform: translateX(0);
