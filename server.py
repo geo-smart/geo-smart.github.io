@@ -38,7 +38,7 @@ def prepare(message: str):
 
   if watch:
     output("Searching for components to watch for changes...")
-    components = locateAll("", "_*.html")
+    components = locateAll("components/", "_*.html")
     watcher = FileWatcher(components)
   else:
     output("Note that components will not be watched for changes!")

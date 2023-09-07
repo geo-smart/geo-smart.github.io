@@ -99,10 +99,6 @@ Try entire site with screen reader to check for accessibility issues. Many eleme
 
 ***
 
-The first svg in `motivation.html` with the earth and satellite images was exported from Figma and therefore stores the images as base64 `xlink`s. This makes the HTML massive and pretty unweildy, so at some point these images should be moved to assets and just use `href`s instead.
-
-***
-
 At some point the way news/blog posts are done, namely through `blog.js` and the firebase backend could be improved. The way the post body is stored could be changed so that it can be formatted, or posts could include media like images. As most posts are currently just short blurbs that link to a full article somewhere else, it is currently unnecessary, but this may change.
 
 Another potential improvement for the news page would be to store some persistent state with cookies (like whether articles have been read or not). The page merely uses cookies to determine whether to refresh posts from the firebase server or not.

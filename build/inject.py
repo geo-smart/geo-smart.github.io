@@ -119,7 +119,7 @@ def injectComponent(targetFile):
     writeLines = cutSubsection(writeLines, index, end)
     modified = True
 
-    rawData = readFileData(directory + f"_{found.lower()}.html")
+    rawData = readFileData(directory + "components/" + f"_{found.lower()}.html")
     rawData += ["\n"] # Ensure the closing tag is on the next line.
 
     componentData = indentLines(rawData, indent)
@@ -134,14 +134,17 @@ def injectAllComponents(silent: bool = False):
   output("Starting header injection...", logStatus.WARN, newLine=True)
 
   path = os.getcwd()
-  directory = ""
+  directory = "./"
   if "build" in path:
     output("Execution starting in /build/ directory, adjusting relative paths\n")
     directory = "../"
   else:
     output("Execution starting in root directory, using normal paths\n")
 
-  pages = locateAll(directory, "*.html", ["_header.html"])
+  html = locateAll(directory, "*.html")
+  pages = list(filter(lambda x: str(x)[0] != "_", html)) # remove components
+  print(f"Ignored {len(html) - len(pages)} component files for a total of {len(pages)} pages")
+
   output("Starting scan for component tags...", newLine=True)
   for page in pages:
     injectComponent(page)
