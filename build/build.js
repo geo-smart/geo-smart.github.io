@@ -45,7 +45,13 @@ async function calculateFileSize(fileList) {
 }
 
 async function grabAndMinify(file) {
-  const [error, data] = await tryToCatch(minify, file);
+  const options = {
+    img: {
+      maxSize: 0,
+    },
+  };
+
+  const [error, data] = await tryToCatch(minify, file, options);
   if (error) {
     console.log("(error) \x1b[91merror occured while minifying:\x1b[0m\n" + error.message);
     throw new Error("FAILED");

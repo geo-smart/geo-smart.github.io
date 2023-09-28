@@ -109,6 +109,10 @@ Because of the way the scroll based animations work (they use the `IntersectionO
 
 One potentially fix would be to give all animated elements a marker class, then onload to give each of these elements their pre-animation state via class, and then have the IntersectionObserver work like normal, removing the pre-animation class when they are on screen. The problem is this could mean certain elements briefly flash on first page load, but an animation for the entire body could alleviate this issue.
 
+***
+
+Build out full notifications system using similar infrastructure to the blogging system and the basic toast implemented on the codeweek page.
+
 ### Keep in Mind
 
 The `head` of each page as well as the sections labeled 'footer' are (almost) the same on every page. If you change it somewhere, you should probably change it everywhere.

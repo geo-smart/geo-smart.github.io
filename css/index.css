@@ -1543,6 +1543,66 @@ textarea.w-select {
   margin-left: 2em
 }
 
+#toast {
+  position: fixed;
+  bottom: -100%;
+  --edge-dist: 25px;
+  right: min(var(--edge-dist), 5vw);
+  max-width: min(25em, 90vw);
+  background-color: white;
+  border: 1px solid #dbdbdb;
+  border-radius: 5px;
+  padding: 5px 10px;
+  z-index: 1;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  box-shadow: 0 0 0.4px hsla(230, 13%, 9%, 0.03),
+    0 0 1.5px hsla(230, 13%, 9%, 0.04),
+    0 0 6px hsla(230, 13%, 9%, 0.05);
+  text-decoration: none;
+  transition: transform 0.1s ease;
+  animation: toast-pop-up 0.5s cubic-bezier(.47,1.3,.41,.97) forwards;
+  animation-delay: 1s;
+}
+
+@keyframes toast-pop-up {
+  0% {
+    bottom: -100%;
+  }
+  100% {
+    bottom: var(--edge-dist);
+  }
+}
+
+#toast.hide {
+  bottom: var(--edge-dist);
+  animation: toast-hide 0.5s cubic-bezier(.59,.03,.53,-.3) forwards;
+}
+
+@keyframes toast-hide {
+  0% {
+    bottom: var(--edge-dist);
+  }
+  100% {
+    bottom: -100%;
+  }
+}
+
+#toast:hover {
+  transform: scale(0.99);
+}
+
+#toast>img {
+  height: 1.5em;
+  width: 1.5em;
+  margin: 0 1em 0 .5em;
+}
+
+#toast>p {
+  margin: 0;
+}
+
 .team-members {
   margin-right: 60px;
   margin-bottom: 60px;
