@@ -1,4 +1,7 @@
-# GeoSMART
+<h1>
+  <img src="assets/apple_touch_icon.png" style="height: 1em; margin-bottom: -0.1em;"/>
+  GeoSMART
+</h1>
 
 Site live at https://geo-smart.github.io/.
 
@@ -61,7 +64,7 @@ Note that `build.js` may need to be modified if you change the structure of the 
 
 The only exception to note is that files whose names start with an underscore are ignored, other than files in `assets`. Also, the build script will automatically minify all the `html`, `css`, and `js` files it finds when copying them to the  `docs` folder. 
 
-#### Page Headers
+#### `Page Headers`
 
 To change the header, edit `_header.html`. Then, when running `server.py`, the changes to `_header.html` will automatically be detected and `inject.py` will be run.
 
@@ -76,7 +79,7 @@ On pages with the header, you will see the HTML contents of `_header.html` enclo
 
 To add the header to a new page, simply include the tags. There does not need to be anything between them.
 
-#### Page Navigation
+#### `Page Navigation`
 
 The page navigation side bar is built based on any elements with class `page-nav-section-marker` on the page. These should typically be the div or section containers as opposed to the headers. 
 
@@ -89,7 +92,13 @@ To add a section to the page navigation, give it the class `page-nav-section-mar
 
 Adding these tags will insert the navigation component found in `_navigation.html` to the page when `server.py` is run.
 
-# TODO
+### Keep in Mind
+
+The `head` of each page is (almost) the same on every page. If you change it somewhere, you should probably change it everywhere.
+
+What you should change about the `head` from page to page is the title, while the footer is identical on each page.
+
+## TODO
 
 Change refresh functionality on the news page to only remove/replace cached posts if new posts are successfully loaded from the server.
 
@@ -112,9 +121,3 @@ One potentially fix would be to give all animated elements a marker class, then 
 ***
 
 Build out full notifications system using similar infrastructure to the blogging system and the basic toast implemented on the codeweek page.
-
-### Keep in Mind
-
-The `head` of each page as well as the sections labeled 'footer' are (almost) the same on every page. If you change it somewhere, you should probably change it everywhere.
-
-What you should change about the `head` from page to page is the title, while the footer is identical on each page.
