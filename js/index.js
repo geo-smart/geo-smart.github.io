@@ -11,7 +11,6 @@
     setNavbarHighlight(document.URL);
     constructPageNavigation();
     addAnimationObserver();
-    setUpToast();
 
     const menu_btn = document.getElementById("menu-button");
     const menu = document.getElementById("w-nav-overlay-0");
@@ -230,20 +229,6 @@
 
     animated_items.forEach((element) => mainObserver.observe(element));
     animated_items.forEach((element) => mobileObserver.observe(element));
-  }
-
-  function setUpToast() {
-    const toast = document.getElementById("toast");
-    if (!toast) return;
-
-    toast.addEventListener("click", (evt) => {
-      evt.preventDefault();
-      toast.classList.add("hide");
-      setTimeout(() => {
-        const link = toast.getAttribute("href");
-        window.open(link, "_blank");
-      }, 500); // match to toast hide animation
-    });
   }
 
 })();

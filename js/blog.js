@@ -1,6 +1,5 @@
-import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-app.js"
-import { getFirestore } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-firestore.js"
 import { collection, getDocs } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-firestore.js";
+import { db } from "./firebase.js";
 
 "use strict";
 (function () {
@@ -14,17 +13,6 @@ import { collection, getDocs } from "https://www.gstatic.com/firebasejs/9.22.1/f
   // Otherwise, the autoscroll feature will break.
 
   // PRE INIT SETUP
-  const firebaseConfig = {
-    apiKey: "AIzaSyDtv_mjLaZQImF4KoKy6s-moer6TtOVJiI",
-    authDomain: "geosmart-uw.firebaseapp.com",
-    projectId: "geosmart-uw",
-    storageBucket: "geosmart-uw.appspot.com",
-    messagingSenderId: "244030791746",
-    appId: "1:244030791746:web:f6c34ef4b145ab7d1a8ddb",
-    measurementId: "G-9L9TCCS7HD"
-  };
-  const app = initializeApp(firebaseConfig);
-
   const cachedPosts = localStorage.getItem("cachedPosts");
   if (cachedPosts) {
     blogPosts = JSON.parse(cachedPosts);
@@ -35,8 +23,10 @@ import { collection, getDocs } from "https://www.gstatic.com/firebasejs/9.22.1/f
     if (cachedTime && timeDifferenceInHours(new Date(cachedTime)) > 1) localStorage.clear();
   } else loadPosts();
 
-  // This function handles everything that needs to occur after the window
-  // has fully loaded, meaning in this case event listeners.
+  /**
+   * This function handles everything that needs to occur after the window
+   * has fully loaded, meaning in this case event listeners.
+   */
   function init() {
     addAccessibleClickListener(document.getElementById("blog-post-return"), showBlogList);
 
@@ -66,11 +56,12 @@ import { collection, getDocs } from "https://www.gstatic.com/firebasejs/9.22.1/f
     addEventListener("posts-loaded", onPostsLoaded);
   }
 
-  // Querys the firebase backend for all documents in the posts collection,
-  // stores them to local storage and broadcasts a "posts-loaded" event.
+  /**
+   * Querys the firebase backend for all documents in the posts collection,
+   * stores them to local storage and broadcasts a "posts-loaded" event.
+   */
   async function loadPosts() {
     console.log("Loading posts from server...");
-    const db = getFirestore(app);
     const querySnapshot = await getDocs(collection(db, "posts"));
 
     const posts = [];
@@ -86,8 +77,10 @@ import { collection, getDocs } from "https://www.gstatic.com/firebasejs/9.22.1/f
     console.log(`Loaded ${blogPosts.length} posts from server.`);
   }
 
-  // Helper function for hiding the loader, populating the blog list and 
-  // loading from hash given the global blogPosts variable contains data.
+  /**
+   * Helper function for hiding the loader, populating the blog list and 
+   * loading from hash given the global blogPosts variable contains data.
+   */
   function onPostsLoaded() {
     console.log("Populating with loaded posts...");
     const loader = document.getElementById("blog-loader");
@@ -100,8 +93,8 @@ import { collection, getDocs } from "https://www.gstatic.com/firebasejs/9.22.1/f
   /**
    * Takes a list of post objects, of the form described below, and
    * creates from the template in the html a node for each of them.
-   * Interface "post" format:
-   * {
+   * 
+   * interface post {
    *    title: string
    *    body: string
    *    link: string
@@ -169,8 +162,13 @@ import { collection, getDocs } from "https://www.gstatic.com/firebasejs/9.22.1/f
     document.getElementById("blog-post").classList.toggle("hidden");
   }
 
-  // In firefox there is a bug and scrolling immediately after modifying
-  // the dom (in a way that affects document height) won't work.
+  /**
+   * In firefox there is a bug and scrolling immediately after modifying
+   * the dom (in a way that affects document height) won't work.
+   * 
+   * @param {number} scrollY 
+   * @param {"smooth" | "instant"} scrollBehavior 
+   */
   function scrollToWithDelay(scrollY, scrollBehavior) {
     scrollBehavior = scrollBehavior || "instant";
     setTimeout(() => {
@@ -178,8 +176,11 @@ import { collection, getDocs } from "https://www.gstatic.com/firebasejs/9.22.1/f
     }, 1);
   }
 
-  // Creates an intersection observer which triggers animations for
-  // some elements when they scroll onto the page by modifying their class.
+  /**
+   * Creates an intersection observer which triggers animations for 
+   * some elements when they scroll onto the page by modifying their class.
+   * @param {Element[]} animated_items 
+   */
   function addAnimationObserver(animated_items) {
     const options = {
       root: null,
@@ -198,8 +199,12 @@ import { collection, getDocs } from "https://www.gstatic.com/firebasejs/9.22.1/f
     animated_items.forEach((element) => observer.observe(element));
   }
 
-  // Adds the given function as both a click event listener
-  // and a keydown event listener for accessiblity reasons.
+  /**
+   * Adds the given function as both a click event listener 
+   * and a keydown event listener for accessiblity reasons.
+   * @param {Element} elem 
+   * @param {(event) => void} func 
+   */
   function addAccessibleClickListener(elem, func) {
     elem.addEventListener("click", func);
     elem.addEventListener("keydown", function (event) {
