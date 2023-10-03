@@ -1,33 +1,32 @@
-import { collection, getDocs } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-firestore.js";
-import { db } from "./firebase.js";
-
 "use strict";
+import { loadCollection, useCachedOrLoad } from "./firebase.js";
+
 (function () {
 
-  // GLOBAL VARIABLES
+  /* ================ */
+  /* GLOBAL VARIABLES */
+  
   window.addEventListener("load", init);
-  var blogPosts = null;
-  var scrollDist = undefined;
+  
   // When on the blog list view, scrollDist should be undefined
   // and when on the blog post view, scrollDist should be a number.
   // Otherwise, the autoscroll feature will break.
+  var scrollDist = undefined;
+  var blogPosts = null;
 
-  // PRE INIT SETUP
-  const cachedPosts = localStorage.getItem("cachedPosts");
-  if (cachedPosts) {
-    blogPosts = JSON.parse(cachedPosts);
-    console.log(`Loaded ${blogPosts.length} cached posts.`);
-
-    // We don't want cached posts to last forever
-    const cachedTime = localStorage.getItem("cachedTime");
-    if (cachedTime && timeDifferenceInHours(new Date(cachedTime)) > 1) localStorage.clear();
-  } else loadPosts();
+  /* GLOBAL VARIABLES */
+  /* ================ */
 
   /**
    * This function handles everything that needs to occur after the window
    * has fully loaded, meaning in this case event listeners.
    */
   function init() {
+    useCachedOrLoad("posts").then(res => {
+      blogPosts = res;
+      window.dispatchEvent(new Event("posts-loaded"));
+    });
+
     addAccessibleClickListener(document.getElementById("blog-post-return"), showBlogList);
 
     addEventListener("popstate", () => {
@@ -47,34 +46,16 @@ import { db } from "./firebase.js";
       }
     });
 
-    // It is possible that the window will load first or the posts. Likely it will
-    // be the window, so we have an event listener to wait for the posts loading, but 
-    // it is not consistent. Also, blogPosts will be loaded already if they were cached.
-    if (blogPosts) {
-      onPostsLoaded();
-    }
     addEventListener("posts-loaded", onPostsLoaded);
   }
 
   /**
    * Querys the firebase backend for all documents in the posts collection,
-   * stores them to local storage and broadcasts a "posts-loaded" event.
+   * stores them to localStorage and broadcasts a "posts-loaded" event.
    */
   async function loadPosts() {
-    console.log("Loading posts from server...");
-    const querySnapshot = await getDocs(collection(db, "posts"));
-
-    const posts = [];
-    querySnapshot.forEach((doc) => {
-      posts.push(doc.data()); // doc.data() is never undefined for query doc snapshots
-    });
-    posts.reverse();
-    blogPosts = posts;
-
-    localStorage.setItem("cachedPosts", JSON.stringify(posts));
-    localStorage.setItem("cachedTime", new Date().toISOString());
+    loadCollection("posts");
     window.dispatchEvent(new Event("posts-loaded"));
-    console.log(`Loaded ${blogPosts.length} posts from server.`);
   }
 
   /**
