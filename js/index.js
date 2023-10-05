@@ -1,4 +1,6 @@
 "use strict";
+import { setUpToastContent } from "./events.js";
+
 (function () {
 
   window.addEventListener("load", init);
@@ -28,6 +30,9 @@
       window.scrollTo({ top: "0", behavior: "smooth" });
       evt.preventDefault();
     });
+
+    const insert = document.getElementById("insert-toast");
+    if (insert) setUpToastContent(insert);
   }
 
   /**
