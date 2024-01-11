@@ -2091,8 +2091,9 @@ input.w-button {
 .dropdown-body {
   position: absolute;
   top: -50%;
-  left: 50%;
-  transform: translateX(calc(-50% + 10px)) scale(0.75);
+  right: 0;
+  margin-left: -10%;
+  transform: scale(0.75);
   opacity: 0;
   background-color: white;
   border: 1px solid #dbdbdb;
@@ -2100,11 +2101,17 @@ input.w-button {
   border-radius: 5px;
 }
 
+.dropdown-body>.navigation-item {
+  width: 100%;
+  text-align: right;
+  padding-left: 30px;
+}
+
 .dropdown:focus-within>.dropdown-body,
 .dropdown:hover>.dropdown-body {
   opacity: 1;
   top: 100%;
-  transform: translateX(calc(-50% + 10px));
+  transform: none;
 }
 
 @media screen and (max-width:1150px) {
