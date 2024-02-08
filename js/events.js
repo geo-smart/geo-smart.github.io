@@ -6,7 +6,7 @@ import { useCachedOrLoad } from "./firebase.js";
  */
 export async function setUpToastContent(insert) {
   const events = await useCachedOrLoad("events");
-  events.sort((eventA, eventB) => getEventNumber(eventA.id) - getEventNumber(eventB.id));
+  events.sort((eventA, eventB) => eventA.start - eventB.start);
   const event = events[0];
 
   const end = calculateRemainingTime(event.end);
@@ -70,6 +70,7 @@ function setUpToastOnClick(toast) {
  */
 export async function setUpPastEvents(header) {
   const events = await useCachedOrLoad("events");
+  const elems = [];
 
   events.forEach(event => {
     const end = calculateRemainingTime(event.end);
@@ -77,14 +78,16 @@ export async function setUpPastEvents(header) {
 
     const elem = createPastEventElement(event);
     header.parentElement.insertBefore(elem, null); // Child null means at the end (so insert after header).
+    elems.push(elem);
   });
+
+  addAnimationObserver(elems);
 }
 
 /** @param {EventDocument} event */
 function createPastEventElement(event) {
   const elem = document.createElement("a");
-  // elem.classList.add("book-section", "has-border", "animated-item", "pre-anim", "blur-in-anim");
-  elem.classList.add("book-section", "has-border");
+  elem.classList.add("book-section", "has-border", "animated-item", "pre-anim", "blur-in-anim");
 
   elem.href = event.link;
   elem.target = "_blank";
@@ -97,7 +100,7 @@ function createPastEventElement(event) {
     <img class="book-icon" src="assets/logo_icon.svg" alt="" />
     <div class="book-section-desc">
       <div class="label cc-light">${event.title}</div>
-      <p>${displayName} from ${startTime} to ${endTime}</p>
+      <p>${displayName} which took place from ${startTime} to ${endTime}</p>
     </div>
   `;
 
@@ -107,10 +110,6 @@ function createPastEventElement(event) {
 function startsWithVowel(word) {
   const vowels = ("aeiouAEIOU");
   return vowels.indexOf(word[0]) !== -1;
-}
-
-function getEventNumber(event) {
-  return parseInt(event.replace(/\D/g, ""));
 }
 
 /**
@@ -158,4 +157,27 @@ function formatDate(dateObj, includeYear = true) {
     year: includeYear ? "numeric" : undefined,
   });
   return formattedDate;
+}
+
+/**
+ * Creates an intersection observer which triggers animations for 
+ * some elements when they scroll onto the page by modifying their class.
+ * @param {Element[]} animated_items 
+ */
+function addAnimationObserver(animated_items) {
+  const options = {
+    root: null,
+    rootMargin: "0px",
+    threshold: 0.45
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.remove("pre-anim");
+      }
+    })
+  }, options);
+
+  animated_items.forEach((element) => observer.observe(element));
 }
