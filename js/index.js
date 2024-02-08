@@ -1,5 +1,5 @@
 "use strict";
-import { setUpToastContent } from "./events.js";
+import { setUpPastEvents, setUpToastContent } from "./events.js";
 
 (function () {
 
@@ -27,12 +27,14 @@ import { setUpToastContent } from "./events.js";
     // for users with JS enabled, we do this:
     const scroll_btn = document.getElementById("scroll-top-button");
     scroll_btn.addEventListener("click", (evt) => {
-      window.scrollTo({ top: "0", behavior: "smooth" });
+      window.scrollTo({ top: 0, behavior: "smooth" });
       evt.preventDefault();
     });
 
     const insert = document.getElementById("insert-toast");
+    const past_events = document.getElementById("past-events-header");
     if (insert) setUpToastContent(insert);
+    if (past_events) setUpPastEvents(past_events);
   }
 
   /**
@@ -86,7 +88,7 @@ import { setUpToastContent } from "./events.js";
   function constructPageNavigation() {
     // The page navigator starts off empty and hidden. We want to build it
     // up based on the navigation markers in the page, if there are any. 
-    const nav_markers = document.querySelectorAll(".page-nav-section-marker");
+    const nav_markers = /** @type {NodeListOf<HTMLElement>} */ (document.querySelectorAll(".page-nav-section-marker"));
     const nav_container = document.getElementById("page-navigation");
 
     if (nav_markers.length < 1) return;
@@ -164,9 +166,10 @@ import { setUpToastContent } from "./events.js";
       const label = button.querySelector("span");
       max_width = Math.max(max_width, label.getBoundingClientRect().width);
     });
-    nav_container.style.setProperty("--label-width", max_width);
+    nav_container.style.setProperty("--label-width", max_width.toString());
 
     addEventListener("click", (evt) => {
+      // @ts-expect-error The event.target is an HTMLElement, so it has a .closest() function.
       if (!evt.target.closest("#page-navigation")) {
         nav_container.classList.add("closed");
       }

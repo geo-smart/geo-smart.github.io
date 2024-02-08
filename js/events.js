@@ -1,14 +1,14 @@
 "use strict";
 import { useCachedOrLoad } from "./firebase.js";
 
-/**
+/** 
  * @param {HTMLElement} insert 
  */
 export async function setUpToastContent(insert) {
-  const target = insert.getAttribute("data-event");
   const events = await useCachedOrLoad("events");
-  
-  const event = events.find(item => item.id === target);
+  events.sort((eventA, eventB) => getEventNumber(eventA.id) - getEventNumber(eventB.id));
+  const event = events[0];
+
   const end = calculateRemainingTime(event.end);
   if (!event || !end) return; // end will be null if the event has passed
 
@@ -20,6 +20,7 @@ export async function setUpToastContent(insert) {
   toast.classList.add("show");
 }
 
+/** @param {EventDocument} event */
 function createToastElement(event) {
   const toast = document.createElement("a");
   toast.classList.add("rich-text");
@@ -28,10 +29,10 @@ function createToastElement(event) {
   toast.href = event.link;
   toast.target = "_blank";
   const displayName = startsWithVowel(event.name) ? "an " + event.name : "a " + event.name;
-  
+
   const timeUntilStart = calculateRemainingTime(event.start);
   const timeUntilEnd = calculateRemainingTime(event.end);
-  
+
   const timeDescriptor = timeUntilStart ? "happening" : "ending";
   const useTime = timeUntilStart || timeUntilEnd;
   const remainingTime = useTime.time + " " + useTime.units;
@@ -64,16 +65,56 @@ function setUpToastOnClick(toast) {
   });
 }
 
-function startsWithVowel(word){
-  var vowels = ("aeiouAEIOU"); 
+/**
+ * @param {HTMLElement} header 
+ */
+export async function setUpPastEvents(header) {
+  const events = await useCachedOrLoad("events");
+
+  events.forEach(event => {
+    const end = calculateRemainingTime(event.end);
+    if (end !== null) return;
+
+    const elem = createPastEventElement(event);
+    header.parentElement.insertBefore(elem, null); // Child null means at the end (so insert after header).
+  });
+}
+
+/** @param {EventDocument} event */
+function createPastEventElement(event) {
+  const elem = document.createElement("a");
+  // elem.classList.add("book-section", "has-border", "animated-item", "pre-anim", "blur-in-anim");
+  elem.classList.add("book-section", "has-border");
+
+  elem.href = event.link;
+  elem.target = "_blank";
+
+  const displayName = startsWithVowel(event.name) ? "An " + event.name : "A " + event.name;
+  const startTime = formatDate(event.start, false);
+  const endTime = formatDate(event.end, true);
+
+  elem.innerHTML = `
+    <img class="book-icon" src="assets/logo_icon.svg" alt="" />
+    <div class="book-section-desc">
+      <div class="label cc-light">${event.title}</div>
+      <p>${displayName} from ${startTime} to ${endTime}</p>
+    </div>
+  `;
+
+  return elem;
+}
+
+function startsWithVowel(word) {
+  const vowels = ("aeiouAEIOU");
   return vowels.indexOf(word[0]) !== -1;
 }
 
+function getEventNumber(event) {
+  return parseInt(event.replace(/\D/g, ""));
+}
+
 /**
- * interface remainingTime {
- *    units: "weeks" | "days" | "hours",
- *    time: number,
- * }
+ * @returns {RemainingTime}
  */
 function calculateRemainingTime(timestamp) {
   const { seconds, nanoseconds } = timestamp;
@@ -81,7 +122,7 @@ function calculateRemainingTime(timestamp) {
   const targetDate = new Date(milliseconds);
   const now = new Date();
 
-  const timeDifference = targetDate - now;
+  const timeDifference = targetDate.valueOf() - now.valueOf();
   const millisecondsInHour = 60 * 60 * 1000;
   const millisecondsInDay = 24 * millisecondsInHour;
   const millisecondsInWeek = 7 * millisecondsInDay;
@@ -89,16 +130,32 @@ function calculateRemainingTime(timestamp) {
   if (timeDifference >= millisecondsInWeek) {
     const weeks = Math.floor(timeDifference / millisecondsInWeek);
     return { units: "weeks", time: weeks };
-  
+
   } else if (timeDifference >= millisecondsInDay) {
     const days = Math.floor(timeDifference / millisecondsInDay);
     return { units: "days", time: days };
-  
-  } else if (timeDifference >= millisecondsInHour) {  
+
+  } else if (timeDifference >= millisecondsInHour) {
     const hours = Math.floor(timeDifference / millisecondsInHour);
     return { units: "hours", time: hours };
-  
+
   } else {
     return null;
   }
+}
+
+/**
+ * @param {Timestamp} dateObj 
+ * @param {boolean} includeYear
+ */
+function formatDate(dateObj, includeYear = true) {
+  const { seconds, nanoseconds } = dateObj;
+  const milliseconds = seconds * 1000 + Math.floor(nanoseconds / 1000000);
+  const date = new Date(milliseconds);
+  const formattedDate = date.toLocaleString("en-US", {
+    month: "long",
+    day: "numeric",
+    year: includeYear ? "numeric" : undefined,
+  });
+  return formattedDate;
 }

@@ -5,9 +5,9 @@ import { loadCollection, useCachedOrLoad } from "./firebase.js";
 
   /* ================ */
   /* GLOBAL VARIABLES */
-  
+
   window.addEventListener("load", init);
-  
+
   // When on the blog list view, scrollDist should be undefined
   // and when on the blog post view, scrollDist should be a number.
   // Otherwise, the autoscroll feature will break.
@@ -74,15 +74,7 @@ import { loadCollection, useCachedOrLoad } from "./firebase.js";
   /**
    * Takes a list of post objects, of the form described below, and
    * creates from the template in the html a node for each of them.
-   * 
-   * interface post {
-   *    title: string
-   *    body: string
-   *    link: string
-   *    blurb?: string
-   *    date: { number, number }
-   * }
-   * @param {post[]} posts 
+   * @param {Post[]} posts 
    */
   function populateBlogList(posts) {
     const container = document.querySelector(".blog-list-wrap");
@@ -90,7 +82,7 @@ import { loadCollection, useCachedOrLoad } from "./firebase.js";
     const elements = [];
 
     for (let i = 0; i < posts.length; i++) {
-      const post = post_template.cloneNode(true);
+      const post = /** @type {HTMLElement} */ (post_template.cloneNode(true));
       post.classList.add("blog-post"); // So they can be removed on refresh
       post.classList.remove("hidden");
       post.id = "";
@@ -122,6 +114,7 @@ import { loadCollection, useCachedOrLoad } from "./firebase.js";
     document.getElementById("blog-post-title").innerHTML = post.title;
     document.getElementById("blog-post-date").innerHTML = formatDate(post.date);
     document.getElementById("blog-post-body").innerHTML = post.body;
+    // @ts-expect-error It is an HTML element with an href.
     document.getElementById("blog-post-link").href = post.link;
   }
 
@@ -184,11 +177,11 @@ import { loadCollection, useCachedOrLoad } from "./firebase.js";
    * Adds the given function as both a click event listener 
    * and a keydown event listener for accessiblity reasons.
    * @param {Element} elem 
-   * @param {(event) => void} func 
+   * @param {(event: KeyboardEvent) => void} func 
    */
   function addAccessibleClickListener(elem, func) {
     elem.addEventListener("click", func);
-    elem.addEventListener("keydown", function (event) {
+    elem.addEventListener("keydown", (/** @type {KeyboardEvent} */ event) => {
       if (event.key === "Enter") func(event);
     });
   }
@@ -199,7 +192,7 @@ import { loadCollection, useCachedOrLoad } from "./firebase.js";
 
     if (post) {
       showBlogPost(post);
-      if (scrollDist === undefined) scrollDist = 0; 
+      if (scrollDist === undefined) scrollDist = 0;
     } else {
       // TODO: add a could not find the blog post page
     }
@@ -225,6 +218,9 @@ import { loadCollection, useCachedOrLoad } from "./firebase.js";
     return blogPosts[index - 1];
   }
 
+  /**
+   * @param {Timestamp} dateObj 
+   */
   function formatDate(dateObj) {
     const { seconds, nanoseconds } = dateObj;
     const milliseconds = seconds * 1000 + Math.floor(nanoseconds / 1000000);
@@ -235,12 +231,6 @@ import { loadCollection, useCachedOrLoad } from "./firebase.js";
       year: "numeric"
     });
     return formattedDate;
-  }
-
-  function timeDifferenceInHours(date) {
-    var currentTime = new Date();  // Get the current date and time
-    var timeDifference = currentTime.getTime() - date.getTime();  // Calculate the time difference in milliseconds
-    return timeDifference / (1000 * 60 * 60);  // Convert milliseconds to hours
   }
 
 })();

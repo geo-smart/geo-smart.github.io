@@ -37,7 +37,7 @@ export function useCachedOrLoad(collectionName) {
   }
 
   const cachedData = localStorage.getItem(cd.localStorageName);
-  if (!cachedData) return loadCollection(collectionName, cd.localStorageName);
+  if (!cachedData) return loadCollection(collectionName);
 
   const data = JSON.parse(cachedData);
   console.log(`Loaded ${data.length} cached data items for "${cd.firebaseName}".`);
