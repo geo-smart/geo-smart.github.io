@@ -1,5 +1,6 @@
 "use strict";
 import { loadCollection, useCachedOrLoad } from "./firebase.js";
+import { addAnimationObserver, formatDate } from "./utils.js";
 
 (function () {
 
@@ -151,29 +152,6 @@ import { loadCollection, useCachedOrLoad } from "./firebase.js";
   }
 
   /**
-   * Creates an intersection observer which triggers animations for 
-   * some elements when they scroll onto the page by modifying their class.
-   * @param {Element[]} animated_items 
-   */
-  function addAnimationObserver(animated_items) {
-    const options = {
-      root: null,
-      rootMargin: "0px",
-      threshold: 0.45
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.remove("pre-anim");
-        }
-      })
-    }, options);
-
-    animated_items.forEach((element) => observer.observe(element));
-  }
-
-  /**
    * Adds the given function as both a click event listener 
    * and a keydown event listener for accessiblity reasons.
    * @param {Element} elem 
@@ -216,21 +194,6 @@ import { loadCollection, useCachedOrLoad } from "./firebase.js";
 
     const index = parseInt(hash.replace(/\D/g, ""));
     return blogPosts[index - 1];
-  }
-
-  /**
-   * @param {Timestamp} dateObj 
-   */
-  function formatDate(dateObj) {
-    const { seconds, nanoseconds } = dateObj;
-    const milliseconds = seconds * 1000 + Math.floor(nanoseconds / 1000000);
-    const date = new Date(milliseconds);
-    const formattedDate = date.toLocaleString("en-US", {
-      month: "long",
-      day: "numeric",
-      year: "numeric"
-    });
-    return formattedDate;
   }
 
 })();

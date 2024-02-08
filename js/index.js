@@ -1,5 +1,6 @@
 "use strict";
 import { setUpPastEvents, setUpToastContent } from "./events.js";
+import { addAnimationObserver } from "./utils.js";
 
 (function () {
 
@@ -48,9 +49,10 @@ import { setUpPastEvents, setUpToastContent } from "./events.js";
     let raw = url.match(page_regex);
 
     if (raw) {
+      // @ts-expect-error
       raw = raw[0];
-      // Removing the '/' char preceding the page name
-      const page = raw.substring(1).toLowerCase();
+      // @ts-expect-error
+      const page = raw.substring(1).toLowerCase(); // Removing the '/' char preceding the page name
 
       const buttons = document.querySelectorAll(".navigation-item");
       for (let i = 0; i < buttons.length; i++) {
@@ -200,43 +202,6 @@ import { setUpPastEvents, setUpToastContent } from "./events.js";
     button.appendChild(text);
 
     return button;
-  }
-
-  /**
-   * Creates an intersection observer which triggers animations for
-   * some elements when they scroll onto the page by modifying their class.
-   */
-  function addAnimationObserver() {
-    const animated_items = document.querySelectorAll(".animated-item");
-    // animated_items.forEach(item => item.classList.add("pre-anim"));
-
-    const mainObserver = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.remove("pre-anim");
-        }
-      });
-    }, {
-      root: null,
-      rootMargin: "0px",
-      threshold: 0.45
-    });
-    
-    const mobileObserver = new IntersectionObserver((entries) => {
-      if (window.innerWidth > 479) return;
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.remove("pre-anim");
-        }
-      });
-    }, {
-      root: null,
-      rootMargin: "0px",
-      threshold: 0.1
-    });
-
-    animated_items.forEach((element) => mainObserver.observe(element));
-    animated_items.forEach((element) => mobileObserver.observe(element));
   }
 
 })();

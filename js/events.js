@@ -1,5 +1,6 @@
 "use strict";
 import { useCachedOrLoad } from "./firebase.js";
+import { addAnimationObserver, formatDate } from "./utils.js";
 
 /** 
  * @param {HTMLElement} insert 
@@ -141,43 +142,4 @@ function calculateRemainingTime(timestamp) {
   } else {
     return null;
   }
-}
-
-/**
- * @param {Timestamp} dateObj 
- * @param {boolean} includeYear
- */
-function formatDate(dateObj, includeYear = true) {
-  const { seconds, nanoseconds } = dateObj;
-  const milliseconds = seconds * 1000 + Math.floor(nanoseconds / 1000000);
-  const date = new Date(milliseconds);
-  const formattedDate = date.toLocaleString("en-US", {
-    month: "long",
-    day: "numeric",
-    year: includeYear ? "numeric" : undefined,
-  });
-  return formattedDate;
-}
-
-/**
- * Creates an intersection observer which triggers animations for 
- * some elements when they scroll onto the page by modifying their class.
- * @param {Element[]} animated_items 
- */
-function addAnimationObserver(animated_items) {
-  const options = {
-    root: null,
-    rootMargin: "0px",
-    threshold: 0.45
-  };
-
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.remove("pre-anim");
-      }
-    })
-  }, options);
-
-  animated_items.forEach((element) => observer.observe(element));
 }
