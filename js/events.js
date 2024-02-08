@@ -88,7 +88,7 @@ export async function setUpPastEvents(header) {
 /** @param {EventDocument} event */
 function createPastEventElement(event) {
   const elem = document.createElement("a");
-  elem.classList.add("book-section", "has-border", "animated-item", "pre-anim", "blur-in-anim");
+  elem.classList.add("book-section", "animated-item", "pre-anim", "blur-in-anim");
 
   elem.href = event.link;
   elem.target = "_blank";

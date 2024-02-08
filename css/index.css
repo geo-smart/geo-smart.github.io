@@ -791,7 +791,7 @@ textarea.w-select {
   border: 1px solid #ffffff00;
   background-color: #fff;
   transition: border-color 0.5s ease, box-shadow 0.5s ease, background-color 0.5s ease;
-  
+
   text-decoration: none;
   border-radius: 5px;
   padding: 10px;
@@ -812,8 +812,8 @@ margin-top: .25em; */
 .book-section:hover {
   border-color: #dbdbdb;
   box-shadow: 0 0 0.4px hsla(230, 13%, 9%, 0.01),
-  0 0 1.5px hsla(230, 13%, 9%, 0.02),
-  0 0 6px hsla(230, 13%, 9%, 0.04);
+    0 0 1.5px hsla(230, 13%, 9%, 0.02),
+    0 0 6px hsla(230, 13%, 9%, 0.04);
 }
 
 .book-section.has-border:hover {
@@ -1249,6 +1249,13 @@ margin-top: .25em; */
   font-weight: 500;
   letter-spacing: 1px;
   text-transform: uppercase
+}
+
+.navigation-item.disabled {
+  pointer-events: none;
+  filter: grayscale(1);
+  text-decoration: line-through;
+  opacity: 0.5;
 }
 
 .navigation-item:focus-within,
