@@ -67,6 +67,16 @@ async function main() {
     src = "../";
     dest = "../docs/";
   }
+  
+  const htmlFiles = getFilesWithExtension(src, "", ".html", true);
+  const cssFiles = getFilesWithExtension(src, "css/", ".css");
+  const jsFiles = getFilesWithExtension(src, "js/", ".js");
+  
+  const files = [...htmlFiles, ...cssFiles, ...jsFiles];
+  const srcFiles = files.map(file => src + file);
+  const destFiles = files.map(file => dest + file);
+  
+  const prevTotal = await calculateFileSize(destFiles) / 1000;
 
   console.log(`(setup) clearing ${dest} folder and contents`);
   fse.rmSync(dest, { recursive: true, force: true });
@@ -80,11 +90,6 @@ async function main() {
     }
   }
 
-  const htmlFiles = getFilesWithExtension(src, "", ".html", true);
-  const cssFiles = getFilesWithExtension(src, "css/", ".css");
-  const jsFiles = getFilesWithExtension(src, "js/", ".js");
-
-  const files = [...htmlFiles, ...cssFiles, ...jsFiles];
   for (let i = 0; i < files.length; i++) {
     const src_file = src + files[i];
     const dest_file = dest + files[i];
@@ -98,15 +103,17 @@ async function main() {
   console.log(`\n(recursive copy) ${src + "assets"} --> ${dest + "assets"}`);
   fse.copySync(src + "assets", dest + "assets", { overwrite: true });
 
-  const srcFiles = files.map(file => src + file);
-  const destFiles = files.map(file => dest + file);
-
   const srcTotal = await calculateFileSize(srcFiles) / 1000;
   const destTotal = await calculateFileSize(destFiles) / 1000;
 
   console.log(`\n(result) raw size: \x1b[93m${srcTotal}\x1b[0m kb`);
   console.log(`(result) minified size: \x1b[93m${destTotal}\x1b[0m kb`);
   console.log(`(result) compressed by \x1b[92m${Math.round((1 - (destTotal / srcTotal)) * 100)}%\x1b[0m\n`);
+  
+  const sizeChange = Math.round((destTotal - prevTotal) * 100) / 100;
+  console.log(`\n(result) previous size: \x1b[93m${prevTotal}\x1b[0m kb`);
+  const resultColor = sizeChange > 0 ? "\x1b[91m+" : sizeChange < 0 ? "\x1b[92m" : "~";
+  console.log(`(result) build size change: ${resultColor}${sizeChange}\x1b[0m kb`);
 }
 
 console.log("\n>>> Starting minification of GeoSMART site...\n");

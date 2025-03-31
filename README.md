@@ -11,6 +11,16 @@ To add blog posts, please refer to the site dashboard, found [here](https://gith
 
 ## Development Instructions
 
+### Quickstart
+
+```bash
+cd build
+npm i
+cd ..
+node build/build.js
+python server.py
+```
+
 ### Overview
 
 The geosmart site is a simple multi-page static HTML website. There is very little complexity to the site, with the most noteworthy parts from a development perspective being the blog posts, page navigation and header. Below is the tech stack used:
