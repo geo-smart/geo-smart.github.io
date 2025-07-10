@@ -1,11 +1,12 @@
-import { minify } from 'minify';
-import tryToCatch from 'try-to-catch';
-import fse from 'fs-extra';
-import path from 'path';
+import { minify } from "minify";
+import tryToCatch from "try-to-catch";
+import fse from "fs-extra";
+import path from "path";
 
 function getFilesWithExtension(root, directory, extension, ignoreUnderscored) {
   const target = root + directory;
-  if (!fse.existsSync(target)) { // Check if the directory exists
+  if (!fse.existsSync(target)) {
+    // Check if the directory exists
     console.log(`(error) \x1b[91mdirectory "${target}" does not exist!\x1b[0m`);
     throw new Error("FAILED");
   }
@@ -16,12 +17,11 @@ function getFilesWithExtension(root, directory, extension, ignoreUnderscored) {
   // Filter files by the extension
   const filtered = files.filter((file) => {
     const ext = path.extname(file).toLowerCase();
-    if (ignoreUnderscored && file.startsWith('_')) return false;
+    if (ignoreUnderscored && file.startsWith("_")) return false;
     return ext === extension.toLowerCase();
   });
 
-
-  const result = filtered.map(file => directory + file);
+  const result = filtered.map((file) => directory + file);
   return result;
 }
 
@@ -30,16 +30,20 @@ async function calculateFileSize(fileList) {
     let totalSize = 0;
 
     for (const filePath of fileList) {
-      const stats = await fse.stat(filePath);
-
-      if (stats.isFile()) {
-        totalSize += stats.size;
+      // Check if file exists before trying to stat it
+      if (fse.existsSync(filePath)) {
+        const stats = await fse.stat(filePath);
+        if (stats.isFile()) {
+          totalSize += stats.size;
+        }
       }
     }
 
     return totalSize;
   } catch (error) {
-    console.log("(error) \x1b[91mfailed while calculating size:\x1b[0m\n" + error.message);
+    console.log(
+      "(error) \x1b[91mfailed while calculating size:\x1b[0m\n" + error.message
+    );
     throw new Error("FAILED");
   }
 }
@@ -53,7 +57,9 @@ async function grabAndMinify(file) {
 
   const [error, data] = await tryToCatch(minify, file, options);
   if (error) {
-    console.log("(error) \x1b[91merror occured while minifying:\x1b[0m\n" + error.message);
+    console.log(
+      "(error) \x1b[91merror occured while minifying:\x1b[0m\n" + error.message
+    );
     throw new Error("FAILED");
   }
   return data;
@@ -67,20 +73,25 @@ async function main() {
     src = "../";
     dest = "../docs/";
   }
-  
+
   const htmlFiles = getFilesWithExtension(src, "", ".html", true);
   const cssFiles = getFilesWithExtension(src, "css/", ".css");
   const jsFiles = getFilesWithExtension(src, "js/", ".js");
-  
+
   const files = [...htmlFiles, ...cssFiles, ...jsFiles];
-  const srcFiles = files.map(file => src + file);
-  const destFiles = files.map(file => dest + file);
-  
-  const prevTotal = await calculateFileSize(destFiles) / 1000;
+  const srcFiles = files.map((file) => src + file);
+  const destFiles = files.map((file) => dest + file);
+
+  const prevTotal = (await calculateFileSize(destFiles)) / 1000;
 
   console.log(`(setup) clearing ${dest} folder and contents`);
   fse.rmSync(dest, { recursive: true, force: true });
   fse.mkdirSync(dest);
+
+  // Will always be 0.
+  if (prevTotal === 0) {
+    console.log(`(info) starting fresh build - no previous files found`);
+  }
 
   const dirs = ["js", "css"];
   for (let i = 0; i < dirs.length; i++) {
@@ -103,17 +114,32 @@ async function main() {
   console.log(`\n(recursive copy) ${src + "assets"} --> ${dest + "assets"}`);
   fse.copySync(src + "assets", dest + "assets", { overwrite: true });
 
-  const srcTotal = await calculateFileSize(srcFiles) / 1000;
-  const destTotal = await calculateFileSize(destFiles) / 1000;
+  const srcTotal = (await calculateFileSize(srcFiles)) / 1000;
+  const destTotal = (await calculateFileSize(destFiles)) / 1000;
 
   console.log(`\n(result) raw size: \x1b[93m${srcTotal}\x1b[0m kb`);
   console.log(`(result) minified size: \x1b[93m${destTotal}\x1b[0m kb`);
-  console.log(`(result) compressed by \x1b[92m${Math.round((1 - (destTotal / srcTotal)) * 100)}%\x1b[0m\n`);
-  
+  console.log(
+    `(result) compressed by \x1b[92m${Math.round(
+      (1 - destTotal / srcTotal) * 100
+    )}%\x1b[0m\n`
+  );
+
   const sizeChange = Math.round((destTotal - prevTotal) * 100) / 100;
   console.log(`\n(result) previous size: \x1b[93m${prevTotal}\x1b[0m kb`);
-  const resultColor = sizeChange > 0 ? "\x1b[91m+" : sizeChange < 0 ? "\x1b[92m" : "~";
-  console.log(`(result) build size change: ${resultColor}${sizeChange}\x1b[0m kb`);
+
+  // Will always be 0.
+  if (prevTotal === 0) {
+    console.log(
+      `(result) fresh build completed - final size: \x1b[93m${destTotal}\x1b[0m kb`
+    );
+  } else {
+    const resultColor =
+      sizeChange > 0 ? "\x1b[91m+" : sizeChange < 0 ? "\x1b[92m" : "~";
+    console.log(
+      `(result) build size change: ${resultColor}${sizeChange}\x1b[0m kb`
+    );
+  }
 }
 
 console.log("\n>>> Starting minification of GeoSMART site...\n");
