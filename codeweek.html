@@ -40,13 +40,14 @@
       <div class="menu">
         <nav role="navigation" class="navigation-items w-nav-menu">
           <a href="/curriculum" class="navigation-item w-nav-link">CURRICULUM</a>
-          <a href="/usecases" class="navigation-item w-nav-link">USE CASES</a>
           <a href="/codeweek" class="navigation-item w-nav-link">CODEWEEK</a>
           <a href="/news" class="navigation-item w-nav-link">NEWS</a>
           <div class="navigation-item w-nav-link dropdown">
             MATERIALS
             <div class="dropdown-body">
               <a href="/tools" class="navigation-item w-nav-link">TOOLS</a>
+              <a href="/usecases" class="navigation-item w-nav-link">USE CASE BOOKS</a>
+              <a href="/publications" class="navigation-item w-nav-link">PUBLICATIONS</a>
               <a href="/videos" class="navigation-item w-nav-link disabled">VIDEOS</a>
             </div>
           </div>
@@ -73,9 +74,10 @@
     <div class="w-nav-overlay invisible" data-wf-ignore="" id="w-nav-overlay-0" style="height: 100vh; display: block;">
       <nav role="navigation" class="navigation-items w-nav-menu" data-nav-menu-open="">
         <a href="/curriculum" class="navigation-item w-nav-link w--nav-link-open">CURRICULUM</a>
-        <a href="/usecases" class="navigation-item w-nav-link w--nav-link-open">USE CASES</a>
         <a href="/codeweek" class="navigation-item w-nav-link w--nav-link-open">CODEWEEK</a>
         <a href="/tools" class="navigation-item w-nav-link w--nav-link-open">TOOLS</a>
+        <a href="/usecases" class="navigation-item w-nav-link w--nav-link-open">USE CASE BOOKS</a>
+        <a href="/publications" class="navigation-item w-nav-link w--nav-link-open">PUBLICATIONS</a>
         <a href="/news" class="navigation-item w-nav-link w--nav-link-open">NEWS</a>
         <a href="/motivation" class="navigation-item w-nav-link w--nav-link-open">MOTIVATION</a>
         <a href="/team" class="navigation-item w-nav-link w--nav-link-open">TEAM</a>
@@ -83,7 +85,8 @@
         <a href="/getinvolved" class="navigation-item w-nav-link w--nav-link-open">GET INVOLVED</a>
       </nav>
     </div>
-  </div>  
+  </div>
+
   <!-- %END HEADER -->
 
   <!-- BANNER -->
@@ -126,6 +129,98 @@
     <div class="title-group animated-item pre-anim blur-in-anim" id="past-events-header">
       <div class="label cc-light">Events</div>
       <h2 class="heading">Past Codeweek Events</h2>
+    </div>
+  </div>
+  <div class="home-content-wrap wf-section">
+    <div class="rich-text w-richtext animated-item pre-anim blur-in-anim">
+      <p>Browse recent GeoSMART Codeweek event webpages:</p>
+      <ul role="list">
+        <li>
+          <a href="https://geosmart-2023.hackweek.io/intro.html" target="_blank" rel="noopener noreferrer">
+            GeoSMART 2023 codeweek event page
+          </a>
+        </li>
+        <li>
+          <a href="https://geosmart-2024.hackweek.io/intro.html" target="_blank" rel="noopener noreferrer">
+            GeoSMART 2024 codeweek event page
+          </a>
+        </li>
+      </ul>
+      <div class="codeweek-projects">
+        <details class="codeweek-project-dropdown details-wrap">
+          <summary>GeoSMART Hackweek 2023 project repos</summary>
+          <ul class="codeweek-project-list" role="list">
+            <li>
+              <a href="https://github.com/geo-smart/spacetime-elevation" target="_blank" rel="noopener noreferrer">
+                Space time elevation
+              </a>
+              : Gaussian Process regression for large geospatial datasets, with outcomes that may inform upstream tools
+              such as GPyTorch, PyKrige, and GTSA.
+            </li>
+            <li>
+              <a href="https://github.com/geo-smart/swe_forecasting_prod" target="_blank" rel="noopener noreferrer">
+                Production-oriented Snow Water Equivalent Forecasting Workflow
+              </a>
+              : a scalable machine learning and geospatial workflow for forecasting snow water equivalent in the western
+              United States.
+            </li>
+            <li>
+              <a href="https://github.com/geo-smart/deep-snow" target="_blank" rel="noopener noreferrer">
+                Snow depths from SAR backscatter, trained on ASO data
+              </a>
+              : a convolutional neural network project for predicting snow depth from remote sensing imagery.
+              <p class="codeweek-project-note">
+                Confirmed for the 2023 GeoSMART Hackweek. The repository also notes continued work during the 2024
+                NASA Earth Sciences and UW Hackweek, but not explicitly the 2024 GeoSMART Hackweek.
+              </p>
+            </li>
+          </ul>
+        </details>
+
+        <details class="codeweek-project-dropdown details-wrap">
+          <summary>GeoSMART Hackweek 2024 project repos</summary>
+          <ul class="codeweek-project-list" role="list">
+            <li>
+              <a href="https://github.com/geo-smart/swe_forecasting_prod" target="_blank" rel="noopener noreferrer">
+                Production-oriented Snow Water Equivalent Forecasting Workflow
+              </a>
+              : the repository explicitly includes a GeoHackWeek 2024 team and documents work on SWE forecasting,
+              model evaluation, and production workflow improvements.
+            </li>
+          </ul>
+        </details>
+
+        <details class="codeweek-project-dropdown details-wrap">
+          <summary>Additional project repos</summary>
+          <p class="codeweek-project-note">
+            These repositories are relevant GeoSMART Hackweek project links, but their public repo text does not
+            explicitly verify a 2023 or 2024 GeoSMART year assignment.
+          </p>
+          <ul class="codeweek-project-list" role="list">
+            <li>
+              <a href="https://github.com/geo-smart/Snow-Extrapolation" target="_blank" rel="noopener noreferrer">
+                Snow Extrapolation
+              </a>
+              : improves operational near-real-time snow-water-equivalent estimates for the National Snow Model and
+              National Water Model.
+            </li>
+            <li>
+              <a href="https://github.com/geo-smart/water-surf" target="_blank" rel="noopener noreferrer">
+                River segmentation
+              </a>
+              : a computer vision workflow that fine-tunes Meta's Segment Anything Model to automatically segment river
+              pixels.
+            </li>
+            <li>
+              <a href="https://github.com/geo-smart/ocean" target="_blank" rel="noopener noreferrer">
+                Ocean: Exploring synoptic ocean sensor data
+              </a>
+              : an ocean data science project using multimodal observations to study water-column dynamics, satellite
+              comparisons, and machine learning across coincident sensor streams.
+            </li>
+          </ul>
+        </details>
+      </div>
     </div>
   </div>
   <!-- END MAIN PAGE CONTENT -->

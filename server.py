@@ -102,6 +102,7 @@ if len(sys.argv) == 1:
 
 elif len(sys.argv) == 2:
   dir_flags = ["--docs", "-d"]
+  no_watch_flags = ["--no-watch", "-n"]
 
   if sys.argv[1] in dir_flags:
     watch = False  # We can serve from the docs folder or watch for head changes, but it doesn't make sense to do both. 
@@ -109,9 +110,15 @@ elif len(sys.argv) == 2:
 
     prepare(f"Recieved '{sys.argv[1]}' flag, serving from /docs/ directory...")
     run(HTTPServer, NoExtensionHandler)
+
+  elif sys.argv[1] in no_watch_flags:
+    watch = False
+    prepare("Serving from root directory without component watching...")
+    run(HTTPServer, NoExtensionHandler)
   
   else:
-    output(f"Invalid flag provided. Expected one of {str(dir_flags)}, got '{sys.argv[1]}'")
+    valid_flags = dir_flags + no_watch_flags
+    output(f"Invalid flag provided. Expected one of {str(valid_flags)}, got '{sys.argv[1]}'")
 
 else:
   output(f"Invalid number of arguments. Expected at most 1, got {len(sys.argv) - 1}")
