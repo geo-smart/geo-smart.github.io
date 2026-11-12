@@ -997,6 +997,102 @@ margin-top: .25em; */
   margin-bottom: 30px
 }
 
+.publication-list {
+  padding-left: 24px;
+}
+
+.publication-list li {
+  margin-bottom: 24px;
+  line-height: 1.75;
+}
+
+.publication-list li:last-child {
+  margin-bottom: 0;
+}
+
+.planetsca-figure {
+  max-width: 840px;
+  margin: 32px auto;
+}
+
+.planetsca-figure img {
+  width: 100%;
+  height: auto;
+}
+
+.codeweek-projects {
+  margin-top: 32px;
+}
+
+.codeweek-project-dropdown {
+  padding: 18px 22px;
+  border: 1px solid #dce5d8;
+  border-radius: 18px;
+  background: linear-gradient(180deg, #f9fbf8 0%, #f2f6ef 100%);
+  box-shadow: 0 12px 30px rgba(85, 122, 66, 0.08);
+}
+
+.codeweek-project-dropdown summary {
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--primary-color);
+  list-style: none;
+}
+
+.codeweek-project-dropdown summary::-webkit-details-marker {
+  display: none;
+}
+
+.codeweek-project-dropdown summary::after {
+  content: "+";
+  float: right;
+  font-size: 26px;
+  line-height: 1;
+  color: var(--primary-color);
+}
+
+.codeweek-project-dropdown[open] summary::after {
+  content: "-";
+}
+
+.codeweek-project-dropdown summary:focus {
+  outline: 2px solid rgba(85, 122, 66, 0.35);
+  outline-offset: 6px;
+}
+
+.codeweek-project-list {
+  margin-top: 18px;
+  margin-bottom: 0;
+  padding-left: 22px;
+}
+
+.codeweek-project-list li {
+  margin-bottom: 14px;
+}
+
+.codeweek-project-list li:last-child {
+  margin-bottom: 0;
+}
+
+.codeweek-project-note {
+  margin-top: 10px;
+  margin-bottom: 0;
+  color: #556160;
+  font-size: 15px;
+}
+
+@media screen and (max-width: 767px) {
+  .codeweek-project-dropdown {
+    padding: 16px 18px;
+  }
+
+  .codeweek-project-dropdown summary {
+    font-size: 16px;
+    line-height: 1.4;
+  }
+}
+
 .footer-wrap {
   display: -webkit-box;
   display: -webkit-flex;
